@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: G123_Render_Character
+  m_Shader: {fileID: 4800000, guid: 539911d5aa0fd3845a3c5d800c1e93f1, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BackPic:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Body:
+        m_Texture: {fileID: 2800000, guid: 07dc70ffd6dd6304fb1dd5868d296361, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BodyDepth:
+        m_Texture: {fileID: 2800000, guid: 07dc70ffd6dd6304fb1dd5868d296361, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Head:
+        m_Texture: {fileID: 2800000, guid: 07dc70ffd6dd6304fb1dd5868d296361, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HeadDepth:
+        m_Texture: {fileID: 2800000, guid: 07dc70ffd6dd6304fb1dd5868d296361, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _KPointTex:
+        m_Texture: {fileID: 2800000, guid: b77729863a6bffe43958195e827d6507, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NPC:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NPC00:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NPCAddon:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Test:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Weapon:
+        m_Texture: {fileID: 2800000, guid: 07dc70ffd6dd6304fb1dd5868d296361, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WeaponDepth:
+        m_Texture: {fileID: 2800000, guid: 07dc70ffd6dd6304fb1dd5868d296361, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WeaponEffect:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WeaponGem:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BackPicMult: 0
+    - _BodyDepthMult: 0
+    - _CutSwitch: 0
+    - _CutValue: 0
+    - _HeadDepthMult: 0
+    - _KPointOffsetMult: 1
+    - _KPointView: 0
+    - _PicScale: 1
+    - _Scale: 1
+    - _ScaleNPC: 0.64
+    - _ViewKPoint: 1
+    - _WeaponDepthMult: 0
+    m_Colors:
+    - _BackColor: {r: 0, g: 0.4, b: 1, a: 1}
+    - _CutValue: {r: 0, g: 0, b: 0, a: 0}
+    - _CutValueNPC: {r: 0, g: 0, b: 0, a: 0}
+    - _KPointOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _KPointOffsetNPC: {r: 0, g: 0, b: 0, a: 0}
+    - _KPointOffsetNPCRescale: {r: 0, g: 0, b: 0, a: 0}
+    - _KPointOffsetRescale: {r: 0, g: 0, b: 0, a: 0}
+    - _Scale: {r: 1, g: 1, b: 0, a: 0}
+    - _ScaleNPC: {r: 1, g: 1, b: 0, a: 0}
+    - _ScaleNPCRescale: {r: 1, g: 1, b: 0, a: 0}
+    - _ScaleRescale: {r: 1, g: 1, b: 0, a: 0}
+  m_BuildTextureStacks: []
