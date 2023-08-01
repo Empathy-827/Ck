@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: G123_Render3
+  m_Name: G123_Render_Anim7
   m_Shader: {fileID: 4800000, guid: 539911d5aa0fd3845a3c5d800c1e93f1, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []

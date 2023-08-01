@@ -14,6 +14,9 @@ public class Control : MonoBehaviour
     public  Material matIII;
     public  Material matIIII;
 
+    public  Material[] matI_anim;
+
+
     public  Material matOverlapI;
     public  Material matContrastI;
     public  Material matCharacterI;
@@ -45,6 +48,15 @@ public class Control : MonoBehaviour
     public static Material mat1;
     public static Material mat2;
     public static Material mat3;
+
+    public static Material[] mat_anim;
+    public static Material mat_anim2;
+    public static Material mat_anim3;
+    public static Material mat_anim4;
+    public static Material mat_anim5;
+    public static Material mat_anim6;
+    public static Material mat_anim7;
+
 
 
     public static Material matOverlap;
@@ -81,6 +93,14 @@ public class Control : MonoBehaviour
         mat1 = matII;
         mat2 = matIII;
         mat3 = matIIII;
+
+        mat_anim = matI_anim;
+        /*mat_anim2 = matI_anim2;
+        mat_anim3 = matI_anim3;
+        mat_anim4 = matI_anim4;
+        mat_anim5 = matI_anim5;
+        mat_anim6 = matI_anim6;
+        mat_anim7 = matI_anim7;*/
 
         matOverlap = matOverlapI;
         matContrast = matContrastI;
@@ -274,10 +294,10 @@ public class Control : MonoBehaviour
         Interaction.VertOffset();
     }
 
-    public void ButtonChooseBody()
+    /*public void ButtonChooseBody()
     {
         //Interaction.ChooseBody();
-    }
+    }*/
 
     //取消显示
     public void ButtonCancelNPC()
@@ -376,6 +396,11 @@ public class Control : MonoBehaviour
     public void ButtonChooseAnim()
     {
         Interaction.ChooseAnim();
+    }
+
+    public void ButtonChooseAinmAll()
+    {
+        Interaction.ChooseAinmAll();
     }
 
     public void ButtonForceAll()
@@ -521,10 +546,10 @@ public class Control : MonoBehaviour
         Interaction.CharacterRescale();
     }
    
-    public void ButtonChooseCharacterMode()
+    /*public void ButtonChooseCharacterMode()
     {
         Interaction.ChooseCharacter();
-    }
+    }*/
 
     public void ButtonChooseNPCMode()
     {

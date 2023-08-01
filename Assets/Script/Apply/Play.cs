@@ -1583,14 +1583,80 @@ public class Play
     {
         //NPC本体
         {
+            if(Variables.aAnimAll)
+            {
+                if(Variables.NPCImages1.Count != 0)
+                {
+                    Control.mat_anim[1].SetTexture("_NPC" , Variables.NPCImages1[Variables.indexNPC % Variables.NPCImages1.Count]);
+                }
+                else
+                {
+                    Control.mat_anim[1].SetTexture("_NPC",Variables.blackTex);
+                }
+
+                if(Variables.NPCImages2.Count != 0)
+                {
+                    Control.mat_anim[2].SetTexture("_NPC" , Variables.NPCImages2[Variables.indexNPC % Variables.NPCImages2.Count]);
+                }
+                else
+                {
+                    Control.mat_anim[2].SetTexture("_NPC",Variables.blackTex);
+                }
+                
+                if(Variables.NPCImages3.Count != 0)
+                {
+                    Control.mat_anim[3].SetTexture("_NPC" , Variables.NPCImages3[Variables.indexNPC % Variables.NPCImages3.Count]);
+                }
+                else
+                {
+                    Control.mat_anim[3].SetTexture("_NPC",Variables.blackTex);
+                }
+                
+                if(Variables.NPCImages4.Count != 0)
+                {
+                    Control.mat_anim[4].SetTexture("_NPC" , Variables.NPCImages4[Variables.indexNPC % Variables.NPCImages4.Count]);
+                }
+                else
+                {
+                    Control.mat_anim[4].SetTexture("_NPC",Variables.blackTex);
+                }
+                
+                if(Variables.NPCImages5.Count != 0)
+                {
+                    Control.mat_anim[5].SetTexture("_NPC" , Variables.NPCImages5[Variables.indexNPC % Variables.NPCImages5.Count]);
+                }
+                else
+                {
+                    Control.mat_anim[5].SetTexture("_NPC",Variables.blackTex);
+                }
+                
+                if(Variables.NPCImages6.Count != 0)
+                {
+                    Control.mat_anim[6].SetTexture("_NPC" , Variables.NPCImages6[Variables.indexNPC % Variables.NPCImages6.Count]);
+                }
+                else
+                {
+                    Control.mat_anim[6].SetTexture("_NPC",Variables.blackTex);
+                }
+
+                if(Variables.NPCImages7.Count != 0)
+                {
+                    Control.mat_anim[7].SetTexture("_NPC" , Variables.NPCImages7[Variables.indexNPC % Variables.NPCImages7.Count]);
+                }
+                else
+                {
+                    Control.mat_anim[7].SetTexture("_NPC",Variables.blackTex);
+                }
+            }
+            
+
+
+
             if(Variables.NPCImages.Count != 0 && Variables.validNPC == true)
             {
                 Control.mat.SetTexture("_NPC" , Variables.NPCImages[Variables.indexNPC]);
             }
-            else
-            {
-                Control.mat.SetTexture("_NPC",Variables.blackTex);
-            }
+
 
             if(Variables.NPCImagesForce1.Count != 0 && Variables.validNPC == true && Variables.aForceAll)
             {

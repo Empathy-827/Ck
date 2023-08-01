@@ -127,20 +127,20 @@ Material:
     - _T: 0
     - _ViewKPoint: 1
     m_Colors:
-    - _BackColor: {r: 0, g: 0.4, b: 1, a: 1}
+    - _BackColor: {r: 0, g: 0, b: 0, a: 0}
     - _CutValue: {r: 0, g: 0, b: 0, a: 0}
-    - _CutValueNPC: {r: 0.25, g: 0.25, b: 0, a: 0}
+    - _CutValueNPC: {r: 0.5, g: 0.25, b: 0, a: 0}
     - _CutValueOverlap: {r: 0, g: 0, b: 0, a: 0}
     - _CutValueOverlapNPC: {r: 0.25, g: 0.25, b: 0, a: 0}
     - _KPointOffset: {r: 0, g: 0, b: 0, a: 0}
     - _KPointOffsetNPC: {r: 0, g: 0, b: 0, a: 0}
     - _KPointOffsetNPCOverlap: {r: 0, g: 0, b: 0, a: 0}
-    - _KPointOffsetNPCRescale: {r: 0, g: -0.157, b: 0, a: 0}
+    - _KPointOffsetNPCRescale: {r: 0, g: 0, b: 0, a: 0}
     - _KPointOffsetOverlap: {r: 0, g: 0, b: 0, a: 0}
     - _KPointOffsetRescale: {r: 0, g: 0, b: 0, a: 0}
     - _Scale: {r: 1, g: 1, b: 0, a: 0}
     - _ScaleNPC: {r: 1, g: 1, b: 0, a: 0}
-    - _ScaleNPCRescale: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _ScaleNPCRescale: {r: 1, g: 1, b: 0, a: 0}
     - _ScaleOverlap: {r: 1, g: 1, b: 0, a: 0}
     - _ScaleOverlapNPC: {r: 1, g: 1, b: 0, a: 0}
     - _ScaleRescale: {r: 1, g: 1, b: 0, a: 0}

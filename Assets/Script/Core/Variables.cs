@@ -71,6 +71,7 @@ public class Variables
 
 
     public static bool aForceAll = false;
+    public static bool aAnimAll = false;
 
     public static bool bVert = false;
 
@@ -201,6 +202,14 @@ public class Variables
 
     //npc
     public static List<Texture2D> NPCImages = new List<Texture2D>();
+    public static List<Texture2D> NPCImages1 = new List<Texture2D>();
+    public static List<Texture2D> NPCImages2 = new List<Texture2D>();
+    public static List<Texture2D> NPCImages3 = new List<Texture2D>();
+    public static List<Texture2D> NPCImages4 = new List<Texture2D>();
+    public static List<Texture2D> NPCImages5 = new List<Texture2D>();
+    public static List<Texture2D> NPCImages6 = new List<Texture2D>();
+    public static List<Texture2D> NPCImages7 = new List<Texture2D>();
+
 
     public static List<Texture2D> NPCImagesForce1 = new List<Texture2D>();
     public static List<Texture2D> NPCImagesForce2 = new List<Texture2D>();
