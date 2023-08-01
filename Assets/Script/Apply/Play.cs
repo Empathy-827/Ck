@@ -978,7 +978,7 @@ public class Play
     /**
         普通模式主角播放逻辑
     */
-    private static void PlayMode0Character()
+    /*private static void PlayMode0Character()
     {
         if(Variables.validBody == true)
         {  
@@ -1056,7 +1056,7 @@ public class Play
     /**
         重叠对比模式输出主角 重叠主角播放逻辑
     */
-    private static void PlayMode1CharacterCharacter()
+    /*private static void PlayMode1CharacterCharacter()
     {
         if(Variables.validBody == true)
         {
@@ -1238,7 +1238,7 @@ public class Play
     /**
         重叠对比模式输出主角 重叠NPC播放逻辑
     */
-    private static void PlayMode1CharacterNPC()
+    /*private static void PlayMode1CharacterNPC()
     {
         if(Variables.validBody == true)
         {
@@ -1342,7 +1342,7 @@ public class Play
     /**
         角色对比模式输出主角 对比主角播放逻辑
     */
-    private static void PlayMode2CharacterCharacter()
+    /*private static void PlayMode2CharacterCharacter()
     {
         if(Variables.validBody == true)
         {
@@ -1492,7 +1492,7 @@ public class Play
     /**
         角色对比模式输出主角 对比NPC播放逻辑
     */
-    private static void PlayMode2CharacterNPC()
+    /*private static void PlayMode2CharacterNPC()
     {
         if(Variables.validBody == true)
         {
@@ -1585,7 +1585,17 @@ public class Play
         {
             if(Variables.aAnimAll)
             {
-                if(Variables.NPCImages1.Count != 0)
+                if(Variables.NPCImages0.Count != 0 && Variables.validNPC == true)
+                {
+                    Control.mat_anim[0].SetTexture("_NPC" , Variables.NPCImages0[Variables.indexNPC % Variables.NPCImages0.Count]);
+                }
+                else
+                {
+                    Control.mat_anim[0].SetTexture("_NPC",Variables.blackTex);
+                }
+
+
+                if(Variables.NPCImages1.Count != 0 && Variables.validNPC == true)
                 {
                     Control.mat_anim[1].SetTexture("_NPC" , Variables.NPCImages1[Variables.indexNPC % Variables.NPCImages1.Count]);
                 }
@@ -1594,7 +1604,7 @@ public class Play
                     Control.mat_anim[1].SetTexture("_NPC",Variables.blackTex);
                 }
 
-                if(Variables.NPCImages2.Count != 0)
+                if(Variables.NPCImages2.Count != 0 && Variables.validNPC == true)
                 {
                     Control.mat_anim[2].SetTexture("_NPC" , Variables.NPCImages2[Variables.indexNPC % Variables.NPCImages2.Count]);
                 }
@@ -1603,7 +1613,7 @@ public class Play
                     Control.mat_anim[2].SetTexture("_NPC",Variables.blackTex);
                 }
                 
-                if(Variables.NPCImages3.Count != 0)
+                if(Variables.NPCImages3.Count != 0 && Variables.validNPC == true)
                 {
                     Control.mat_anim[3].SetTexture("_NPC" , Variables.NPCImages3[Variables.indexNPC % Variables.NPCImages3.Count]);
                 }
@@ -1612,7 +1622,7 @@ public class Play
                     Control.mat_anim[3].SetTexture("_NPC",Variables.blackTex);
                 }
                 
-                if(Variables.NPCImages4.Count != 0)
+                if(Variables.NPCImages4.Count != 0 && Variables.validNPC == true)
                 {
                     Control.mat_anim[4].SetTexture("_NPC" , Variables.NPCImages4[Variables.indexNPC % Variables.NPCImages4.Count]);
                 }
@@ -1621,7 +1631,7 @@ public class Play
                     Control.mat_anim[4].SetTexture("_NPC",Variables.blackTex);
                 }
                 
-                if(Variables.NPCImages5.Count != 0)
+                if(Variables.NPCImages5.Count != 0 && Variables.validNPC == true)
                 {
                     Control.mat_anim[5].SetTexture("_NPC" , Variables.NPCImages5[Variables.indexNPC % Variables.NPCImages5.Count]);
                 }
@@ -1630,7 +1640,7 @@ public class Play
                     Control.mat_anim[5].SetTexture("_NPC",Variables.blackTex);
                 }
                 
-                if(Variables.NPCImages6.Count != 0)
+                if(Variables.NPCImages6.Count != 0 && Variables.validNPC == true)
                 {
                     Control.mat_anim[6].SetTexture("_NPC" , Variables.NPCImages6[Variables.indexNPC % Variables.NPCImages6.Count]);
                 }
@@ -1639,14 +1649,14 @@ public class Play
                     Control.mat_anim[6].SetTexture("_NPC",Variables.blackTex);
                 }
 
-                if(Variables.NPCImages7.Count != 0)
+                /*if(Variables.NPCImages7.Count != 0)
                 {
                     Control.mat_anim[7].SetTexture("_NPC" , Variables.NPCImages7[Variables.indexNPC % Variables.NPCImages7.Count]);
                 }
                 else
                 {
                     Control.mat_anim[7].SetTexture("_NPC",Variables.blackTex);
-                }
+                }*/
             }
             
 

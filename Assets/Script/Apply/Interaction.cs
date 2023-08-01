@@ -61,7 +61,7 @@ public class Interaction
     {
         Control.frameGO.transform.localScale = new Vector3(0,0,0);
         GameObject.Find("QA_Quad").transform.localScale = new Vector3(0,0,0);
-        Variables.bSwitch = false;
+        Variables.bSwitch = false; 
     }
 
     /**
@@ -734,348 +734,6 @@ public class Interaction
         GameObject.Find("NPC选择按钮/01/000000").GetComponentInChildren<Text>().text = Variables.validNPC02 ? "Y" : "X";
     }
 
-    //取消的逻辑
-    /*{
-        /**
-            选择、取消身体部位资产
-        */
-        /*public static void ChooseBody()
-        {
-            if(Variables.bChoose == false)
-            {
-                return;
-            }
-            Variables.bChoose = false;
-
-            ChooseFunc("输出", "主角", Variables.mainFolderPath, "body", "身体", Control.go);
-
-            Variables.bCorrection = false;
-            Variables.bReset = false;
-            Variables.bChoose = true;
-        }
-
-        public static void CancelBody()
-        {
-            if(Variables.bChoose == false)
-            {
-                return;
-            }
-            Variables.validBody = false;
-            Variables.validBodyDepth = false;
-            GameObject.Find("主角选择按钮/身体/000000").GetComponentInChildren<Text>().text = "请选择身体ID";
-        }*/
-
-        /**
-            选择、取消头部部位资产
-        */
-        /*public static void ChooseHead()
-        {
-            if(Variables.bChoose == false)
-            {
-                return;
-            }
-            Variables.bChoose = false;
-            ChooseFunc("输出", "主角", Variables.mainFolderPath, "head", "头部", Control.go);
-            Variables.bCorrection = false;
-            Variables.bReset = false;
-            Variables.bChoose = true;
-        }*/
-
-        /*public static void CancelHead()
-        {
-            if(Variables.bChoose == false)
-            {
-                return;
-            }
-            Variables.validHead = false;
-            Variables.validHeadDepth = false;
-            GameObject.Find("主角选择按钮/头部/000000").GetComponentInChildren<Text>().text = "请选择头部ID";
-        }*/
-
-        /**
-            选择、取消武器部位资产
-        */
-        /*public static void ChooseWeapon()
-        {
-            if(Variables.bChoose == false)
-            {
-                return;
-            }
-            Variables.bChoose = false;
-
-            int btnPos = 0;
-            int btnHeight = 30;
-
-            List<string> weaponFolderPath = GetFiles.GetAllFiles(Variables.mainFolderPath + "/输出资产png/weapon");
-            List<string> weaponDepthFolderPath = GetFiles.GetAllFiles(Variables.mainFolderPath + "/输出资产深度/weapon");
-
-            if(weaponFolderPath.Count == 0 || weaponDepthFolderPath.Count == 0)
-            {
-                Variables.bChoose = true;
-                return;
-            }
-            GameObject panel_button = GameObject.Find("主角选择按钮/武器/Panel/Image/Panel_Button");
-            var rectTransform = panel_button.transform.GetComponent<RectTransform>();
-            panel_button.transform.localPosition = new Vector3(0,0 - (((btnHeight * weaponFolderPath.Count) / 2) - (rectTransform.rect.height / 2)),0);
-            rectTransform.sizeDelta = new Vector2(rectTransform.rect.width,btnHeight * weaponFolderPath.Count);
-            GameObject button_image = GameObject.Find("主角选择按钮/武器/Panel/Image");
-            button_image.transform.localScale = new Vector3(1,1,1);
-            for(int i = 0; i < weaponFolderPath.Count;i++)
-            {
-                GameObject goClone = UnityEngine.Object.Instantiate(Control.go);
-                goClone.transform.SetParent(panel_button.transform,true);
-                goClone.transform.localScale = new Vector3(1,1,1);
-                goClone.transform.localPosition = new Vector3(0,btnPos,0);
-                string buttonName = weaponFolderPath[i];
-                goClone.GetComponentInChildren<Text>().text = buttonName;
-                goClone.GetComponent<Button>().onClick.AddListener
-                (
-                    ()=>
-                    {
-                        GameObject weaponButton = GameObject.Find("主角选择按钮/武器/000000");
-                        weaponButton.GetComponentInChildren<Text>().text = buttonName;
-                        GameObject[] all = Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[];
-                        List<GameObject> allButton = new List<GameObject>();
-                        foreach(GameObject go in all)
-                        {
-                            if(go.name == "Button(Clone)")
-                            {
-                                allButton.Add(go);
-                            }
-                        }
-                        foreach(GameObject go in allButton)
-                        {
-                            UnityEngine.Object.DestroyImmediate(go);
-                        }
-
-                        #if UNITY_EDITOR
-                        AssetDatabase.Refresh();
-                        #endif
-
-                        button_image.transform.localScale = new Vector3(0,0,0);
-                        Variables.weaponPath = Variables.mainFolderPath + "/输出资产png/weapon/" + buttonName + "/" + Variables.animName;
-                        Variables.weaponDepthPath = Variables.mainFolderPath + "/输出资产深度/weapon/" + buttonName + "/" + Variables.animName;
-                        Variables.weaponEffectPath = Variables.mainFolderPath + "/输出资产png/weapon30Effect/" + buttonName + "/" + Variables.animName;
-                        Import.AddWeaponEffect(Variables.weaponEffectPath);
-                        Import.AddWeapon(Variables.weaponPath , Variables.weaponDepthPath);
-                        Variables.bCorrection = false;
-                        Variables.bReset = false;
-                        Variables.bChoose = true;
-                    }
-                );
-                btnPos = btnPos - btnHeight;
-            }
-        }*/
-
-        /*public static void CancelWeapon()
-        {
-            if(Variables.bChoose == false)
-            {
-                return;
-            }
-            Variables.validWeapon = false;
-            Variables.validWeaponDepth = false;
-            Variables.validWeaponEffect = false;
-            GameObject.Find("主角选择按钮/武器/000000").GetComponentInChildren<Text>().text = "请选择武器ID";
-        }*/
-
-        /**
-            选择、取消宝石部位资产
-        */
-        /*public static void ChooseGem()
-        {
-            if(Variables.bChoose == false)
-            {
-                return;
-            }
-            Variables.bChoose = false;
-
-            ChooseFuncSingle("输出", "主角", Variables.mainFolderPath, "gemEffect", "宝石", Control.go);
-            Variables.bCorrection = false;
-            Variables.bReset = false;
-            Variables.bChoose = true;
-        }
-
-        public static void CancelGem()
-        {
-            if(Variables.bChoose == false)
-            {
-                return;
-            }
-            Variables.validGem = false;
-            GameObject.Find("主角选择按钮/宝石/000000").GetComponentInChildren<Text>().text = "请选择宝石ID";
-        }*/
-
-        /**
-            选择、取消重叠对比身体资产
-        */
-        /*public static void ChooseBodyOverlap()
-        {
-            if(Variables.bChoose == false)
-            {
-                return;
-            }
-            Variables.bChoose = false;
-            ChooseFunc("对比", "对比主角", Variables.mainFolderPath, "body", "身体", Control.go);
-            Variables.bCorrection = false;
-            Variables.bReset = false;
-            Variables.bChoose = true;
-        }
-
-        public static void CancelBodyOverlap()
-        {
-            if(Variables.bChoose == false)
-            {
-                return;
-            }
-
-            Variables.validBodyOverlap = false;
-            Variables.validBodyDepthOverlap = false;
-            GameObject.Find("对比主角选择按钮/身体/000000").GetComponentInChildren<Text>().text = "请选择身体ID";
-        }*/
-
-        /**
-            选择、取消重叠对比头部资产
-        */
-        /*public static void ChooseHeadOverlap()
-        {
-            if(Variables.bChoose == false)
-            {
-                return;
-            }
-            Variables.bChoose = false;
-            ChooseFunc("对比", "对比主角", Variables.mainFolderPath, "head", "头部", Control.go);
-            Variables.bCorrection = false;
-            Variables.bReset = false;
-            Variables.bChoose = true;
-        }*/
-
-        /*public static void CancelHeadOverlap()
-        {
-            if(Variables.bChoose == false)
-            {
-                return;
-            }
-
-            Variables.validHeadOverlap = false;
-            Variables.validHeadDepthOverlap = false;
-            GameObject.Find("对比主角选择按钮/头部/000000").GetComponentInChildren<Text>().text = "请选择头部ID";
-        }*/
-
-        /**
-            选择、取消重叠对比武器资产
-        */
-        /*public static void ChooseWeaponOverlap()
-        {
-            if(Variables.bChoose == false)
-            {
-                return;
-            }
-            Variables.bChoose = false;
-
-            int btnPos = 0;
-            int btnHeight = 30;
-
-            List<string> weaponFolderPath = GetFiles.GetAllFiles(Variables.mainFolderPath + "/对比资产png/weapon");
-            List<string> weaponDepthFolderPath = GetFiles.GetAllFiles(Variables.mainFolderPath + "/对比资产深度/weapon");
-
-            if(weaponFolderPath.Count == 0 || weaponDepthFolderPath.Count == 0)
-            {
-                Variables.bChoose = true;
-                return;
-            }
-            GameObject panel_button = GameObject.Find("对比主角选择按钮/武器/Panel/Image/Panel_Button");
-            var rectTransform = panel_button.transform.GetComponent<RectTransform>();
-            panel_button.transform.localPosition = new Vector3(0,0 - (((btnHeight * weaponFolderPath.Count) / 2) - (rectTransform.rect.height / 2)),0);
-            rectTransform.sizeDelta = new Vector2(rectTransform.rect.width,btnHeight * weaponFolderPath.Count);
-            GameObject button_image = GameObject.Find("对比主角选择按钮/武器/Panel/Image");
-            button_image.transform.localScale = new Vector3(1,1,1);
-            for(int i = 0; i < weaponFolderPath.Count;i++)
-            {
-                GameObject goClone = UnityEngine.Object.Instantiate(Control.go);
-                goClone.transform.SetParent(panel_button.transform,true);
-                goClone.transform.localScale = new Vector3(1,1,1);
-                goClone.transform.localPosition = new Vector3(0,btnPos,0);
-                string buttonName = weaponFolderPath[i];
-                goClone.GetComponentInChildren<Text>().text = buttonName;
-                goClone.GetComponent<Button>().onClick.AddListener
-                (
-                    ()=>
-                    {
-                        GameObject weaponButton = GameObject.Find("对比主角选择按钮/武器/000000");
-                        weaponButton.GetComponentInChildren<Text>().text = buttonName;
-                        GameObject[] all = Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[];
-                        List<GameObject> allButton = new List<GameObject>();
-                        foreach(GameObject go in all)
-                        {
-                            if(go.name == "Button(Clone)")
-                            {
-                                allButton.Add(go);
-                            }
-                        }
-                        foreach(GameObject go in allButton)
-                        {
-                            UnityEngine.Object.DestroyImmediate(go);
-                        }
-
-                        #if UNITY_EDITOR
-                        AssetDatabase.Refresh();
-                        #endif
-
-                        button_image.transform.localScale = new Vector3(0,0,0);
-                        Variables.weaponOverlapPath = Variables.mainFolderPath + "/对比资产png/weapon/" + buttonName + "/" + Variables.animName;
-                        Variables.weaponDepthOverlapPath = Variables.mainFolderPath + "/对比资产深度/weapon/" + buttonName + "/"+ Variables.animName;
-                        Variables.weaponEffectOverlapPath = Variables.mainFolderPath + "/对比资产png/weapon30Effect/" + buttonName + "/" + Variables.animName;
-                        Import.AddWeaponEffectOverlap(Variables.weaponEffectOverlapPath);
-                        Import.AddWeaponOverlap(Variables.weaponOverlapPath,Variables.weaponDepthOverlapPath);
-                        Variables.bCorrection = false;
-                        Variables.bReset = false;
-                        Variables.bChoose = true;
-                    }
-                );
-                btnPos = btnPos - btnHeight;
-            }
-        }*/
-
-        /*public static void CancelWeaponOverlap()
-        {
-            if(Variables.bChoose == false)
-            {
-                return;
-            }
-
-            Variables.validWeaponOverlap = false;
-            Variables.validWeaponDepthOverlap = false;
-            Variables.validWeaponEffectOverlap = false;
-        }*/
-
-        /**
-            选择、取消重叠对比宝石资产
-        */
-        /*public static void ChooseGemOverlap()
-        {
-            if(Variables.bChoose == false)
-            {
-                return;
-            }
-            Variables.bChoose = false;
-            ChooseFuncSingle("对比", "对比主角", Variables.mainFolderPath, "gemEffect", "宝石", Control.go);
-            Variables.bCorrection = false;
-            Variables.bReset = false;
-            Variables.bChoose = true;
-        }*/
-
-        /*public static void CancelGemOverlap()
-        {
-            if(Variables.bChoose == false)
-            {
-                return;
-            }
-
-            Variables.validGemOverlap = false;
-        }*/
-    //}
-
     /**
         选择NPC资产
     */
@@ -1162,9 +820,17 @@ public class Interaction
         string lastAnimName = Variables.animName;
         
         List<string> animFolderPath = null;
-        animFolderPath = GetFiles.GetAllFiles(Variables.NPCPath.Remove(Variables.NPCPath.LastIndexOf(@"/")));
-        //删除addon和00
-        animFolderPath.RemoveAll(filePath => filePath.EndsWith("addon") || filePath.EndsWith("00"));
+        if(Variables.NPCPath != null)
+        {
+            animFolderPath = GetFiles.GetAllFiles(Variables.NPCPath.Remove(Variables.NPCPath.LastIndexOf(@"/")));
+            //删除addon和00
+            animFolderPath.RemoveAll(filePath => filePath.EndsWith("addon") || filePath.EndsWith("00"));
+        }
+        else
+        {
+            Debug.LogError("请先选择NPC文件夹");
+        }
+
 
         //新生成的Button位置
         GameObject panel_button = GameObject.Find("动作/Panel/Image/Panel_Button");
@@ -1404,25 +1070,154 @@ public class Interaction
 
     public static void ChooseAinmAll()
     {
-        Variables.aAnimAll = true;
+        Debug.Log(Variables.aAnimAll);
 
-        for (int i = 0; i < Control.mat_anim.Length; i++)
+        if(Variables.playMode == 0)
         {
-            Control.mat_anim[i].SetVector("_ScaleNPC", Variables.scaleNPC);
-            Control.mat_anim[i].SetVector("_KPointOffsetNPC", new Vector4(0, 0, 0, 0));
-        }
+            Variables.aAnimAll = !Variables.aAnimAll;
 
-        List<string> animFolderPath = GetFiles.GetAllFiles(Variables.NPCPath.Remove(Variables.NPCPath.LastIndexOf(@"/")));
-        //删除addon和00
-        animFolderPath.RemoveAll(filePath => filePath.EndsWith("addon") || filePath.EndsWith("00"));
+            for (int i = 0; i < Control.mat_anim.Length; i++)
+            {
+                Control.mat_anim[i].SetVector("_ScaleNPC", Variables.scaleNPC);
+                Control.mat_anim[i].SetVector("_KPointOffsetNPC", new Vector4(0, 0, 0, 0));
+            }
 
-        List<List<Texture2D>> NPCImagesList = 
-            new List<List<Texture2D>> { Variables.NPCImages1, Variables.NPCImages2, Variables.NPCImages3,Variables.NPCImages4, Variables.NPCImages5,Variables.NPCImages6, Variables.NPCImages7 };
+            List<string> animFolderPath = GetFiles.GetAllFiles(Variables.NPCPath.Remove(Variables.NPCPath.LastIndexOf(@"/")));
+            //删除addon和00
+            animFolderPath.RemoveAll(filePath => filePath.EndsWith("addon") || filePath.EndsWith("00"));
 
-        for (int i = 0; i < animFolderPath.Count && i < NPCImagesList.Count; i++)
-        {
-            string newNPCPath = Variables.NPCPath.Remove(Variables.NPCPath.LastIndexOf(@"/") + 1) + animFolderPath[i];
-            Import.AddNPCAll(newNPCPath, NPCImagesList[i]);
+
+            //设置好多个NPC的列表
+            List<List<Texture2D>> NPCImagesList = 
+                new List<List<Texture2D>> {Variables.NPCImages0 , Variables.NPCImages1, Variables.NPCImages2, Variables.NPCImages3,Variables.NPCImages4, Variables.NPCImages5,Variables.NPCImages6, Variables.NPCImages7 };
+
+            for (int i = 0; i < animFolderPath.Count && i < NPCImagesList.Count; i++)
+            {
+                string newNPCPath = Variables.NPCPath.Remove(Variables.NPCPath.LastIndexOf(@"/") + 1) + animFolderPath[i];
+                Import.AddNPCAll(newNPCPath, NPCImagesList[i]);
+
+
+                //给底下的anim图片设置名称
+                string objectName = "Anim" + (i + 1);
+                GameObject qaQuad00 = GameObject.Find(objectName)?.gameObject;
+                if (qaQuad00 != null) {
+                    Text text = qaQuad00.GetComponent<Text>();
+                    if (text != null) {
+                        text.text = animFolderPath[i];
+                    }
+                }
+            }
+
+            GameObject showObject = GameObject.Find("Show");
+
+            if(Variables.aAnimAll)
+                {
+                    GameObject.Find("anim_all_name").transform.localScale = new Vector3(1, 1, 1);
+
+                    Transform qaQuad = showObject.transform.Find("QA_Quad");
+                        if (qaQuad != null)
+                        {
+                            qaQuad.position = new Vector3(-3.36f,2.56f, 1.4f);
+                            qaQuad.localScale = new Vector3(3, 3, 3);
+                            
+                        }
+                    Transform qaQuad1 = showObject.transform.Find("QA_Quad_Anim1");
+                        if (qaQuad1 != null)
+                        {
+                            qaQuad1.position = new Vector3(-0.13f,2.56f, 1.4f);
+                            qaQuad1.localScale = new Vector3(3, 3, 3);
+                        }
+                    Transform qaQuad2 = showObject.transform.Find("QA_Quad_Anim2");
+                        if (qaQuad2 != null)
+                        {
+                            qaQuad2.position = new Vector3(3.16f, 2.56f, 1.4f);
+                            qaQuad2.localScale = new Vector3(3, 3, 3);
+                        }
+                    Transform qaQuad3 = showObject.transform.Find("QA_Quad_Anim3");
+                        if (qaQuad3 != null)
+                        {
+                            qaQuad3.position = new Vector3(6.33f, 2.56f, 1.4f);
+                            qaQuad3.localScale = new Vector3(3, 3, 3);
+                        }
+                    Transform qaQuad4 = showObject.transform.Find("QA_Quad_Anim4");
+                        if (qaQuad4 != null)
+                        {
+                            qaQuad4.position = new Vector3(-3.36f, -2.12f, 1.4f);
+                            qaQuad4.localScale = new Vector3(3, 3, 3);
+                        }
+                    Transform qaQuad5 = showObject.transform.Find("QA_Quad_Anim5");
+                        if (qaQuad5 != null)
+                        {
+                            qaQuad5.position = new Vector3(-0.13f, -2.12f, 1.4f);
+                            qaQuad5.localScale = new Vector3(3, 3, 3);
+                        }
+                    Transform qaQuad6 = showObject.transform.Find("QA_Quad_Anim6");
+                        if (qaQuad6 != null)
+                        {
+                            qaQuad6.position = new Vector3(3.16f, -2.12f, 1.4f);
+                            qaQuad6.localScale = new Vector3(3, 3, 3);
+                        }
+                    Transform qaQuad7 = showObject.transform.Find("QA_Quad_Anim7");
+                        if (qaQuad7 != null)
+                        {
+                            qaQuad7.position = new Vector3(6.33f, -2.12f, 1.4f);
+                            qaQuad7.localScale = new Vector3(3, 3, 3);
+                        }
+                }
+                else
+                {
+                    GameObject.Find("anim_all_name").transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
+
+                    Transform qaQuad = showObject.transform.Find("QA_Quad");
+                        if (qaQuad != null)
+                        {
+                            qaQuad.position = new Vector3(0.19f, 0.02f, 1.4f);
+                            qaQuad.localScale = new Vector3(8, 8, 8);
+                        }
+                    Transform qaQuad1 = showObject.transform.Find("QA_Quad_Anim1");
+                        if (qaQuad1 != null)
+                        {
+                            qaQuad1.position = new Vector3(2.30f, 2.118f, 1.4f);
+                            qaQuad1.localScale = new Vector3(0, 0, 0);
+                        }
+                    Transform qaQuad2 = showObject.transform.Find("QA_Quad_Anim2");
+                        if (qaQuad2 != null)
+                        {
+                            qaQuad2.position = new Vector3(-1.854f, -1.99f, 1.4f);
+                            qaQuad2.localScale = new Vector3(0, 0, 0);
+                        }
+                    Transform qaQuad3 = showObject.transform.Find("QA_Quad_Anim3");
+                        if (qaQuad3 != null)
+                        {
+                            qaQuad3.position = new Vector3(2.30f, -1.99f, 1.4f);
+                            qaQuad3.localScale = new Vector3(0, 0, 0);
+                        }
+                    Transform qaQuad4 = showObject.transform.Find("QA_Quad_Anim4");
+                        if (qaQuad4 != null)
+                        {
+                            qaQuad4.position = new Vector3(2.30f, -1.99f, 1.4f);
+                            qaQuad4.localScale = new Vector3(0, 0, 0);
+                        }
+                    Transform qaQuad5 = showObject.transform.Find("QA_Quad_Anim5");
+                        if (qaQuad5 != null)
+                        {
+                            qaQuad5.position = new Vector3(2.30f, -1.99f, 1.4f);
+                            qaQuad5.localScale = new Vector3(0, 0, 0);
+                        }
+                    Transform qaQuad6 = showObject.transform.Find("QA_Quad_Anim6");
+                        if (qaQuad6 != null)
+                        {
+                            qaQuad6.position = new Vector3(2.30f, -1.99f, 1.4f);
+                            qaQuad6.localScale = new Vector3(0, 0, 0);
+                        }
+                    Transform qaQuad7 = showObject.transform.Find("QA_Quad_Anim7");
+                        if (qaQuad7 != null)
+                        {
+                            qaQuad7.position = new Vector3(2.30f, -1.99f, 1.4f);
+                            qaQuad7.localScale = new Vector3(0, 0, 0);
+                        }
+                }
+            
         }
     }
     /**
