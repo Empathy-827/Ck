@@ -977,7 +977,7 @@ public class Play
 
     /**
         普通模式主角播放逻辑
-    */
+
     /*private static void PlayMode0Character()
     {
         if(Variables.validBody == true)
@@ -1583,196 +1583,328 @@ public class Play
     {
         //NPC本体
         {
-            if(Variables.aAnimAll)
+            if(Variables.aAnimAll == false)
             {
-                if(Variables.NPCImages0.Count != 0 && Variables.validNPC == true)
-                {
-                    Control.mat_anim[0].SetTexture("_NPC" , Variables.NPCImages0[Variables.indexNPC % Variables.NPCImages0.Count]);
-                }
-                else
-                {
-                    Control.mat_anim[0].SetTexture("_NPC",Variables.blackTex);
-                }
-
-
-                if(Variables.NPCImages1.Count != 0 && Variables.validNPC == true)
-                {
-                    Control.mat_anim[1].SetTexture("_NPC" , Variables.NPCImages1[Variables.indexNPC % Variables.NPCImages1.Count]);
-                }
-                else
-                {
-                    Control.mat_anim[1].SetTexture("_NPC",Variables.blackTex);
-                }
-
-                if(Variables.NPCImages2.Count != 0 && Variables.validNPC == true)
-                {
-                    Control.mat_anim[2].SetTexture("_NPC" , Variables.NPCImages2[Variables.indexNPC % Variables.NPCImages2.Count]);
-                }
-                else
-                {
-                    Control.mat_anim[2].SetTexture("_NPC",Variables.blackTex);
-                }
+                    //NPC
+                    if(Variables.NPCImages.Count != 0 && Variables.validNPC == true)
+                        {
+                            Control.mat.SetTexture("_NPC" , Variables.NPCImages[Variables.indexNPC]);
+                            Debug.Log("indexNPC:  " + Variables.indexNPC);
+                        }
+                        else
+                        {
+                            Control.mat.SetTexture("_NPC",Variables.blackTex);
+                        }
+                    //NPCAddon
+                    if(Variables.NPCAddonImages.Count != 0 && Variables.validNPCAddon == true)
+                        {
+                            //Debug.Log("画出来了");
+                            Control.mat.SetTexture("_NPCAddon",Variables.NPCAddonImages[Variables.indexNPCAddon]);
+                            //Debug.Log("indexNPCAddon:  " + Variables.indexNPCAddon);
+                            //Debug.Log("NPCAddonImages:  " + Variables.NPCAddonImages.Count);
+                        }
+                        else
+                        {
+                            Control.mat.SetTexture("_NPCAddon",Variables.blackTex);
+                        }
+                    //NPC00
+                    if(Variables.NPC00Images.Count != 0 && Variables.validNPC00 == true)
+                        {
+                            //Debug.Log("画出来了");
+                            Control.mat.SetTexture("_NPC00",Variables.NPC00Images[Variables.indexNPC00 % Variables.NPC00Images.Count]);
+                        }
+                        else
+                        {
+                            Control.mat.SetTexture("_NPC00",Variables.blackTex);
+                        }
                 
-                if(Variables.NPCImages3.Count != 0 && Variables.validNPC == true)
-                {
-                    Control.mat_anim[3].SetTexture("_NPC" , Variables.NPCImages3[Variables.indexNPC % Variables.NPCImages3.Count]);
-                }
-                else
-                {
-                    Control.mat_anim[3].SetTexture("_NPC",Variables.blackTex);
-                }
-                
-                if(Variables.NPCImages4.Count != 0 && Variables.validNPC == true)
-                {
-                    Control.mat_anim[4].SetTexture("_NPC" , Variables.NPCImages4[Variables.indexNPC % Variables.NPCImages4.Count]);
-                }
-                else
-                {
-                    Control.mat_anim[4].SetTexture("_NPC",Variables.blackTex);
-                }
-                
-                if(Variables.NPCImages5.Count != 0 && Variables.validNPC == true)
-                {
-                    Control.mat_anim[5].SetTexture("_NPC" , Variables.NPCImages5[Variables.indexNPC % Variables.NPCImages5.Count]);
-                }
-                else
-                {
-                    Control.mat_anim[5].SetTexture("_NPC",Variables.blackTex);
-                }
-                
-                if(Variables.NPCImages6.Count != 0 && Variables.validNPC == true)
-                {
-                    Control.mat_anim[6].SetTexture("_NPC" , Variables.NPCImages6[Variables.indexNPC % Variables.NPCImages6.Count]);
-                }
-                else
-                {
-                    Control.mat_anim[6].SetTexture("_NPC",Variables.blackTex);
-                }
+                    if(Variables.aForceAll)
+                    {
+                        //Variables.aAnimAll = false;
 
-                /*if(Variables.NPCImages7.Count != 0)
-                {
-                    Control.mat_anim[7].SetTexture("_NPC" , Variables.NPCImages7[Variables.indexNPC % Variables.NPCImages7.Count]);
-                }
-                else
-                {
-                    Control.mat_anim[7].SetTexture("_NPC",Variables.blackTex);
-                }*/
-            }
-            
+                        if(Variables.NPCImagesForce1.Count != 0 && Variables.validNPC == true)
+                        {
+                            Control.mat1.SetTexture("_NPC" , Variables.NPCImagesForce1[Variables.indexNPC]);
+                        }
+                        else
+                        {
+                            Control.mat1.SetTexture("_NPC",Variables.blackTex);
+                        }
 
+                        if(Variables.NPCImagesForce2.Count != 0 && Variables.validNPC == true)
+                        {
+                            Control.mat2.SetTexture("_NPC" , Variables.NPCImagesForce2[Variables.indexNPC]);
+                        } 
+                        else
+                        {
+                            Control.mat2.SetTexture("_NPC",Variables.blackTex);
+                        }
 
+                        if(Variables.NPCImagesForce3.Count != 0 && Variables.validNPC == true )
+                        {
+                            Control.mat3.SetTexture("_NPC" , Variables.NPCImagesForce3[Variables.indexNPC]);
+                        }
+                        else
+                        {
+                            Control.mat3.SetTexture("_NPC",Variables.blackTex);
+                        }
 
-            if(Variables.NPCImages.Count != 0 && Variables.validNPC == true)
-            {
-                Control.mat.SetTexture("_NPC" , Variables.NPCImages[Variables.indexNPC]);
-            }
+                        if(Variables.NPCAddonImagesForce1.Count != 0 && Variables.validNPCAddon == true && Variables.aForceAll)
+                        {
+                            Control.mat1.SetTexture("_NPCAddon" , Variables.NPCAddonImagesForce1[Variables.indexNPCAddon]); 
+                        }
+                        else
+                        {
+                            Control.mat1.SetTexture("_NPCAddon",Variables.blackTex);
+                        }
+                        if(Variables.NPCAddonImagesForce2.Count != 0 && Variables.validNPCAddon == true && Variables.aForceAll)
+                        {
+                            Control.mat2.SetTexture("_NPCAddon" , Variables.NPCAddonImagesForce2[Variables.indexNPCAddon]);  
+                        }
+                        else
+                        {
+                            Control.mat2.SetTexture("_NPCAddon",Variables.blackTex);
+                        }
+                        if(Variables.NPCAddonImagesForce3.Count != 0 && Variables.validNPCAddon == true && Variables.aForceAll)
+                        {
+                            Control.mat3.SetTexture("_NPCAddon" , Variables.NPCAddonImagesForce3[Variables.indexNPCAddon]);
+                            
+                        }
+                        else
+                        {
+                            Control.mat3.SetTexture("_NPCAddon",Variables.blackTex);
+                        }
 
+                        if(Variables.NPC00ImagesForce1.Count != 0 && Variables.validNPC00 == true && Variables.aForceAll)
+                        {
+                            Control.mat1.SetTexture("_NPC00" , Variables.NPC00ImagesForce1[Variables.indexNPC00]);
+                        }
+                        else
+                        {
+                            Control.mat1.SetTexture("_NPC00",Variables.blackTex);
+                        }
 
-            if(Variables.NPCImagesForce1.Count != 0 && Variables.validNPC == true && Variables.aForceAll)
-            {
-                Control.mat1.SetTexture("_NPC" , Variables.NPCImagesForce1[Variables.indexNPC]);
+                        if(Variables.NPC00ImagesForce2.Count != 0  && Variables.validNPC00 == true && Variables.aForceAll)
+                        {
+                            Control.mat2.SetTexture("_NPC00" , Variables.NPC00ImagesForce2[Variables.indexNPC00]);
+                        }
+                        else
+                        {
+                            Control.mat2.SetTexture("_NPC00",Variables.blackTex);
+                        }
+
+                        if(Variables.NPC00ImagesForce3.Count != 0  && Variables.validNPC00 == true && Variables.aForceAll)
+                        {
+                            Control.mat3.SetTexture("_NPC00" , Variables.NPC00ImagesForce3[Variables.indexNPC00]);
+                        }
+                        else
+                        {
+                            Control.mat3.SetTexture("_NPC00",Variables.blackTex);
+                        }
+
+                    }
             }
             else
             {
-                Control.mat1.SetTexture("_NPC",Variables.blackTex);
-            }
+                //if()
+                {
+                    if(Variables.NPCImages0.Count != 0 && Variables.validNPC == true)
+                    {
+                        Control.mat_anim[0].SetTexture("_NPC" , Variables.NPCImages0[Variables.indexNPC % Variables.NPCImages0.Count]);
+                    }
+                    else
+                    {
+                        Control.mat_anim[0].SetTexture("_NPC",Variables.blackTex);
+                    }
 
-            if(Variables.NPCImagesForce2.Count != 0 && Variables.validNPC == true && Variables.aForceAll)
-            {
-                Control.mat2.SetTexture("_NPC" , Variables.NPCImagesForce2[Variables.indexNPC]);
-            }
-            else
-            {
-                Control.mat2.SetTexture("_NPC",Variables.blackTex);
-            }
+                    if(Variables.NPCImages1.Count != 0 && Variables.validNPC == true)
+                    {
+                        Control.mat_anim[1].SetTexture("_NPC" , Variables.NPCImages1[Variables.indexNPC % Variables.NPCImages1.Count]);
+                    }
+                    else
+                    {
+                        Control.mat_anim[1].SetTexture("_NPC",Variables.blackTex);
+                    }
 
-            if(Variables.NPCImagesForce3.Count != 0 && Variables.validNPC == true && Variables.aForceAll)
-            {
-                Control.mat3.SetTexture("_NPC" , Variables.NPCImagesForce3[Variables.indexNPC]);
-            }
-            else
-            {
-                Control.mat3.SetTexture("_NPC",Variables.blackTex);
-            }
-        }
-        
-        //NPCAddon
-        {
-            if(Variables.NPCAddonImages.Count != 0 && Variables.validNPCAddon == true)
-                {
-                    //Debug.Log("画出来了");
-                    Control.mat.SetTexture("_NPCAddon",Variables.NPCAddonImages[Variables.indexNPCAddon]);
-                }
-                else
-                {
-                    Control.mat.SetTexture("_NPCAddon",Variables.blackTex);
-                }
-            if(Variables.NPCAddonImagesForce1.Count != 0 && Variables.validNPCAddon == true && Variables.aForceAll)
-                {
-                    Control.mat1.SetTexture("_NPCAddon" , Variables.NPCAddonImagesForce1[Variables.indexNPCAddon]); 
-                }
-                else
-                {
-                    Control.mat1.SetTexture("_NPCAddon",Variables.blackTex);
-                }
-            if(Variables.NPCAddonImagesForce2.Count != 0 && Variables.validNPCAddon == true && Variables.aForceAll)
-                {
-                    Control.mat2.SetTexture("_NPCAddon" , Variables.NPCAddonImagesForce2[Variables.indexNPCAddon]);  
-                }
-                else
-                {
-                    Control.mat2.SetTexture("_NPCAddon",Variables.blackTex);
-                }
-            if(Variables.NPCAddonImagesForce3.Count != 0 && Variables.validNPCAddon == true && Variables.aForceAll)
-                {
-                    Control.mat3.SetTexture("_NPCAddon" , Variables.NPCAddonImagesForce3[Variables.indexNPCAddon]);
+                    if(Variables.NPCImages2.Count != 0 && Variables.validNPC == true)
+                    {
+                        Control.mat_anim[2].SetTexture("_NPC" , Variables.NPCImages2[Variables.indexNPC % Variables.NPCImages2.Count]);
+                    }
+                    else
+                    {
+                        Control.mat_anim[2].SetTexture("_NPC",Variables.blackTex);
+                    }
                     
-                }
-                else
-                {
-                    Control.mat3.SetTexture("_NPCAddon",Variables.blackTex);
-                }
-        }
+                    if(Variables.NPCImages3.Count != 0 && Variables.validNPC == true)
+                    {
+                        Control.mat_anim[3].SetTexture("_NPC" , Variables.NPCImages3[Variables.indexNPC % Variables.NPCImages3.Count]);
+                    }
+                    else
+                    {
+                        Control.mat_anim[3].SetTexture("_NPC",Variables.blackTex);
+                    }
+                    
+                    if(Variables.NPCImages4.Count != 0 && Variables.validNPC == true)
+                    {
+                        Control.mat_anim[4].SetTexture("_NPC" , Variables.NPCImages4[Variables.indexNPC % Variables.NPCImages4.Count]);
+                    }
+                    else
+                    {
+                        Control.mat_anim[4].SetTexture("_NPC",Variables.blackTex);
+                    }
+                    
+                    if(Variables.NPCImages5.Count != 0 && Variables.validNPC == true)
+                    {
+                        Control.mat_anim[5].SetTexture("_NPC" , Variables.NPCImages5[Variables.indexNPC % Variables.NPCImages5.Count]);
+                    }
+                    else
+                    {
+                        Control.mat_anim[5].SetTexture("_NPC",Variables.blackTex);
+                    }
+                    
+                    if(Variables.NPCImages6.Count != 0 && Variables.validNPC == true)
+                    {
+                        Control.mat_anim[6].SetTexture("_NPC" , Variables.NPCImages6[Variables.indexNPC % Variables.NPCImages6.Count]);
+                    }
+                    else
+                    {
+                        Control.mat_anim[6].SetTexture("_NPC",Variables.blackTex);
+                    }
 
-        //NPC00
-        {
-            if(Variables.NPC00Images.Count != 0 && Variables.validNPC00 == true)
-                {
-                    //Debug.Log("画出来了");
-                    Control.mat.SetTexture("_NPC00",Variables.NPC00Images[Variables.indexNPC00]);
                 }
-                else
+                //if()
                 {
-                    Control.mat.SetTexture("_NPC00",Variables.blackTex);
-                }
+                    if(Variables.NPCAddonImages0.Count != 0 && Variables.validNPCAddon == true)
+                    {
+                        Control.mat_anim[0].SetTexture("_NPCAddon" , Variables.NPCAddonImages0[Variables.indexNPCAddon % Variables.NPCAddonImages0.Count]);
+                    }
+                    else
+                    {
+                        Control.mat_anim[0].SetTexture("_NPCAddon",Variables.blackTex);
+                    }
 
-            if(Variables.NPC00ImagesForce1.Count != 0 && Variables.validNPC00 == true && Variables.aForceAll)
-                {
-                    Control.mat1.SetTexture("_NPC00" , Variables.NPC00ImagesForce1[Variables.indexNPC00]);
-                }
-                else
-                {
-                    Control.mat1.SetTexture("_NPC00",Variables.blackTex);
-                }
+                    if(Variables.NPCAddonImages1.Count != 0  && Variables.validNPCAddon == true)
+                    {
+                        Control.mat_anim[1].SetTexture("_NPCAddon" , Variables.NPCAddonImages1[Variables.indexNPCAddon % Variables.NPCAddonImages1.Count]);
+                    }
+                    else
+                    {
+                        Control.mat_anim[1].SetTexture("_NPCAddon",Variables.blackTex);
+                    }
 
-            if(Variables.NPC00ImagesForce2.Count != 0  && Variables.validNPC00 == true && Variables.aForceAll)
-                {
-                    Control.mat2.SetTexture("_NPC00" , Variables.NPC00ImagesForce2[Variables.indexNPC00]);
-                }
-                else
-                {
-                    Control.mat2.SetTexture("_NPC00",Variables.blackTex);
-                }
+                    if(Variables.NPCAddonImages2.Count != 0 && Variables.validNPCAddon == true)
+                    {
+                        Control.mat_anim[2].SetTexture("_NPCAddon" , Variables.NPCAddonImages2[Variables.indexNPCAddon % Variables.NPCAddonImages2.Count]);
+                    }
+                    else
+                    {
+                        Control.mat_anim[2].SetTexture("_NPCAddon",Variables.blackTex);
+                    }
+                    
+                    if(Variables.NPCAddonImages3.Count != 0 && Variables.validNPCAddon == true)
+                    {
+                        Control.mat_anim[3].SetTexture("_NPCAddon" , Variables.NPCAddonImages3[Variables.indexNPCAddon % Variables.NPCAddonImages3.Count]);
+                    }
+                    else
+                    {
+                        Control.mat_anim[3].SetTexture("_NPCAddon",Variables.blackTex);
+                    }
+                    
+                    if(Variables.NPCAddonImages4.Count != 0 && Variables.validNPCAddon == true)
+                    {
+                        Control.mat_anim[4].SetTexture("_NPCAddon" , Variables.NPCAddonImages4[Variables.indexNPCAddon % Variables.NPCAddonImages4.Count]);
+                    }
+                    else
+                    {
+                        Control.mat_anim[4].SetTexture("_NPCAddon",Variables.blackTex);
+                    }
+                    
+                    if(Variables.NPCAddonImages5.Count != 0 && Variables.validNPCAddon == true)
+                    {
+                        Control.mat_anim[5].SetTexture("_NPCAddon" , Variables.NPCAddonImages5[Variables.indexNPCAddon % Variables.NPCAddonImages5.Count]);
+                    }
+                    else
+                    {
+                        Control.mat_anim[5].SetTexture("_NPCAddon",Variables.blackTex);
+                    }
+                    
+                    if(Variables.NPCAddonImages6.Count != 0 && Variables.validNPCAddon == true)
+                    {
+                        Control.mat_anim[6].SetTexture("_NPCAddon" , Variables.NPCAddonImages6[Variables.indexNPCAddon % Variables.NPCAddonImages6.Count]);
+                    }
+                    else
+                    {
+                        Control.mat_anim[6].SetTexture("_NPCAddon",Variables.blackTex);
+                    }
 
-            if(Variables.NPC00ImagesForce3.Count != 0  && Variables.validNPC00 == true && Variables.aForceAll)
-                {
-                    Control.mat3.SetTexture("_NPC00" , Variables.NPC00ImagesForce3[Variables.indexNPC00]);
                 }
-                else
+                //if(Variables.validNPC00 == true)
                 {
-                    Control.mat3.SetTexture("_NPC00",Variables.blackTex);
-                }
+                    if(Variables.NPC00Images0.Count != 0 && Variables.validNPC00 == true)
+                    {
+                        Control.mat_anim[0].SetTexture("_NPC00" , Variables.NPC00Images0[Variables.indexNPC00 % Variables.NPC00Images0.Count]);
+                    }
+                    else
+                    {
+                        Control.mat_anim[0].SetTexture("_NPC00",Variables.blackTex);
+                    }
 
+                    if(Variables.NPC00Images1.Count != 0 && Variables.validNPC00 == true)
+                    {
+                        Control.mat_anim[1].SetTexture("_NPC00" , Variables.NPC00Images1[Variables.indexNPC00 % Variables.NPC00Images1.Count]);
+                    }
+                    else
+                    {
+                        Control.mat_anim[1].SetTexture("_NPC00",Variables.blackTex);
+                    }
+
+                    if(Variables.NPC00Images2.Count != 0 && Variables.validNPC00 == true)
+                    {
+                        Control.mat_anim[2].SetTexture("_NPC00" , Variables.NPC00Images2[Variables.indexNPC00 % Variables.NPC00Images2.Count]);
+                    }
+                    else
+                    {
+                        Control.mat_anim[2].SetTexture("_NPC00",Variables.blackTex);
+                    }
+                    
+                    if(Variables.NPC00Images3.Count != 0 && Variables.validNPC00 == true)
+                    {
+                        Control.mat_anim[3].SetTexture("_NPC00" , Variables.NPC00Images3[Variables.indexNPC00 % Variables.NPC00Images3.Count]);
+                    }
+                    else
+                    {
+                        Control.mat_anim[3].SetTexture("_NPC00",Variables.blackTex);
+                    }
+                    
+                    if(Variables.NPC00Images4.Count != 0 && Variables.validNPC00 == true)
+                    {
+                        Control.mat_anim[4].SetTexture("_NPC00" , Variables.NPC00Images4[Variables.indexNPC00 % Variables.NPC00Images4.Count]);
+                    }
+                    else
+                    {
+                        Control.mat_anim[4].SetTexture("_NPC00",Variables.blackTex);
+                    }
+                    
+                    if(Variables.NPC00Images5.Count != 0 && Variables.validNPC00 == true)
+                    {
+                        Control.mat_anim[5].SetTexture("_NPC00" , Variables.NPC00Images5[Variables.indexNPC00 % Variables.NPC00Images5.Count]);
+                    }
+                    else
+                    {
+                        Control.mat_anim[5].SetTexture("_NPC00",Variables.blackTex);
+                    }
+                    
+                    if(Variables.NPC00Images6.Count != 0 && Variables.validNPC00 == true)
+                    {
+                        Control.mat_anim[6].SetTexture("_NPC00" , Variables.NPC00Images6[Variables.indexNPC00 % Variables.NPC00Images6.Count]);
+                    }
+                    else
+                    {
+                        Control.mat_anim[6].SetTexture("_NPC00",Variables.blackTex);
+                    }
+
+                }
+            }
         }
 
     }

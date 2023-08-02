@@ -633,7 +633,6 @@ public class Import
         Variables.validNPC = AddPart(NPCPath, NPCImages, countNPC, indexNPC, force);
         Variables.countNPC = countNPC;
         Variables.indexNPC = indexNPC;
-        Variables.exportForceCount = NPCImages.Count;
 
         Debug.Log(NPCPath);
 
@@ -646,7 +645,6 @@ public class Import
             Control.matContrast.SetVector("_CutValueNPC", cutValueNPC);
         }
     }
-
 
     public static void AddNPCAddon(string NPCPath)
     {
@@ -701,6 +699,38 @@ public class Import
                     Variables.NPCAddonImagesForce3.Add(image);
                 }                
             }
+
+        if(NPCAddonImages.Count != 0)
+        {
+            Vector4 standardPixel = Variables.standardPixel;
+            Vector4 cutValueNPC = new Vector4((standardPixel.x - NPCAddonImages[0].width) / 2 / standardPixel.x , (standardPixel.y - NPCAddonImages[0].height) /2 / standardPixel.y , 0 , 0);
+            Variables.cutValueNPC = cutValueNPC;
+            Control.mat.SetVector("_CutValueNPC",cutValueNPC);
+            Control.matContrast.SetVector("_CutValueNPC",cutValueNPC);
+        }
+    }
+
+    public static void AddNPCAddonAll(string NPCPath, List<Texture2D> NPCAddonImages)
+    {
+        float countNPCAddon = Variables.countNPCAddon;
+        int indexNPCAddon = Variables.indexNPCAddon;
+        bool validNPCAddon = Variables.validNPCAddon;
+
+        string force = Variables.force;
+
+        int index = NPCPath.LastIndexOf("/");
+        string firstPart = NPCPath.Substring(0, index);
+        string secondPart = NPCPath.Substring(index + 1);
+        string newPart = "addon\\01\\";
+
+        String NPCAddonPath = firstPart + "/" + newPart + secondPart;
+
+        Variables.validNPCAddon = AddPart(NPCAddonPath, NPCAddonImages, countNPCAddon, indexNPCAddon, force);
+        //Variables.NPCAddonImages = NPCAddonImages;
+        Variables.countNPCAddon = countNPCAddon;
+        Variables.indexNPCAddon = indexNPCAddon;
+
+        Debug.Log(NPCPath);
 
         if(NPCAddonImages.Count != 0)
         {
@@ -774,6 +804,36 @@ public class Import
             Control.matContrast.SetVector("_CutValueNPC",cutValueNPC);
         }
     }
+
+    public static void AddNPC00All(string NPCPath , List<Texture2D> NPC00Images)
+    {
+        float countNPC00 = Variables.countNPC00;
+        int indexNPC00 = Variables.indexNPC00;
+        bool validNPC00 = Variables.validNPC00;
+        string force = Variables.force;
+
+
+        int index = NPCPath.LastIndexOf("/");
+        string firstPart = NPCPath.Substring(0, index);
+        string secondPart = NPCPath.Substring(index +1);
+        string newPart = "00\\";
+
+        String NPC00Path = firstPart + "/" + newPart + secondPart;
+
+        Variables.validNPC00 = AddPart(NPC00Path, NPC00Images, countNPC00, indexNPC00, force);
+        Variables.countNPC00 = countNPC00;
+        Variables.indexNPC00 = indexNPC00;
+
+        if(NPC00Images.Count != 0)
+        {
+            Vector4 standardPixel = Variables.standardPixel;
+            Vector4 cutValueNPC = new Vector4((standardPixel.x - NPC00Images[0].width) / 2 / standardPixel.x , (standardPixel.y - NPC00Images[0].height) /2 / standardPixel.y , 0 , 0);
+            Variables.cutValueNPC = cutValueNPC;
+            Control.mat.SetVector("_CutValueNPC",cutValueNPC);
+            Control.matContrast.SetVector("_CutValueNPC",cutValueNPC);
+        }
+    }
+    
 
     
 

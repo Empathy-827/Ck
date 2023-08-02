@@ -129,7 +129,7 @@ Material:
     m_Colors:
     - _BackColor: {r: 0, g: 0, b: 0, a: 0}
     - _CutValue: {r: 0, g: 0, b: 0, a: 0}
-    - _CutValueNPC: {r: 0.5, g: 0.25, b: 0, a: 0}
+    - _CutValueNPC: {r: 0.25, g: 0.25, b: 0, a: 0}
     - _CutValueOverlap: {r: 0, g: 0, b: 0, a: 0}
     - _CutValueOverlapNPC: {r: 0.25, g: 0.25, b: 0, a: 0}
     - _KPointOffset: {r: 0, g: 0, b: 0, a: 0}

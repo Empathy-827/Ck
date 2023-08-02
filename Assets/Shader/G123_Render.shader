@@ -35,12 +35,15 @@ Shader "G123/Render"
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "Queue"="Transparent" "RenderType"="Opaque"}
         LOD 100
+        Blend SrcAlpha OneMinusSrcAlpha
 
         Pass
         {
             CGPROGRAM
+            
+
             #pragma vertex vert
             #pragma fragment frag
 
@@ -145,7 +148,7 @@ Shader "G123/Render"
 
                 //float finalA = max(max(weapon.w,max(head.w,body.w)),npc.a);
 
-                return float4(final_rgb_out,final_a_out);
+                return float4(final_rgb_out , final_a_out);
             }
             ENDCG
         }

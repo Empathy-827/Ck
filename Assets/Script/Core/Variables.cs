@@ -227,6 +227,14 @@ public class Variables
 
     //Npc Addon
     public static List<Texture2D> NPCAddonImages = new List<Texture2D>();
+    public static List<Texture2D> NPCAddonImages0 = new List<Texture2D>();
+    public static List<Texture2D> NPCAddonImages1 = new List<Texture2D>();
+    public static List<Texture2D> NPCAddonImages2 = new List<Texture2D>();
+    public static List<Texture2D> NPCAddonImages3 = new List<Texture2D>();
+    public static List<Texture2D> NPCAddonImages4 = new List<Texture2D>();
+    public static List<Texture2D> NPCAddonImages5 = new List<Texture2D>();
+    public static List<Texture2D> NPCAddonImages6 = new List<Texture2D>();
+    public static List<Texture2D> NPCAddonImages7 = new List<Texture2D>();
 
     public static List<Texture2D> NPCAddonImagesForce1 = new List<Texture2D>();
     public static List<Texture2D> NPCAddonImagesForce2 = new List<Texture2D>();
@@ -235,12 +243,19 @@ public class Variables
     public static List<Texture2D> NPCAddonOverlapImages = new List<Texture2D>();
     public static List<Texture2D> NPCAddonCharacterImages = new List<Texture2D>();
 
-
     public static List<Texture2D> NPCAddonImagesNoForce = new List<Texture2D>();
     public static List<Texture2D> NPCAddonOverlapImagesNoForce = new List<Texture2D>();
 
     //Npc 00
     public static List<Texture2D> NPC00Images = new List<Texture2D>();
+    public static List<Texture2D> NPC00Images0 = new List<Texture2D>();
+    public static List<Texture2D> NPC00Images1 = new List<Texture2D>();
+    public static List<Texture2D> NPC00Images2 = new List<Texture2D>();
+    public static List<Texture2D> NPC00Images3 = new List<Texture2D>();
+    public static List<Texture2D> NPC00Images4 = new List<Texture2D>();
+    public static List<Texture2D> NPC00Images5 = new List<Texture2D>();
+    public static List<Texture2D> NPC00Images6 = new List<Texture2D>();
+    public static List<Texture2D> NPC00Images7 = new List<Texture2D>();
 
     public static List<Texture2D> NPC00ImagesForce1 = new List<Texture2D>();
     public static List<Texture2D> NPC00ImagesForce2 = new List<Texture2D>();

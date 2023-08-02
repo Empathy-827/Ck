@@ -824,7 +824,7 @@ public class Interaction
         {
             animFolderPath = GetFiles.GetAllFiles(Variables.NPCPath.Remove(Variables.NPCPath.LastIndexOf(@"/")));
             //删除addon和00
-            animFolderPath.RemoveAll(filePath => filePath.EndsWith("addon") || filePath.EndsWith("00"));
+            animFolderPath.RemoveAll(filePath => filePath.EndsWith("addon") || filePath.EndsWith("00") || filePath.EndsWith("01"));
         }
         else
         {
@@ -1084,18 +1084,25 @@ public class Interaction
 
             List<string> animFolderPath = GetFiles.GetAllFiles(Variables.NPCPath.Remove(Variables.NPCPath.LastIndexOf(@"/")));
             //删除addon和00
-            animFolderPath.RemoveAll(filePath => filePath.EndsWith("addon") || filePath.EndsWith("00"));
+            animFolderPath.RemoveAll(filePath => filePath.EndsWith("addon") || filePath.EndsWith("00") || filePath.EndsWith("01"));
+
+            
 
 
             //设置好多个NPC的列表
             List<List<Texture2D>> NPCImagesList = 
                 new List<List<Texture2D>> {Variables.NPCImages0 , Variables.NPCImages1, Variables.NPCImages2, Variables.NPCImages3,Variables.NPCImages4, Variables.NPCImages5,Variables.NPCImages6, Variables.NPCImages7 };
+            List<List<Texture2D>> NPCAddonImagesList = 
+                new List<List<Texture2D>> {Variables.NPCAddonImages0 , Variables.NPCAddonImages1, Variables.NPCAddonImages2, Variables.NPCAddonImages3,Variables.NPCAddonImages4, Variables.NPCAddonImages5,Variables.NPCAddonImages6, Variables.NPCAddonImages7 };
+            List<List<Texture2D>> NPC00ImagesList = 
+                new List<List<Texture2D>> {Variables.NPC00Images0 , Variables.NPC00Images1, Variables.NPC00Images2, Variables.NPC00Images3,Variables.NPC00Images4, Variables.NPC00Images5,Variables.NPC00Images6, Variables.NPC00Images7 };
 
             for (int i = 0; i < animFolderPath.Count && i < NPCImagesList.Count; i++)
             {
                 string newNPCPath = Variables.NPCPath.Remove(Variables.NPCPath.LastIndexOf(@"/") + 1) + animFolderPath[i];
                 Import.AddNPCAll(newNPCPath, NPCImagesList[i]);
-
+                Import.AddNPCAddonAll(newNPCPath, NPCAddonImagesList[i]);
+                Import.AddNPC00All(newNPCPath, NPC00ImagesList[i]);
 
                 //给底下的anim图片设置名称
                 string objectName = "Anim" + (i + 1);
