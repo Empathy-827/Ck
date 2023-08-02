@@ -20,15 +20,6 @@ public class Variables
     public static bool bCoverage = false;
 
 
-    public static bool validBody = false;
-    public static bool validBodyDepth = false;
-    public static bool validHead = false;
-    public static bool validHeadDepth = false;
-    public static bool validWeapon = false;
-    public static bool validWeaponDepth = false;
-    public static bool validWeaponEffect = false;
-    public static bool validGem = false;
-
     public static bool validBodyOverlap = false;
     public static bool validBodyDepthOverlap = false;
     public static bool validHeadOverlap = false;
@@ -324,7 +315,7 @@ public class Variables
     public static Vector4 cutValueNPCOverlap = new Vector4(0,0,0,0);
     public static Vector4 cutValueNPCCharacter = new Vector4(0,0,0,0);
 
-    public static Vector2 standardPixel = new Vector2(1000f,1000f);
+    public static Vector2 standardPixel = new Vector2(500f,500f);
     public static float standardKx = 250f;
     public static float standardKy = 343f;
 

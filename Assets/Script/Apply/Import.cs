@@ -241,7 +241,7 @@ public class Import
     /**
         添加主角输出资产部位
     */
-    public static void AddBody(string bodyPath, string bodyDepthPath)
+    /*public static void AddBody(string bodyPath, string bodyDepthPath)
     {
         float count = Variables.count;
         int index = Variables.index;
@@ -565,6 +565,7 @@ public class Import
     */
     public static void AddNPC(string NPCPath)
     {
+        //
         float countNPC = Variables.countNPC;
         int indexNPC = Variables.indexNPC;
         bool validNPC = Variables.validNPC;
@@ -611,15 +612,16 @@ public class Import
                 }                
             }
 
-
         if(NPCImages.Count != 0)
         {
+            
             Vector4 standardPixel = Variables.standardPixel;
             Vector4 cutValueNPC = new Vector4((standardPixel.x - NPCImages[0].width) / 2 / standardPixel.x , (standardPixel.y - NPCImages[0].height) /2 / standardPixel.y , 0 , 0);
             Variables.cutValueNPC = cutValueNPC;
             Control.mat.SetVector("_CutValueNPC",cutValueNPC);
             Control.matContrast.SetVector("_CutValueNPC",cutValueNPC);
         }
+
     }
 
     public static void AddNPCAll(string NPCPath, List<Texture2D> NPCImages)
@@ -900,6 +902,7 @@ public class Import
     {
         bool validVar = false;
 
+        //
         if(images.Count != 0)
         {
             countVar = 1;
@@ -907,40 +910,7 @@ public class Import
             images.Clear();
             Resources.UnloadUnusedAssets();
         }
-        //初始化列表
-        try
-        {
-            GetImages.GetFilesAllImage(images , force , path);
-            if(images.Count != 0)
-            {
-                validVar = true;
-            }
-            
-        }
-        catch (Exception)
-        {
-            int secondLastSlashIndex = path.LastIndexOf('/', path.LastIndexOf('/') - 1);
-            int thirdLastSlashIndex = path.LastIndexOf('/', secondLastSlashIndex - 1);
-            string partName = path.Substring(thirdLastSlashIndex + 1, secondLastSlashIndex - thirdLastSlashIndex - 1);
-            Messagebox.MessageBox(IntPtr.Zero,"请确认" + partName + "是否正确","关闭",0);
-            validVar = false;
-        }
 
-        return(validVar);
-
-    }
-
-    public static bool AddPartAll(string path, List<Texture2D> images, float countVar, int indexVar, string force)
-    {
-        bool validVar = false;
-
-        if(images.Count != 0)
-        {
-            countVar = 1;
-            indexVar = 0;
-            images.Clear();
-            Resources.UnloadUnusedAssets();
-        }
         //初始化列表
         try
         {

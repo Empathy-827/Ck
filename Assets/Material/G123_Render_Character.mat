@@ -25,19 +25,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Body:
-        m_Texture: {fileID: 2800000, guid: 07dc70ffd6dd6304fb1dd5868d296361, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BodyDepth:
-        m_Texture: {fileID: 2800000, guid: 07dc70ffd6dd6304fb1dd5868d296361, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Head:
-        m_Texture: {fileID: 2800000, guid: 07dc70ffd6dd6304fb1dd5868d296361, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeadDepth:
-        m_Texture: {fileID: 2800000, guid: 07dc70ffd6dd6304fb1dd5868d296361, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _KPointTex:
@@ -61,11 +61,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Weapon:
-        m_Texture: {fileID: 2800000, guid: 07dc70ffd6dd6304fb1dd5868d296361, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _WeaponDepth:
-        m_Texture: {fileID: 2800000, guid: 07dc70ffd6dd6304fb1dd5868d296361, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _WeaponEffect:
@@ -91,7 +91,7 @@ Material:
     - _ViewKPoint: 1
     - _WeaponDepthMult: 0
     m_Colors:
-    - _BackColor: {r: 0, g: 0, b: 0, a: 0}
+    - _BackColor: {r: 0.38431373, g: 0.38431373, b: 0.38431373, a: 1}
     - _CutValue: {r: 0, g: 0, b: 0, a: 0}
     - _CutValueNPC: {r: 0, g: 0, b: 0, a: 0}
     - _KPointOffset: {r: 0, g: 0, b: 0, a: 0}

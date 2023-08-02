@@ -34,5 +34,5 @@ Material:
     - _Span: 0.15
     m_Colors:
     - _ChooseColor: {r: 1, g: 1, b: 1, a: 0}
-    - _Position: {r: 0.43712154, g: 0.40399528, b: 0, a: 0}
+    - _Position: {r: 0.44722942, g: 0.43126324, b: 0, a: 0}
   m_BuildTextureStacks: []

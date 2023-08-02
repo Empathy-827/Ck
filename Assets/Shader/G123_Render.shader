@@ -107,48 +107,51 @@ Shader "G123/Render"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                _Scale = _Scale * _ScaleRescale;
+                //_Scale = _Scale * _ScaleRescale;
                 _ScaleNPC = _ScaleNPC * _ScaleNPCRescale;
 
-                float2 uv = (1 / _Scale.xy / _PicScale * i.uv + (1 / _Scale.xy / _PicScale * -0.5) + 0.5) + ( float2(_KPointOffset.x , _KPointOffset.y) * _KPointOffsetMult);
-                uv = uv + float2(_KPointOffsetRescale.x,_KPointOffsetRescale.y);
+                //float2 uv = (1 / _Scale.xy / _PicScale * i.uv + (1 / _Scale.xy / _PicScale * -0.5) + 0.5) + ( float2(_KPointOffset.x , _KPointOffset.y) * _KPointOffsetMult);
+                //uv = uv + float2(_KPointOffsetRescale.x,_KPointOffsetRescale.y);
 
-                float2 uvNPC = (1 / _ScaleNPC.xy / _PicScale * i.uv + (1 / _ScaleNPC.xy / _PicScale * -0.5) + 0.5) + ( float2(_KPointOffsetNPC.x ,_KPointOffsetNPC.y) * _KPointOffsetMult);
+                float2 uvNPC = (1 / _ScaleNPC.xy / _PicScale * i.uv
+                    + (1 / _ScaleNPC.xy / _PicScale * -0.5) + 0.5) 
+                    + ( float2(_KPointOffsetNPC.x ,_KPointOffsetNPC.y) * _KPointOffsetMult);
+
                 uvNPC = uvNPC + float2(_KPointOffsetNPCRescale.x,_KPointOffsetNPCRescale.y);
 
+                //float2 uvNPC = i.uv;
+
                 float3 final_rgb_out = float3(0,0,0);
-                //添加NPC
-
-                float4 npc = tex2D(_NPC,uvNPC);
-                float3 final_rgb_npc = npc.rgb * npc.a;
-                final_rgb_out = lerp(float3(0,0,0), final_rgb_npc , npc.a);
-
-                float4 npcAddon = tex2D(_NPCAddon,uvNPC);
-                float3 final_rgb_npcAddon = npcAddon.rgb * npcAddon.a;
-                final_rgb_out = lerp(final_rgb_out, final_rgb_npcAddon , npcAddon.a);
-
-                float4 npc00 = tex2D(_NPC00,uvNPC);
-                float3 final_rgb_npc00 = npc00.rgb * npc00.a;
-                final_rgb_out = lerp(final_rgb_out , final_rgb_out + npc00, npc00.a);
-
-
+                
                 float3 backPic = tex2D(_BackPic,i.uv);
 
                 float2 bias = float2(0.5,0.5) - float2(0.5,0.315);
                 float3 kPoint = tex2D(_KPointTex,i.uv + bias).a * float3(1,0,0) * _KPointView;
                 float3 backGround = lerp(_BackColor + backPic * _BackPicMult ,kPoint,kPoint.r);
+                //添加NPC
+
+                float4 npc = tex2D(_NPC,uvNPC);
+                float3 final_rgb_npc = lerp(backGround , npc.rgb , npc.a);
+                final_rgb_out = final_rgb_npc;
+
+                float4 npcAddon = tex2D(_NPCAddon,uvNPC);
+                float3 final_rgb_npcAddon = lerp(backGround , npcAddon.rgb , npcAddon.a);
+                final_rgb_out = lerp(final_rgb_out, final_rgb_npcAddon , npcAddon.a);
+
+                float4 npc00 = tex2D(_NPC00,uvNPC);
+                float3 final_rgb_npc00 = lerp(backGround , npc00.rgb , npc00.a);
+                final_rgb_out = lerp(final_rgb_out , final_rgb_npc00, npc00.a);
 
                 
-                
-                
-                
                 float final_a_out = max(max(npc.a , npcAddon.a),npc00.a);
+
+                //final_rgb_out = lerp(backGround , final_rgb_out , final_a_out);
 
 
 
                 //float finalA = max(max(weapon.w,max(head.w,body.w)),npc.a);
 
-                return float4(final_rgb_out , final_a_out);
+                return float4(final_rgb_out , 1.0f);
             }
             ENDCG
         }

@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Body:
-        m_Texture: {fileID: 2800000, guid: 07dc70ffd6dd6304fb1dd5868d296361, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BodyDepth:
@@ -29,7 +29,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Head:
-        m_Texture: {fileID: 2800000, guid: 07dc70ffd6dd6304fb1dd5868d296361, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeadDepth:
@@ -53,7 +53,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Weapon:
-        m_Texture: {fileID: 2800000, guid: 07dc70ffd6dd6304fb1dd5868d296361, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _WeaponDepth:
@@ -71,9 +71,9 @@ Material:
     - _WeaponDepthMult: 0
     m_Colors:
     - _BackColor: {r: 0, g: 0, b: 0, a: 0}
-    - _CutValueNPC: {r: 0, g: 0, b: 0, a: 0}
+    - _CutValueNPC: {r: 0.25, g: 0.25, b: 0, a: 0}
     - _KPointOffset: {r: -0.4, g: 0, b: 0, a: 0}
-    - _KPointOffsetNPC: {r: 0.047, g: 0, b: 0, a: 0}
+    - _KPointOffsetNPC: {r: 0, g: 0, b: 0, a: 0}
     - _KPointOffsetNPCRescale: {r: 0, g: 0, b: 0, a: 0}
     - _Scale: {r: 1, g: 1, b: 0, a: 0}
     - _ScaleNPC: {r: 1, g: 1, b: 0, a: 0}

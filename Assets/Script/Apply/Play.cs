@@ -1589,7 +1589,7 @@ public class Play
                     if(Variables.NPCImages.Count != 0 && Variables.validNPC == true)
                         {
                             Control.mat.SetTexture("_NPC" , Variables.NPCImages[Variables.indexNPC]);
-                            Debug.Log("indexNPC:  " + Variables.indexNPC);
+                            //Debug.Log("indexNPC:  " + Variables.indexNPC);
                         }
                         else
                         {

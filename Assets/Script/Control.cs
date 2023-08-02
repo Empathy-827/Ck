@@ -101,6 +101,7 @@ public class Control : MonoBehaviour
         mat_anim5 = matI_anim5;
         mat_anim6 = matI_anim6;
         mat_anim7 = matI_anim7;*/
+        
 
         matOverlap = matOverlapI;
         matContrast = matContrastI;
@@ -573,7 +574,7 @@ public class Control : MonoBehaviour
 
     public void ButtonExportAllGem()
     {
-        Export.ExportAllGem();
+        //Export.ExportAllGem();
     }
 
     public void ButtonResetOffset()

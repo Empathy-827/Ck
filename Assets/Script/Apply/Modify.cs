@@ -11,40 +11,6 @@ public class Modify
 {
     public static void ButtonApplyNumOffset()
     {
-        if(Variables.NPCMode == false)
-        {
-            Variables.KPointOffsetAdd = new Vector4(Variables.KPointOffsetABSPosX,Variables.KPointOffsetABSPosY,0,0);
-            Variables.KPointOffset = new Vector4(Variables.KPointOffsetABSPosX,Variables.KPointOffsetABSPosY,0,0);
-            Control.mat.SetVector("_KPointOffset",Variables.KPointOffset);
-            Control.matContrast.SetVector("_KPointOffset",Variables.KPointOffset);
-            GameObject.Find("ÔöÁ¿Æ«ÒÆX").GetComponent<InputField>().text = "0";
-            GameObject.Find("ÔöÁ¿Æ«ÒÆY").GetComponent<InputField>().text = "0";
-            string animName = Variables.animName;
-            if(animName == "attack")
-            {
-                Variables.KPointOffsetAttack = Variables.KPointOffset;
-            }
-            if(animName == "die")
-            {
-                Variables.KPointOffsetDie = Variables.KPointOffset;
-            }
-            if(animName == "hit")
-            {
-                Variables.KPointOffsetHit = Variables.KPointOffset;
-            }
-            if(animName == "magic")
-            {
-                Variables.KPointOffsetMagic = Variables.KPointOffset;
-            }
-            if(animName == "stand")
-            {
-                Variables.KPointOffsetStand = Variables.KPointOffset;
-            }
-            if(animName == "walk")
-            {
-                Variables.KPointOffsetWalk = Variables.KPointOffset;
-            }
-        }
         if(Variables.NPCMode == true)
         {
             Variables.KPointOffsetAddNPC = new Vector4(Variables.KPointOffsetABSPosX,Variables.KPointOffsetABSPosY,0,0);
@@ -84,14 +50,6 @@ public class Modify
 
     public static void ButtonApplyNumOffset2()
     {
-        if(Variables.NPCMode == false)
-        {
-            Variables.KPointOffset = new Vector4(Variables.KPointOffsetABSPosX,Variables.KPointOffsetABSPosY,0,0);
-            Control.mat.SetVector("_KPointOffset",Variables.KPointOffset);
-            Control.matContrast.SetVector("_KPointOffset",Variables.KPointOffset);
-            GameObject.Find("ÔöÁ¿Æ«ÒÆX").GetComponent<InputField>().text = "0";
-            GameObject.Find("ÔöÁ¿Æ«ÒÆY").GetComponent<InputField>().text = "0";
-        }
         if(Variables.NPCMode == true)
         {
             Variables.KPointOffsetNPC = new Vector4(Variables.KPointOffsetABSPosX,Variables.KPointOffsetABSPosY,0,0);
@@ -110,6 +68,7 @@ public class Modify
         {
             Variables.standardPixel.x = x;
         }   
+        Debug.Log(Variables.standardPixel.x);
         
     }
     //½ÃÕýÏñËØXÊäÈë¿ò
@@ -120,6 +79,7 @@ public class Modify
         {
             Variables.standardPixel.y = y;
         }
+        Debug.Log(Variables.standardPixel.y);
     }
     //½ÃÕýÏñËØYÊäÈë¿ò
     public static void OnValueChangedGIFX(string value)
@@ -185,16 +145,10 @@ public class Modify
         float x;
         if(float.TryParse(value , out x))
         {
-            if(Variables.NPCMode == false)
-            {
-                Variables.KPointOffsetAdd += new Vector4(x / 1000,0,0,0);
-                Variables.KPointOffsetABSPosX = (Variables.KPointOffset.x + Variables.KPointOffsetAdd.x * 1000);
-                GameObject.Find("¾ø¶ÔÆ«ÒÆX").GetComponent<InputField>().text = Variables.KPointOffsetABSPosX.ToString();
-            }
             if(Variables.NPCMode == true)
             {
-                Variables.KPointOffsetAddNPC += new Vector4(x / 1000,0,0,0);
-                Variables.KPointOffsetABSPosX = (Variables.KPointOffsetNPC.x + Variables.KPointOffsetAddNPC.x * 1000);
+                Variables.KPointOffsetAddNPC += new Vector4(x / 500,0,0,0);
+                Variables.KPointOffsetABSPosX = (Variables.KPointOffsetNPC.x + Variables.KPointOffsetAddNPC.x * 500);
                 GameObject.Find("¾ø¶ÔÆ«ÒÆX").GetComponent<InputField>().text = Variables.KPointOffsetABSPosX.ToString();
             }
         }
@@ -205,16 +159,10 @@ public class Modify
         float y;
         if(float.TryParse(value , out y))
         {
-            if(Variables.NPCMode == false)
-            {
-                Variables.KPointOffsetAdd += new Vector4(0,y / 1000,0,0);
-                Variables.KPointOffsetABSPosY = (Variables.KPointOffset.y + Variables.KPointOffsetAdd.y * 1000);
-                GameObject.Find("¾ø¶ÔÆ«ÒÆY").GetComponent<InputField>().text = Variables.KPointOffsetABSPosY.ToString();
-            }
             if(Variables.NPCMode == true)
             {
-                Variables.KPointOffsetAddNPC += new Vector4(0,y / 1000,0,0);
-                Variables.KPointOffsetABSPosY = (Variables.KPointOffsetNPC.y + Variables.KPointOffsetAddNPC.y * 1000);
+                Variables.KPointOffsetAddNPC += new Vector4(0,y / 500,0,0);
+                Variables.KPointOffsetABSPosY = (Variables.KPointOffsetNPC.y + Variables.KPointOffsetAddNPC.y * 500);
                 GameObject.Find("¾ø¶ÔÆ«ÒÆY").GetComponent<InputField>().text = Variables.KPointOffsetABSPosY.ToString();
             }
         }
@@ -225,11 +173,7 @@ public class Modify
         float x;
         if(float.TryParse(value , out x))
         {
-            Variables.KPointOffsetABSPosX = x / 1000;
-            if(Variables.NPCMode == false)
-            {
-                Variables.KPointOffset = new Vector4(Variables.KPointOffsetABSPosX , Variables.KPointOffset.y , 0 , 0);
-            }
+            Variables.KPointOffsetABSPosX = x / 500;
             if(Variables.NPCMode == true)
             {
                 Variables.KPointOffsetNPC = new Vector4(Variables.KPointOffsetABSPosX, Variables.KPointOffsetNPC.y , 0 , 0);
@@ -242,11 +186,7 @@ public class Modify
         float y;
         if(float.TryParse(value , out y))
         {
-            Variables.KPointOffsetABSPosY = y / 1000;
-            if(Variables.NPCMode == false)
-            {
-                Variables.KPointOffset = new Vector4(Variables.KPointOffset.x , Variables.KPointOffsetABSPosY , 0 , 0);
-            }
+            Variables.KPointOffsetABSPosY = y / 500;
             if(Variables.NPCMode == true)
             {
                 Variables.KPointOffsetNPC = new Vector4(Variables.KPointOffset.x , Variables.KPointOffsetABSPosY , 0 , 0);

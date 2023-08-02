@@ -54,7 +54,7 @@ public class Interaction
     public static void ShowMain()
     {
         Control.frameGO.transform.localScale = new Vector3(1,1,1);
-        GameObject.Find("QA_Quad").transform.localScale = new Vector3(10,10,10);
+        GameObject.Find("QA_Quad").transform.localScale = new Vector3(5,5,5);
     }
 
     private static void CloseMain()
@@ -745,7 +745,8 @@ public class Interaction
         }
         Variables.bChoose = false;
 
-        Variables.scaleNPC = new Vector4(1,1,0,0);
+        Variables.scaleNPC = new Vector4(1.0f,1.0f,0,0);
+        //Variables.scaleNPC = new Vector4(NPCImages[0].width / Variables.standardPixel.x , NPCImages[0].height / Variables.standardPixel.y,0,0);
 
         //mat
         Control.mat.SetVector("_ScaleNPC",Variables.scaleNPC);
@@ -787,9 +788,9 @@ public class Interaction
         Variables.NPCPath = OpenFunc.Open("请选择NPC文件夹") + "/" + Variables.animName;
 
         //点击导入NPC资产就显示stand，不用重新点击动画
-        //Import.AddNPC(Variables.NPCPath);
-        //Import.AddNPCAddon(Variables.NPCPath);
-        //Import.AddNPC00(Variables.NPCPath);
+        Import.AddNPC(Variables.NPCPath);
+        Import.AddNPCAddon(Variables.NPCPath);
+        Import.AddNPC00(Variables.NPCPath);
 
         if(Variables.NPCImages.Count != 0)
         {
@@ -800,8 +801,7 @@ public class Interaction
         RefreshData();
         Variables.bCorrection = false;
         Variables.bReset = false;
-        Variables.bChoose = true;
-                
+        Variables.bChoose = true;       
     }
 
     /**
@@ -1179,7 +1179,7 @@ public class Interaction
                         if (qaQuad != null)
                         {
                             qaQuad.position = new Vector3(0.19f, 0.02f, 1.4f);
-                            qaQuad.localScale = new Vector3(8, 8, 8);
+                            qaQuad.localScale = new Vector3(5, 5, 5);
                         }
                     Transform qaQuad1 = showObject.transform.Find("QA_Quad_Anim1");
                         if (qaQuad1 != null)
@@ -1276,7 +1276,7 @@ public class Interaction
                         if (qaQuad != null)
                         {
                             qaQuad.position = new Vector3(0.19f, 0.02f, 1.4f);
-                            qaQuad.localScale = new Vector3(8, 8, 8);
+                            qaQuad.localScale = new Vector3(5, 5, 5);
                         }
 
                     Transform qaQuad1 = showObject.transform.Find("QA_Quad1");
@@ -1297,18 +1297,7 @@ public class Interaction
                             qaQuad3.position = new Vector3(2.30f, -1.99f, 1.4f);
                             qaQuad3.localScale = new Vector3(0, 0, 0);
                         }
-
-                }
-
-            
-            /*Control.mat.SetFloat("_KPointOffsetMult",1f);
-            if(Variables.NPCPath != null)
-            {
-                Import.AddNPC(Variables.NPCPath);
-                Import.AddNPCAddon(Variables.NPCPath);
-                Import.AddNPC00(Variables.NPCPath);
-            }*/
-                
+                }              
         }
         else if(Variables.playMode == 1)
         {
@@ -1461,14 +1450,6 @@ public class Interaction
         }
         else if(Variables.playMode == 2)
         {
-            if(Variables.bodyPath != null)
-            {
-                Import.AddBody(Variables.bodyPath , Variables.bodyDepthPath);
-                Import.AddHead(Variables.headPath , Variables.headDepthPath);
-                Import.AddWeapon(Variables.weaponPath , Variables.weaponDepthPath);
-                Import.AddWeaponEffect(Variables.weaponEffectPath);
-                Import.AddGem(Variables.gemPath);
-            }
             if(Variables.NPCPath != null)
             {
                 Import.AddNPC(Variables.NPCPath);
@@ -1478,16 +1459,7 @@ public class Interaction
             if(Variables.NPCCharacterPath != null)
             {
                 Import.AddNPCCharacter(Variables.NPCCharacterPath);
-            }
-            if(Variables.bodyCharacterPath != null)
-            {
-                Import.AddBodyCharacter(Variables.bodyCharacterPath, Variables.bodyDepthCharacterPath);
-                Import.AddHeadCharacter(Variables.headCharacterPath, Variables.headDepthCharacterPath);
-                Import.AddWeaponCharacter(Variables.weaponCharacterPath, Variables.weaponDepthCharacterPath);
-                Import.AddWeaponEffectCharacter(Variables.weaponEffectCharacterPath);
-                Import.AddGemCharacter(Variables.gemCharacterPath);  
-            }         
-            
+            }            
         }
     }
 
@@ -1969,16 +1941,6 @@ public class Interaction
 
         if(Variables.playMode == 0)
         {
-            if(Variables.NPCMode == false)
-            {
-                if(Variables.bodyImages.Count != 0)
-                {
-                    Variables.scale = new Vector4(Variables.bodyImages[0].width / Variables.standardPixel.x , Variables.bodyImages[0].height / Variables.standardPixel.y,0,0);
-                    Control.mat.SetVector("_Scale",Variables.scale);
-                    Control.matContrast.SetVector("_Scale",Variables.scale);
-                }
-            }
-            
             if(Variables.NPCMode == true)
             {
                 if(Variables.NPCImages.Count != 0)
@@ -1992,16 +1954,6 @@ public class Interaction
         if(Variables.playMode == 1)
         {
             RefreshData();
-            if(Variables.NPCMode == false)
-            {
-                if(Variables.bodyImages.Count != 0)
-                {
-                    Variables.scale = new Vector4(Variables.bodyImages[0].width / Variables.standardPixel.x , Variables.bodyImages[0].height / Variables.standardPixel.y,0,0);
-                    Control.mat.SetVector("_Scale",Variables.scale);
-                    Control.matContrast.SetVector("_Scale",Variables.scale);
-                }
-            }
-            
             if(Variables.NPCMode == true)
             {
                 if(Variables.NPCImages.Count != 0)
@@ -2026,19 +1978,6 @@ public class Interaction
 
         if(Variables.playMode == 0)
         {
-            /*if(Variables.NPCMode == false)
-            {
-                if(Variables.bodyImages.Count != 0)
-                {
-                    Variables.scaleRescale = new Vector2(Variables.characterRescaleX / Variables.standardPixel.x,Variables.characterRescaleY / Variables.standardPixel.y);
-                    Variables.KPointOffsetRescale = new Vector4(0,(Variables.standardKy-(Variables.characterRescaleY * (Variables.standardKy / Variables.standardPixel.y) + (Variables.standardPixel.y - Variables.characterRescaleY) / 2)) / Variables.standardPixel.y / (Variables.characterRescaleY / Variables.standardPixel.y),0,0);
-                    Control.mat.SetVector("_ScaleRescale",Variables.scaleRescale);
-                    Control.mat.SetVector("_KPointOffsetRescale",Variables.KPointOffsetRescale);
-                    Control.matContrast.SetVector("_ScaleRescale",Variables.scaleRescale);
-                    Control.matContrast.SetVector("_KPointOffsetRescale",Variables.KPointOffsetRescale);
-                }
-            }*/
-            
             if(Variables.NPCMode == true)
             {
                 if(Variables.NPCImages.Count != 0)
@@ -2156,53 +2095,26 @@ public class Interaction
         {
             return;
         }
-
         GameObject.Find("NPC").transform.SetSiblingIndex(3);
         GameObject.Find("NPC").transform.localScale = new Vector3(1.1f,1.1f,1.1f);
         GameObject.Find("NPC").GetComponent<Image>().color = new Vector4(1,1,1,1);
-        GameObject.Find("主角").GetComponent<Image>().color = new Vector4(0.7f,0.7f,0.7f,1);
-        GameObject.Find("主角").transform.localScale = new Vector3(1f,1f,1f);
+
         GameObject.Find("NPC选择按钮").transform.localScale = new Vector3(1,1,1);
-        //GameObject.Find("主角选择按钮").transform.localScale = new Vector3(0,0,0);
         GameObject.Find("重叠控制器/左右对调").transform.localScale = new Vector3(1,1,1);
         GameObject.Find("重叠控制器/导入NPC").transform.localScale = new Vector3(1,1,1);
         
         Variables.animName = "stand";
         GameObject.Find("动作/attack").GetComponentInChildren<Text>().text = "stand";
         
-        if(Variables.NPCImages.Count != 0)
+        //选中后就已经添加了Stand
+        /*if(Variables.NPCImages.Count != 0)
         {   
             Variables.NPCPath = Variables.NPCPath.Remove(Variables.NPCPath.LastIndexOf(@"/") + 1) + Variables.animName;
 
             Import.AddNPC(Variables.NPCPath);
             Import.AddNPCAddon(Variables.NPCPath);
             Import.AddNPC00(Variables.NPCPath);
-        }
-
-        /*Control.mat.SetTexture("_Body" ,  Variables.blackTex);
-        Control.mat.SetTexture("_Head" ,  Variables.blackTex);
-        Control.mat.SetTexture("_Weapon" ,  Variables.blackTex);
-        Control.mat.SetTexture("_BodyDepth" ,  Variables.blackTex);
-        Control.mat.SetTexture("_HeadDepth" ,  Variables.blackTex);
-        Control.mat.SetTexture("_WeaponDepth" ,  Variables.blackTex);
-        Control.mat.SetTexture("_WeaponEffect" , Variables.blackTex);
-        Control.mat.SetTexture("_WeaponGem" , Variables.blackTex);
-
-        Control.matOverlap.SetTexture("_Body" ,  Variables.blackTex);
-        Control.matOverlap.SetTexture("_Head" ,  Variables.blackTex);
-        Control.matOverlap.SetTexture("_Weapon" ,  Variables.blackTex);
-        Control.matOverlap.SetTexture("_BodyDepth" ,  Variables.blackTex);
-        Control.matOverlap.SetTexture("_HeadDepth" ,  Variables.blackTex);
-        Control.matOverlap.SetTexture("_WeaponDepth" ,  Variables.blackTex);
-        Control.matOverlap.SetTexture("_WeaponEffect" , Variables.blackTex);
-        Control.matOverlap.SetTexture("_WeaponGem" , Variables.blackTex);
-
-        Control.matContrast.SetTexture("_Body" ,  Variables.blackTex);
-        Control.matContrast.SetTexture("_Head" ,  Variables.blackTex);
-        Control.matContrast.SetTexture("_Weapon" ,  Variables.blackTex);
-        Control.matContrast.SetTexture("_BodyDepth" ,  Variables.blackTex);
-        Control.matContrast.SetTexture("_HeadDepth" ,  Variables.blackTex);
-        Control.matContrast.SetTexture("_WeaponDepth" ,  Variables.blackTex);*/
+        }*/
 
         ResetOffset();
 

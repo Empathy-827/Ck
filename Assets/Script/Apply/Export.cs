@@ -220,7 +220,7 @@ public class Export
         Control.matDepth.SetVector("_KPointOffsetRescale",Variables.KPointOffsetRescale);
         Control.matDepth.SetVector("_ScaleRescale",Variables.scaleRescale);
 
-        if(Variables.NPCMode == false)
+        /*if(Variables.NPCMode == false)
         {
 
             if(Variables.validBody == true)
@@ -735,7 +735,8 @@ public class Export
             Variables.bPlay = true; 
             Variables.bChoose = true;
         }
-        else if(Variables.NPCMode == true)
+        else*/
+        if(Variables.NPCMode == true)
         {
             
             Control.matExportNPC.SetTexture("_Body",Variables.blackTex);
@@ -913,7 +914,7 @@ public class Export
         Control.matDepth.SetVector("_KPointOffsetRescale",Variables.KPointOffsetRescale);
         Control.matDepth.SetVector("_ScaleRescale",Variables.scaleRescale);
 
-        if(Variables.NPCMode == false)
+        /*if(Variables.NPCMode == false)
         {
             List<String> renderPath = GetFiles.GetAllFiles(Variables.bodyPath.Remove(Variables.bodyPath.LastIndexOf(@"/")));
             for(int k = 0; k < renderPath.Count; k++)
@@ -1437,7 +1438,8 @@ public class Export
             Variables.bPlay = true; 
             Variables.bChoose = true;
         }
-         else if(Variables.NPCMode == true)
+         else*/
+        if(Variables.NPCMode == true)
         {
             List<String> renderPath = GetFiles.GetAllFiles(Variables.NPCPath.Remove(Variables.NPCPath.LastIndexOf(@"/")));
             for(int k = 0; k < renderPath.Count; k++)
@@ -1582,7 +1584,7 @@ public class Export
     /**
         输出所有动作的宝石资产
     */
-    public static void ExportAllGem()
+    /*public static void ExportAllGem()
     {
         if(Variables.bChoose == false)
         {
@@ -1679,7 +1681,7 @@ public class Export
             Variables.bPlay = true; 
             Variables.bChoose = true;
         }
-    }
+    }*/
 
     /**
         选择要输出的GIF资产
@@ -2123,7 +2125,7 @@ public class Export
         Variables.GIFWaitRenderName.Clear();
         Resources.UnloadUnusedAssets();
 
-        if(Variables.NPCMode == false)
+        /*if(Variables.NPCMode == false)
         {
             List<String> renderPath = GetFiles.GetAllFiles(Variables.bodyPath.Remove(Variables.bodyPath.LastIndexOf(@"/")));
             for(int k = 0; k < renderPath.Count; k++)
@@ -2230,7 +2232,8 @@ public class Export
             Variables.bPlay = true; 
             Variables.bChoose = true;
         }
-         else if(Variables.NPCMode == true)
+         else*/
+        if(Variables.NPCMode == true)
         {
             List<String> renderPath = GetFiles.GetAllFiles(Variables.NPCPath.Remove(Variables.NPCPath.LastIndexOf(@"/")));
             for(int k = 0; k < renderPath.Count; k++)
