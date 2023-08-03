@@ -482,30 +482,30 @@ public class Control : MonoBehaviour
         Interaction.CoverageSwitch();
     }
 
-    public void ButtonChooseModeCharacterContrast()
+    /*public void ButtonChooseModeCharacterContrast()
     {
-        Interaction.ChooseModeCharacterContrast();
-    }
+        //Interaction.ChooseModeCharacterContrast();
+    }*/
     
-    public void ButtonModeCharacterContrastImportCharacter()
+    /*public void ButtonModeCharacterContrastImportCharacter()
     {
-        Interaction.ModeCharacterContrastImportCharacter();
-    }
+        //Interaction.ModeCharacterContrastImportCharacter();
+    }*/
 
-    public void ButtonModeCharacterContrastImportNPC()
+    /*public void ButtonModeCharacterContrastImportNPC()
     {
-        Interaction.ModeCharacterContrastImportNPC();
-    }
+        //Interaction.ModeCharacterContrastImportNPC();
+    }*/
 
     // public void ButtonReimportOverlap()
     // {
     //     Interaction.ReimportOverlap();
     // }
 
-    public void ButtonReimportCharacter()
+    /*public void ButtonReimportCharacter()
     {
         Interaction.ReimportCharacter();
-    }
+    }*/
 
     public void ButtonSetKPointView()
     {

@@ -2,22 +2,22 @@ Shader "G123/Render_Overlap_Contrast"
 {
     Properties
     {
-        _Body("Body",2D) = "black"{}
-        _Head("Head",2D) = "black"{}
-        _Weapon("Weapon",2D) = "black"{}
-        _WeaponEffect("WeaponEffect",2D) = "black"{}
-        _WeaponGem("WeaponGem",2D) = "black"{}
-        _BodyDepth("BodyDepth",2D) = "black"{}
-        _HeadDepth("HeadDepth",2D) = "black"{}
-        _WeaponDepth("WeaponDepth",2D) = "black"{}
-        _BodyOverlap("BodyOverlap",2D) = "black"{}
-        _HeadOverlap("HeadOverlap",2D) = "black"{}
-        _WeaponOverlap("WeaponOverlap",2D) = "black"{}
-        _WeaponEffectOverlap("WeaponEffectOverlap",2D) = "black"{}
-        _WeaponGemOverlap("WeaponGemOverlap",2D) = "black"{}
-        _BodyDepthOverlap("BodyDepthOverlap",2D) = "black"{}
-        _HeadDepthOverlap("HeadDepthOverlap",2D) = "black"{}
-        _WeaponDepthOverlap("WeaponDepthOverlap",2D) = "black"{}
+        // _Body("Body",2D) = "black"{}
+        // _Head("Head",2D) = "black"{}
+        // _Weapon("Weapon",2D) = "black"{}
+        // _WeaponEffect("WeaponEffect",2D) = "black"{}
+        // _WeaponGem("WeaponGem",2D) = "black"{}
+        // _BodyDepth("BodyDepth",2D) = "black"{}
+        // _HeadDepth("HeadDepth",2D) = "black"{}
+        // _WeaponDepth("WeaponDepth",2D) = "black"{}
+        // _BodyOverlap("BodyOverlap",2D) = "black"{}
+        // _HeadOverlap("HeadOverlap",2D) = "black"{}
+        // _WeaponOverlap("WeaponOverlap",2D) = "black"{}
+        // _WeaponEffectOverlap("WeaponEffectOverlap",2D) = "black"{}
+        // _WeaponGemOverlap("WeaponGemOverlap",2D) = "black"{}
+        // _BodyDepthOverlap("BodyDepthOverlap",2D) = "black"{}
+        // _HeadDepthOverlap("HeadDepthOverlap",2D) = "black"{}
+        // _WeaponDepthOverlap("WeaponDepthOverlap",2D) = "black"{}
         _NPC("NPC",2D) = "black"{}
         _BackPic("BackPic",2D) = "balck"{}
         _NPCOverlap("_NPCOverlap",2D) = "black"{}
@@ -88,24 +88,24 @@ Shader "G123/Render_Overlap_Contrast"
                 float3 pos_world : TEXCOORD1;
             };
 
-            Texture2D _Body;
-            Texture2D _Head;
-            Texture2D _Weapon;
-            Texture2D _WeaponEffect;
-            Texture2D _WeaponGem;
-            Texture2D _BodyDepth;
-            Texture2D _HeadDepth;
-            Texture2D _WeaponDepth;
-            SamplerState sampler_Body;
-            Texture2D _BodyOverlap;
-            Texture2D _HeadOverlap;
-            Texture2D _WeaponOverlap;
-            Texture2D _WeaponEffectOverlap;
-            Texture2D _WeaponGemOverlap;
-            Texture2D _BodyDepthOverlap;
-            Texture2D _HeadDepthOverlap;
-            Texture2D _WeaponDepthOverlap;
-            SamplerState sampler_BodyOverlap;
+            // Texture2D _Body;
+            // Texture2D _Head;
+            // Texture2D _Weapon;
+            // Texture2D _WeaponEffect;
+            // Texture2D _WeaponGem;
+            // Texture2D _BodyDepth;
+            // Texture2D _HeadDepth;
+            // Texture2D _WeaponDepth;
+            // SamplerState sampler_Body;
+            // Texture2D _BodyOverlap;
+            // Texture2D _HeadOverlap;
+            // Texture2D _WeaponOverlap;
+            // Texture2D _WeaponEffectOverlap;
+            // Texture2D _WeaponGemOverlap;
+            // Texture2D _BodyDepthOverlap;
+            // Texture2D _HeadDepthOverlap;
+            // Texture2D _WeaponDepthOverlap;
+            // SamplerState sampler_BodyOverlap;
 
             sampler2D _KPointTex;
             sampler2D _NPC;
@@ -180,80 +180,87 @@ Shader "G123/Render_Overlap_Contrast"
                 float cutTermNPC = GetCutTerm(i.uv,_CutValueNPC);
                 float cutTerm = GetCutTerm(i.uv,_CutValue);
 
-                float4 headDepth = _HeadDepth.Sample(sampler_Body,uv);
-                headDepth = lerp(float4(0,0,0,0),headDepth,cutTerm);
-                float4 bodyDepth = _BodyDepth.Sample(sampler_Body,uv);
-                bodyDepth = lerp(float4(0,0,0,0),bodyDepth,cutTerm);
-                float4 weaponDepth = _WeaponDepth.Sample(sampler_Body,uv);
-                weaponDepth = lerp(float4(0,0,0,0),weaponDepth,cutTerm);
+                // float4 headDepth = _HeadDepth.Sample(sampler_Body,uv);
+                // headDepth = lerp(float4(0,0,0,0),headDepth,cutTerm);
+                // float4 bodyDepth = _BodyDepth.Sample(sampler_Body,uv);
+                // bodyDepth = lerp(float4(0,0,0,0),bodyDepth,cutTerm);
+                // float4 weaponDepth = _WeaponDepth.Sample(sampler_Body,uv);
+                // weaponDepth = lerp(float4(0,0,0,0),weaponDepth,cutTerm);
 
-                float4 headDepthOverlap = _HeadDepthOverlap.Sample(sampler_BodyOverlap,uvOverlap);
-                headDepthOverlap = lerp(float4(0,0,0,0),headDepthOverlap,cutTermOverlap);
-                float4 bodyDepthOverlap = _BodyDepthOverlap.Sample(sampler_BodyOverlap,uvOverlap);
-                bodyDepthOverlap = lerp(float4(0,0,0,0),bodyDepthOverlap,cutTermOverlap);
-                float4 weaponDepthOverlap = _WeaponDepthOverlap.Sample(sampler_BodyOverlap,uvOverlap);
-                weaponDepthOverlap = lerp(float4(0,0,0,0),weaponDepthOverlap,cutTermOverlap);
+                // float4 headDepthOverlap = _HeadDepthOverlap.Sample(sampler_BodyOverlap,uvOverlap);
+                // headDepthOverlap = lerp(float4(0,0,0,0),headDepthOverlap,cutTermOverlap);
+                // float4 bodyDepthOverlap = _BodyDepthOverlap.Sample(sampler_BodyOverlap,uvOverlap);
+                // bodyDepthOverlap = lerp(float4(0,0,0,0),bodyDepthOverlap,cutTermOverlap);
+                // float4 weaponDepthOverlap = _WeaponDepthOverlap.Sample(sampler_BodyOverlap,uvOverlap);
+                // weaponDepthOverlap = lerp(float4(0,0,0,0),weaponDepthOverlap,cutTermOverlap);
 
-                float headDepthFinal = (headDepth.r + 0.0001) * headDepth.w;
-                float bodyDepthFinal = bodyDepth.r * bodyDepth.w;
-                float weaponDepthFinal = weaponDepth.r * weaponDepth.w;
-                float headDepthOverlapFinal = (headDepthOverlap.r + 0.0001) * headDepthOverlap.w;
-                float bodyDepthOverlapFinal = bodyDepthOverlap.r * bodyDepthOverlap.w;
-                float weaponDepthOverlapFinal = weaponDepthOverlap.r * weaponDepthOverlap.w;
+                // float headDepthFinal = (headDepth.r + 0.0001) * headDepth.w;
+                // float bodyDepthFinal = bodyDepth.r * bodyDepth.w;
+                // float weaponDepthFinal = weaponDepth.r * weaponDepth.w;
+                // float headDepthOverlapFinal = (headDepthOverlap.r + 0.0001) * headDepthOverlap.w;
+                // float bodyDepthOverlapFinal = bodyDepthOverlap.r * bodyDepthOverlap.w;
+                // float weaponDepthOverlapFinal = weaponDepthOverlap.r * weaponDepthOverlap.w;
 
                 float4 npc = tex2D(_NPC,uvNPC);
                 npc = lerp(float4(0,0,0,0),npc,cutTermNPC);
-                float4 head = _Head.Sample(sampler_Body,uv);
-                head = lerp(float4(0,0,0,0),head,cutTerm);
-                float4 body = _Body.Sample(sampler_Body,uv);
-                body = lerp(float4(0,0,0,0),body,cutTerm);
-                float4 weapon = _Weapon.Sample(sampler_Body,uv);
-                float4 weaponEffect = _WeaponEffect.Sample(sampler_Body,uv);
-                float4 weaponGem = _WeaponGem.Sample(sampler_Body,uv);
-                weapon.rgb = lerp(weapon.rgb,weaponEffect.rgb,weaponEffect.a);
-                weapon.rgb = lerp(weapon.rgb,weaponGem.rgb,weaponGem.a);
-                weapon = lerp(float4(0,0,0,0),weapon,cutTerm);
+
+
+                // float4 head = _Head.Sample(sampler_Body,uv);
+                // head = lerp(float4(0,0,0,0),head,cutTerm);
+                // float4 body = _Body.Sample(sampler_Body,uv);
+                // body = lerp(float4(0,0,0,0),body,cutTerm);
+                // float4 weapon = _Weapon.Sample(sampler_Body,uv);
+                // float4 weaponEffect = _WeaponEffect.Sample(sampler_Body,uv);
+                // float4 weaponGem = _WeaponGem.Sample(sampler_Body,uv);
+                // weapon.rgb = lerp(weapon.rgb,weaponEffect.rgb,weaponEffect.a);
+                // weapon.rgb = lerp(weapon.rgb,weaponGem.rgb,weaponGem.a);
+                // weapon = lerp(float4(0,0,0,0),weapon,cutTerm);
 
                 float3 backPic = tex2D(_BackPic,i.uv);
 
                 float4 npcOverlap = tex2D(_NPCOverlap,uvNPCOverlap);
                 npcOverlap = lerp(float4(0,0,0,0),npcOverlap,cutTermOverlapNPC);
-                float4 headOverlap = _HeadOverlap.Sample(sampler_BodyOverlap,uvOverlap);
-                headOverlap = lerp(float4(0,0,0,0),headOverlap,cutTermOverlap);
-                float4 bodyOverlap = _BodyOverlap.Sample(sampler_BodyOverlap,uvOverlap);
-                bodyOverlap = lerp(float4(0,0,0,0),bodyOverlap,cutTermOverlap);
-                float4 weaponOverlap = _WeaponOverlap.Sample(sampler_BodyOverlap,uvOverlap);
-                float4 weaponEffectOverlap = _WeaponEffectOverlap.Sample(sampler_BodyOverlap,uvOverlap);
-                float4 weaponGemOverlap = _WeaponGemOverlap.Sample(sampler_BodyOverlap,uvOverlap);
-                weaponOverlap.rgb = lerp(weaponOverlap.rgb,weaponEffectOverlap.rgb,weaponEffectOverlap.a);
-                weaponOverlap.rgb = lerp(weaponOverlap.rgb,weaponGemOverlap.rgb,weaponGemOverlap.a);
-                weaponOverlap = lerp(float4(0,0,0,0),weaponOverlap,cutTermOverlap);
+
+                // float4 headOverlap = _HeadOverlap.Sample(sampler_BodyOverlap,uvOverlap);
+                // headOverlap = lerp(float4(0,0,0,0),headOverlap,cutTermOverlap);
+                // float4 bodyOverlap = _BodyOverlap.Sample(sampler_BodyOverlap,uvOverlap);
+                // bodyOverlap = lerp(float4(0,0,0,0),bodyOverlap,cutTermOverlap);
+                // float4 weaponOverlap = _WeaponOverlap.Sample(sampler_BodyOverlap,uvOverlap);
+                // float4 weaponEffectOverlap = _WeaponEffectOverlap.Sample(sampler_BodyOverlap,uvOverlap);
+                // float4 weaponGemOverlap = _WeaponGemOverlap.Sample(sampler_BodyOverlap,uvOverlap);
+                // weaponOverlap.rgb = lerp(weaponOverlap.rgb,weaponEffectOverlap.rgb,weaponEffectOverlap.a);
+                // weaponOverlap.rgb = lerp(weaponOverlap.rgb,weaponGemOverlap.rgb,weaponGemOverlap.a);
+                // weaponOverlap = lerp(float4(0,0,0,0),weaponOverlap,cutTermOverlap);
                 
-                float hbBasic = (headDepthFinal - bodyDepthFinal) > 0 ? 1 : 0;
-                float bwBasic = (weaponDepthFinal - max(headDepthFinal,bodyDepthFinal)) >= 0 ? 1 : 0;
+                //float hbBasic = (headDepthFinal - bodyDepthFinal) > 0 ? 1 : 0;
+                //float bwBasic = (weaponDepthFinal - max(headDepthFinal,bodyDepthFinal)) >= 0 ? 1 : 0;
 
                 float2 bias = float2(0.5,0.5) - float2(0.5,0.32);
                 float3 kPoint = tex2D(_KPointTex,i.uv + bias).a * float3(1,0,0) * _KPointView;
                 float3 backGround = lerp(_BackColor + backPic * _BackPicMult,kPoint,kPoint.r);
 
-                float3 finalBasic = lerp(body,head,hbBasic);
-                finalBasic = lerp(finalBasic,weapon,bwBasic);
+                //float3 finalBasic = lerp(body,head,hbBasic);
+                //finalBasic = lerp(finalBasic,weapon,bwBasic);
+                
+                float alpha = npc.a;
+                float3 finalBasic = lerp(float3(0,0,0),npc.rgb,alpha);
 
-                float alpha = max(max(weapon.w,max(max(head.w,body.w),max(weaponEffect.a,weaponGem.a))),npc.a);
-                finalBasic = lerp(float3(0,0,0),finalBasic + npc.rgb,alpha);
+                //float alpha = max(max(weapon.w,max(max(head.w,body.w),max(weaponEffect.a,weaponGem.a))),npc.a);
+                //finalBasic = lerp(float3(0,0,0),finalBasic + npc.rgb,alpha);
 
                 float3 finalBasic2 = lerp(backGround,finalBasic , alpha);
 
-                float hbOverlap = (headDepthOverlapFinal - bodyDepthOverlapFinal) > 0 ? 1 : 0;
-                float bwOverlap = (weaponDepthOverlapFinal - max(headDepthOverlapFinal,bodyDepthOverlapFinal)) >= 0 ? 1 : 0;
+                //float hbOverlap = (headDepthOverlapFinal - bodyDepthOverlapFinal) > 0 ? 1 : 0;
+                //float bwOverlap = (weaponDepthOverlapFinal - max(headDepthOverlapFinal,bodyDepthOverlapFinal)) >= 0 ? 1 : 0;
 
-                float3 finalOverlap = lerp(bodyOverlap,headOverlap,hbOverlap);
-                finalOverlap = lerp(finalOverlap,weaponOverlap,bwOverlap);
+                float3 finalOverlap;// = lerp(bodyOverlap,headOverlap,hbOverlap);
+                //finalOverlap = lerp(finalOverlap,weaponOverlap,bwOverlap);
 
-                float alphaOverlap = max(max(weaponOverlap.w,max(max(headOverlap.w,bodyOverlap.w),max(weaponEffectOverlap.a,weaponGemOverlap.a))),npcOverlap.a);
-                finalOverlap = lerp(float3(0,0,0),finalOverlap + npcOverlap.rgb , alphaOverlap);
+                //float alphaOverlap = max(max(weaponOverlap.w,max(max(headOverlap.w,bodyOverlap.w),max(weaponEffectOverlap.a,weaponGemOverlap.a))),npcOverlap.a);
+                float alphaOverlap = npcOverlap.a ;
+                finalOverlap = lerp(float3(0,0,0),npcOverlap.rgb , alphaOverlap);
 
-                float3 finalOverlap2 = lerp(backGround,finalOverlap,alphaOverlap);
+                float3 finalOverlap2 = lerp(backGround,finalBasic2,alphaOverlap);
                 
                 float backTerm = (alpha + alphaOverlap) > 0 ? 1 : 0;
 

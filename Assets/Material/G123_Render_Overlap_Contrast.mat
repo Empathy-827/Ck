@@ -107,18 +107,18 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaCut: 0.9412554
-    - _AlphaMult: 1
+    - _AlphaMult: 0
     - _BackPicMult: 0
-    - _Controler: 0.4806537
+    - _Controler: 0.5
     - _Coverage: 1
     - _DiffLerp: 0
     - _DiffMult: 0
     - _DiffrenceView: 1
     - _FinalLerp: 1
     - _KPointOffsetMult: 1
-    - _KPointView: 0
+    - _KPointView: 1
     - _PixelDiffLerp: 0
-    - _PixelDiffMult: 0
+    - _PixelDiffMult: 1
     - _Scale: 1
     - _ScaleNPC: 0.64
     - _ScaleOverlap: 1
@@ -127,7 +127,7 @@ Material:
     - _T: 0
     - _ViewKPoint: 1
     m_Colors:
-    - _BackColor: {r: 0.38431373, g: 0.38431373, b: 0.38431373, a: 1}
+    - _BackColor: {r: 0.14509805, g: 0.14509805, b: 0.14509805, a: 1}
     - _CutValue: {r: 0, g: 0, b: 0, a: 0}
     - _CutValueNPC: {r: 0, g: 0, b: 0, a: 0}
     - _CutValueOverlap: {r: 0, g: 0, b: 0, a: 0}
@@ -135,12 +135,12 @@ Material:
     - _KPointOffset: {r: 0, g: 0, b: 0, a: 0}
     - _KPointOffsetNPC: {r: 0, g: 0, b: 0, a: 0}
     - _KPointOffsetNPCOverlap: {r: 0, g: 0, b: 0, a: 0}
-    - _KPointOffsetNPCRescale: {r: 0, g: 0.186, b: 0, a: 0}
+    - _KPointOffsetNPCRescale: {r: 0, g: 0, b: 0, a: 0}
     - _KPointOffsetOverlap: {r: 0, g: 0, b: 0, a: 0}
     - _KPointOffsetRescale: {r: 0, g: 0, b: 0, a: 0}
     - _Scale: {r: 1, g: 1, b: 0, a: 0}
     - _ScaleNPC: {r: 1, g: 1, b: 0, a: 0}
-    - _ScaleNPCRescale: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _ScaleNPCRescale: {r: 1, g: 1, b: 0, a: 0}
     - _ScaleOverlap: {r: 1, g: 1, b: 0, a: 0}
     - _ScaleOverlapNPC: {r: 1, g: 1, b: 0, a: 0}
     - _ScaleRescale: {r: 1, g: 1, b: 0, a: 0}

@@ -9,17 +9,7 @@ using System.Runtime.InteropServices;
 
 public class Import
 {
-    /**
-        打开重叠对比文件夹
-    */
-    public static void OpenOverlapFolder(Material matOverlap, Material matContrast)
-    {
-        if(Variables.bOverlapNPC == true)
-        {
-            OpenNPCOverlapFolder(matOverlap,matContrast);
-        }       
-    }
-
+    
     /**
         打开NPC重叠对比文件夹
     */
@@ -51,11 +41,24 @@ public class Import
     }
 
     
+    /**
+        打开重叠对比文件夹
+    */
+    public static void OpenOverlapFolder(Material matOverlap, Material matContrast)
+    {
+        if(Variables.bOverlapNPC == true)
+        {
+            OpenNPCOverlapFolder(matOverlap,matContrast);
+        }       
+    }
+
+
+    
 
     /**
         打开角色对比文件夹
     */
-    public static void OpenCharacterFolder(Material matCharacter)
+    /*public static void OpenCharacterFolder(Material matCharacter)
     {
         if(Variables.bCharacterNPC == true)
         {
@@ -76,7 +79,7 @@ public class Import
     /**
         打开角色对比NPC文件夹
     */
-    public static void OpenNPCCharacterFolder(Material matCharacter)
+    /*public static void OpenNPCCharacterFolder(Material matCharacter)
     {
         Variables.NPCCharacterPath = OpenFunc.Open("请选择需要对比的标准NPC文件夹");
         Variables.NPCCharacterImages.Clear();
@@ -117,7 +120,7 @@ public class Import
     /**
         打开角色对比主角身体文件夹
     */
-    public static void OpenBodyCharacterFolder(Material matCharacter)
+   /* public static void OpenBodyCharacterFolder(Material matCharacter)
     {
         Variables.bodyCharacterPath = OpenFunc.Open("请选择需要对比的标准角色身体颜色文件夹");
         Variables.bodyCharacterImages.Clear();
@@ -158,7 +161,7 @@ public class Import
     /**
         打开角色对比主角身体深度文件夹
     */
-    public static void OpenBodyDepthCharacterFolder()
+    /*public static void OpenBodyDepthCharacterFolder()
     {   
         Variables.bodyDepthCharacterPath = OpenFunc.Open("请选择需要对比的标准角色身体深度文件夹");
         Variables.bodyDepthCharacterImages.Clear();
@@ -174,7 +177,7 @@ public class Import
     /**
         打开角色对比主角头部文件夹
     */
-    public static void OpenHeadCharacterFolder()
+   /* public static void OpenHeadCharacterFolder()
     {
         Variables.headCharacterPath = OpenFunc.Open("请选择需要对比的标准角色头部颜色文件夹");
         Variables.headCharacterImages.Clear();
@@ -190,7 +193,7 @@ public class Import
     /**
         打开角色对比主角头部深度文件夹
     */
-    public static void OpenHeadDepthCharacterFolder()
+    /*public static void OpenHeadDepthCharacterFolder()
     {
         Variables.headDepthCharacterPath = OpenFunc.Open("请选择需要对比的标准角色头部深度文件夹");
         Variables.headDepthCharacterImages.Clear();
@@ -206,7 +209,7 @@ public class Import
     /**
         打开角色对比主角武器文件夹
     */
-    public static void OpenWeaponCharacterFolder()
+    /*public static void OpenWeaponCharacterFolder()
     {
         Variables.weaponCharacterPath = OpenFunc.Open("请选择需要对比的标准角色武器颜色文件夹") + "/" + Variables.animName;
         Variables.weaponCharacterImages.Clear();
@@ -223,7 +226,7 @@ public class Import
     /**
         打开角色对比主角武器深度文件夹
     */
-    public static void OpenWeaponDepthCharacterFolder()
+    /*public static void OpenWeaponDepthCharacterFolder()
     {
         Variables.weaponDepthCharacterPath = OpenFunc.Open("请选择需要对比的标准角色武器深度文件夹");
         Variables.weaponDepthCharacterImages.Clear();
@@ -352,7 +355,7 @@ public class Import
     /**
         添加主角重叠对比资产部位
     */
-    public static void AddBodyOverlap(string bodyOverlapPath, string bodyDepthOverlapPath)
+    /*public static void AddBodyOverlap(string bodyOverlapPath, string bodyDepthOverlapPath)
     {
         float countOverlap = Variables.countOverlap;
         int indexOverlap = Variables.indexOverlap;
@@ -461,7 +464,7 @@ public class Import
     /**
         添加主角角色对比资产部位
     */
-    public static void AddBodyCharacter(string bodyCharacterPath, string bodyDepthCharacterPath)
+    /*public static void AddBodyCharacter(string bodyCharacterPath, string bodyDepthCharacterPath)
     {
         float countCharacter = Variables.countCharacter;
         int indexCharacter = Variables.indexCharacter;
@@ -570,6 +573,8 @@ public class Import
         int indexNPC = Variables.indexNPC;
         bool validNPC = Variables.validNPC;
 
+        GameObject.Find("NPC选择按钮/BASE/000000").GetComponentInChildren<Text>().text = "Y";
+
         //把文件夹下的图片写入列表
         List<Texture2D> NPCImages= Variables.NPCImages;
         
@@ -655,6 +660,8 @@ public class Import
         bool validNPCAddon = Variables.validNPCAddon;
         List<Texture2D> NPCAddonImages= Variables.NPCAddonImages;
         string force = Variables.force;
+
+        GameObject.Find("NPC选择按钮/ADDON/000000").GetComponentInChildren<Text>().text = "Y";
 
 
         int index = NPCPath.LastIndexOf("/");
@@ -751,6 +758,8 @@ public class Import
         bool validNPC00 = Variables.validNPC00;
         List<Texture2D> NPC00Images= Variables.NPC00Images;
         string force = Variables.force;
+
+        GameObject.Find("NPC选择按钮/00/000000").GetComponentInChildren<Text>().text = "Y";
 
 
         int index = NPCPath.LastIndexOf("/");
@@ -874,7 +883,7 @@ public class Import
     /**
         添加NPC角色对比资产部位
     */
-    public static void AddNPCCharacter(string NPCCharacterPath)
+    /*public static void AddNPCCharacter(string NPCCharacterPath)
     {
         float countNPCCharacter = Variables.countNPCCharacter;
         int indexNPCCharacter = Variables.indexNPCCharacter;

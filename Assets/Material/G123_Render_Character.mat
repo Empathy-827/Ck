@@ -84,14 +84,14 @@ Material:
     - _CutValue: 0
     - _HeadDepthMult: 0
     - _KPointOffsetMult: 1
-    - _KPointView: 0
+    - _KPointView: 1
     - _PicScale: 1
     - _Scale: 1
     - _ScaleNPC: 0.64
     - _ViewKPoint: 1
     - _WeaponDepthMult: 0
     m_Colors:
-    - _BackColor: {r: 0.38431373, g: 0.38431373, b: 0.38431373, a: 1}
+    - _BackColor: {r: 0.14509805, g: 0.14509805, b: 0.14509805, a: 1}
     - _CutValue: {r: 0, g: 0, b: 0, a: 0}
     - _CutValueNPC: {r: 0, g: 0, b: 0, a: 0}
     - _KPointOffset: {r: 0, g: 0, b: 0, a: 0}

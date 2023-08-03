@@ -446,7 +446,7 @@ public class Interaction
     }
 
     /**
-        重叠对比模式、角色对比模式缩放逻辑
+        重叠对比模式缩放逻辑
     */
     public static void ScaleFunc()
     {
@@ -474,18 +474,6 @@ public class Interaction
             if(scroll < 0f)
             {
                 Play.NextFrame();
-            }
-        }
-        if(Variables.playMode == 1 && Variables.bScale == true)
-        {
-            GameObject.Find("Overlap_Quad_Mid").transform.localScale += new Vector3(Input.mouseScrollDelta.y * 0.5f,Input.mouseScrollDelta.y * 0.5f,Input.mouseScrollDelta.y * 0.5f);
-            if(GameObject.Find("Overlap_Quad_Mid").transform.localScale.x >= 30f)
-            {
-                GameObject.Find("Overlap_Quad_Mid").transform.localScale = new Vector3(30,30,30);
-            }
-            if(GameObject.Find("Overlap_Quad_Mid").transform.localScale.x <= 7f)
-            {
-                GameObject.Find("Overlap_Quad_Mid").transform.localScale = new Vector3(7f,7f,7f);
             }
         }
     }
@@ -519,18 +507,6 @@ public class Interaction
             if(scroll < 0f)
             {
                 Play.NextFrame();
-            }
-        }
-        if(Variables.playMode == 1 && Variables.bScale == true)
-        {
-            GameObject.Find("Overlap_Quad_Mid").transform.localScale += new Vector3(Input.mouseScrollDelta.y * 0.5f,Input.mouseScrollDelta.y * 0.5f,Input.mouseScrollDelta.y * 0.5f);
-            if(GameObject.Find("Overlap_Quad_Mid").transform.localScale.x >= 30f)
-            {
-                GameObject.Find("Overlap_Quad_Mid").transform.localScale = new Vector3(30,30,30);
-            }
-            if(GameObject.Find("Overlap_Quad_Mid").transform.localScale.x <= 7f)
-            {
-                GameObject.Find("Overlap_Quad_Mid").transform.localScale = new Vector3(7f,7f,7f);
             }
         }
     }
@@ -592,6 +568,13 @@ public class Interaction
             {
                 ChooseGrayByClickColorWheel();
                 Control.mat.SetVector("_BackColor",Variables.pixelColor);
+                Control.mat1.SetVector("_BackColor",Variables.pixelColor);
+                Control.mat2.SetVector("_BackColor",Variables.pixelColor);
+                Control.mat3.SetVector("_BackColor",Variables.pixelColor);
+                for(int i = 0;i < Variables.mat_anim_num;i++)
+                {
+                    Control.mat_anim[i].SetVector("_BackColor",Variables.pixelColor);
+                }
                 Control.matOverlap.SetVector("_BackColor",Variables.pixelColor);
                 Control.matContrast.SetVector("_BackColor",Variables.pixelColor);
                 Control.matCharacter.SetVector("_BackColor",Variables.pixelColor);
@@ -746,7 +729,6 @@ public class Interaction
         Variables.bChoose = false;
 
         Variables.scaleNPC = new Vector4(1.0f,1.0f,0,0);
-        //Variables.scaleNPC = new Vector4(NPCImages[0].width / Variables.standardPixel.x , NPCImages[0].height / Variables.standardPixel.y,0,0);
 
         //mat
         Control.mat.SetVector("_ScaleNPC",Variables.scaleNPC);
@@ -813,23 +795,24 @@ public class Interaction
         {
             return;
         }
-        Variables.bChoose = false;
+        //Variables.bChoose = false;
+
+        if(Variables.NPCPath == null)
+        {
+            Messagebox.MessageBox(IntPtr.Zero, "请导入角色资产","确认", 0);
+        }
+
 
         int btnPos = 0;
         int btnHeight = 30;
         string lastAnimName = Variables.animName;
         
         List<string> animFolderPath = null;
-        if(Variables.NPCPath != null)
-        {
-            animFolderPath = GetFiles.GetAllFiles(Variables.NPCPath.Remove(Variables.NPCPath.LastIndexOf(@"/")));
+        
+        animFolderPath = GetFiles.GetAllFiles(Variables.NPCPath.Remove(Variables.NPCPath.LastIndexOf(@"/")));
             //删除addon和00
-            animFolderPath.RemoveAll(filePath => filePath.EndsWith("addon") || filePath.EndsWith("00") || filePath.EndsWith("01"));
-        }
-        else
-        {
-            Debug.LogError("请先选择NPC文件夹");
-        }
+        animFolderPath.RemoveAll(filePath => filePath.EndsWith("addon") || filePath.EndsWith("00") || filePath.EndsWith("01"));
+       
 
 
         //新生成的Button位置
@@ -998,66 +981,6 @@ public class Interaction
                             }
                             Import.AddNPCOverlap(Variables.NPCOverlapPath);
                         }
-                        if(Variables.bOverlapNPC == false)
-                        {
-                            if(Variables.bodyOverlapPath != null)
-                            {
-                                if(Variables.validBodyOverlap)
-                                {
-                                    Variables.bodyOverlapPath = Variables.bodyOverlapPath.Replace(lastAnimName , Variables.animName);
-                                }
-                                if(Variables.validBodyDepthOverlap == true)
-                                {
-                                    Variables.bodyDepthOverlapPath = Variables.bodyDepthOverlapPath.Replace(lastAnimName , Variables.animName);
-                                }
-                                if(Variables.validHeadOverlap == true)
-                                {
-                                    Variables.headOverlapPath = Variables.headOverlapPath.Replace(lastAnimName , Variables.animName);
-                                }
-                                if(Variables.validHeadDepthOverlap == true)
-                                {
-                                    Variables.headDepthOverlapPath = Variables.headDepthOverlapPath.Replace(lastAnimName , Variables.animName);
-                                }
-                                if(Variables.validWeaponOverlap == true)
-                                {
-                                    Variables.weaponOverlapPath = Variables.weaponOverlapPath.Replace(lastAnimName , Variables.animName);
-                                }
-                                if(Variables.validWeaponDepthOverlap == true)
-                                {
-                                    Variables.weaponDepthOverlapPath = Variables.weaponDepthOverlapPath.Replace(lastAnimName , Variables.animName);
-                                }
-                                if(Variables.validGemOverlap == true)
-                                {
-                                    Variables.gemOverlapPath = Variables.gemOverlapPath.Replace(lastAnimName , Variables.animName);
-                                }
-                                if(Variables.validWeaponEffectOverlap == true)
-                                {
-                                    Variables.weaponEffectOverlapPath = Variables.weaponEffectOverlapPath.Replace(lastAnimName,Variables.animName);
-                                }
-                                
-                            }
-                            if(Variables.validBodyOverlap == true && Variables.validBodyDepthOverlap == true)
-                            {
-                                Import.AddBodyOverlap(Variables.bodyOverlapPath, Variables.bodyDepthOverlapPath);
-                            }
-                            if(Variables.validHeadOverlap == true && Variables.validHeadDepthOverlap == true)
-                            {
-                                Import.AddHeadOverlap(Variables.headOverlapPath, Variables.headDepthOverlapPath);
-                            }
-                            if(Variables.validWeaponOverlap == true && Variables.validWeaponDepthOverlap == true)
-                            {
-                                Import.AddWeaponOverlap(Variables.weaponOverlapPath, Variables.weaponDepthOverlapPath);
-                                Import.AddWeaponEffectOverlap(Variables.weaponEffectOverlapPath);
-                            }
-                            if(Variables.validGemOverlap == true)
-                            {
-                                Import.AddGemOverlap(Variables.gemOverlapPath);
-                            }
-                            if(Variables.validWeaponEffectOverlap == true)
-                            {
-                                Import.AddWeaponEffectOverlap(Variables.weaponEffectOverlapPath);
-                            }                       
-                        }
                     }
                     RefreshData();
                 }
@@ -1075,8 +998,9 @@ public class Interaction
         if(Variables.playMode == 0)
         {
             Variables.aAnimAll = !Variables.aAnimAll;
+            Variables.mat_anim_num = Control.mat_anim.Length;
 
-            for (int i = 0; i < Control.mat_anim.Length; i++)
+            for (int i = 0; i < Variables.mat_anim_num; i++)
             {
                 Control.mat_anim[i].SetVector("_ScaleNPC", Variables.scaleNPC);
                 Control.mat_anim[i].SetVector("_KPointOffsetNPC", new Vector4(0, 0, 0, 0));
@@ -1344,19 +1268,6 @@ public class Interaction
             RefreshData();
             
         }
-        else if(Variables.playMode == 2)
-        {
-            if(Variables.NPCPath != null)
-            {
-                Import.AddNPC(Variables.NPCPath);
-                Import.AddNPCAddon(Variables.NPCPath);
-                Import.AddNPC00(Variables.NPCPath);
-            }
-            if(Variables.NPCCharacterPath != null)
-            {
-                Import.AddNPCCharacter(Variables.NPCCharacterPath);
-            }    
-        }
     }
 
     public static void ChooseForce1()
@@ -1391,19 +1302,6 @@ public class Interaction
                 Import.AddNPCOverlap(Variables.NPCOverlapPath);
             }
             RefreshData();
-        }
-        else if(Variables.playMode == 2)
-        {
-            if(Variables.NPCPath != null)
-            {
-                Import.AddNPC(Variables.NPCPath);
-                Import.AddNPCAddon(Variables.NPCPath);
-                Import.AddNPC00(Variables.NPCPath);
-            }
-            if(Variables.NPCCharacterPath != null)
-            {
-                Import.AddNPCCharacter(Variables.NPCCharacterPath);
-            }
         }
     }
 
@@ -1448,19 +1346,6 @@ public class Interaction
             RefreshData();
             
         }
-        else if(Variables.playMode == 2)
-        {
-            if(Variables.NPCPath != null)
-            {
-                Import.AddNPC(Variables.NPCPath);
-                Import.AddNPCAddon(Variables.NPCPath);
-                Import.AddNPC00(Variables.NPCPath);
-            }
-            if(Variables.NPCCharacterPath != null)
-            {
-                Import.AddNPCCharacter(Variables.NPCCharacterPath);
-            }            
-        }
     }
 
     public static void ChooseForce3()
@@ -1495,20 +1380,7 @@ public class Interaction
             }
             
             RefreshData();
-        }
-        else if(Variables.playMode == 2)
-        {
-            if(Variables.NPCPath != null)
-            {
-                Import.AddNPC(Variables.NPCPath);
-                Import.AddNPCAddon(Variables.NPCPath);
-                Import.AddNPC00(Variables.NPCPath);
             }
-            if(Variables.NPCCharacterPath != null)
-            {
-                Import.AddNPCCharacter(Variables.NPCCharacterPath);
-            }
-        }
     }
 
 
@@ -1554,22 +1426,6 @@ public class Interaction
         Variables.overlapWidth = Variables.NPCOverlapImages[0].width;
         Variables.overlapHeight = Variables.NPCOverlapImages[0].height;
         RefreshData();
-
-        Control.matOverlap.SetTexture("_Body",Variables.blackTex);
-        Control.matOverlap.SetTexture("_Head",Variables.blackTex);
-        Control.matOverlap.SetTexture("_Weapon",Variables.blackTex);
-        Control.matOverlap.SetTexture("_BodyDepth",Variables.blackTex);
-        Control.matOverlap.SetTexture("_HeadDepth",Variables.blackTex);
-        Control.matOverlap.SetTexture("_WeaponDepth",Variables.blackTex);
-        
-        Control.matContrast.SetTexture("_BodyOverlap",Variables.blackTex);
-        Control.matContrast.SetTexture("_HeadOverlap",Variables.blackTex);
-        Control.matContrast.SetTexture("_WeaponOverlap",Variables.blackTex);
-        Control.matContrast.SetTexture("_WeaponEffectOverlap",Variables.blackTex);
-        Control.matContrast.SetTexture("_WeaponGemOverlap",Variables.blackTex);
-        Control.matContrast.SetTexture("_BodyDepthOverlap",Variables.blackTex);
-        Control.matContrast.SetTexture("_HeadDepthOverlap",Variables.blackTex);
-        Control.matContrast.SetTexture("_WeaponDepthOverlap",Variables.blackTex);
     }
 
     /**
@@ -1689,7 +1545,7 @@ public class Interaction
     /**
         切换角色对比模式
     */
-    public static void ChooseModeCharacterContrast()
+    /*public static void ChooseModeCharacterContrast()
     {
         if(Variables.bChoose == false)
         {
@@ -1715,12 +1571,12 @@ public class Interaction
             ShowMain();
         }
 
-    }
+    }*/
 
     /**
         角色对比模式导入主角
     */
-    public static void ModeCharacterContrastImportCharacter()
+    /*public static void ModeCharacterContrastImportCharacter()
     {
         Variables.bCharacterNPC = false;
 
@@ -1733,7 +1589,7 @@ public class Interaction
     /**
         角色对比模式导入NPC
     */
-    public static void ModeCharacterContrastImportNPC()
+    /*public static void ModeCharacterContrastImportNPC()
     {
         Variables.bCharacterNPC = true;
 
@@ -1751,7 +1607,7 @@ public class Interaction
     /**
         重新导入角色对比模式资产
     */
-    public static void ReimportCharacter()
+    /*public static void ReimportCharacter()
     {
         GameObject.Find("角色对比导入选择2").transform.localScale = new Vector3(1,1,1);
     }
@@ -1795,24 +1651,14 @@ public class Interaction
 
         if(Variables.playMode == 0)
         {
-            if(Variables.NPCMode == false)
-            {
-                Variables.KPointOffsetAdd = Variables.KPointOffsetJson;
-                Variables.KPointOffsetABSPosX = Variables.KPointOffsetAdd.x ;
-                Variables.KPointOffsetABSPosY = Variables.KPointOffsetAdd.y;
-                float px = Variables.KPointOffsetABSPosX * 1000;
-                float py = Variables.KPointOffsetABSPosY * 1000;
-                GameObject.Find("绝对偏移X").GetComponent<InputField>().text = px.ToString();
-                GameObject.Find("绝对偏移Y").GetComponent<InputField>().text = py.ToString();
-                Modify.ButtonApplyNumOffset2();
-            }
+
             if(Variables.NPCMode == true)
             {
                 Variables.KPointOffsetAddNPC = Variables.KPointOffsetNPCJson;
                 Variables.KPointOffsetABSPosX = Variables.KPointOffsetAddNPC.x;
                 Variables.KPointOffsetABSPosY = Variables.KPointOffsetAddNPC.y;
-                float px = Variables.KPointOffsetABSPosX * 1000;
-                float py = Variables.KPointOffsetABSPosY * 1000;
+                float px = Variables.KPointOffsetABSPosX * 500;
+                float py = Variables.KPointOffsetABSPosY * 500;
                 GameObject.Find("绝对偏移X").GetComponent<InputField>().text = px.ToString();
                 GameObject.Find("绝对偏移Y").GetComponent<InputField>().text = py.ToString();
                 Modify.ButtonApplyNumOffset2();
@@ -1821,17 +1667,6 @@ public class Interaction
         if(Variables.playMode == 1)
         {
             RefreshData();
-            if(Variables.NPCMode == false)
-            {
-                Variables.KPointOffsetAdd = Variables.KPointOffsetJson;
-                Variables.KPointOffsetABSPosX = Variables.KPointOffsetAdd.x;
-                Variables.KPointOffsetABSPosY = Variables.KPointOffsetAdd.y;
-                float px = Variables.KPointOffsetABSPosX * 1000;
-                float py = Variables.KPointOffsetABSPosY * 1000;
-                GameObject.Find("绝对偏移X").GetComponent<InputField>().text = px.ToString();
-                GameObject.Find("绝对偏移Y").GetComponent<InputField>().text = py.ToString();
-                Modify.ButtonApplyNumOffset2();
-            }
             if(Variables.NPCMode == true)
             {
                 Variables.KPointOffsetAddNPC = Variables.KPointOffsetNPCJson;

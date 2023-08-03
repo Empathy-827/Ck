@@ -264,7 +264,7 @@ public class Play
                         }
                     }                   
                 }
-                if(Variables.playMode== 2)
+                /*if(Variables.playMode== 2)
                 {
                     if(Variables.bCharacterNPC == true)
                     {
@@ -316,7 +316,7 @@ public class Play
                     }
                     Control.frameGO3.GetComponent<Text>().text = "当前帧数: " + Variables.currentFrame;
                     Control.frameCharacterGO.GetComponent<Text>().text = "当前帧数: " + Variables.currentFrameCharacter;
-                }
+                }*/
             }
             
             
@@ -585,7 +585,7 @@ public class Play
                     }
                     
                 }
-                else if(Variables.playMode == 2)
+                /*else if(Variables.playMode == 2)
                 {
                     if(Variables.bCharacterNPC == false)
                     {
@@ -642,7 +642,7 @@ public class Play
                         Control.frameCharacterGO.GetComponent<Text>().text = "当前帧数:  " + Variables.currentFrameCharacter;
                     }
                     
-                }
+                }*/
             }
             
         }
@@ -910,7 +910,7 @@ public class Play
                     }
                     
                 }
-                else if(Variables.playMode == 2)
+                /*else if(Variables.playMode == 2)
                 {
                     if(Variables.bCharacterNPC == false)
                     {
@@ -969,7 +969,7 @@ public class Play
                         Control.frameCharacterGO.GetComponent<Text>().text = "当前帧数:  " + Variables.currentFrameCharacter;
                     }
                     
-                }
+                }*/
             }
             
         }
@@ -1706,7 +1706,6 @@ public class Play
             }
             else
             {
-                //if()
                 {
                     if(Variables.NPCImages0.Count != 0 && Variables.validNPC == true)
                     {
@@ -1924,100 +1923,32 @@ public class Play
             Control.mat.SetTexture("_NPC",Variables.blackTex);
             Control.matContrast.SetTexture("_NPC",Variables.blackTex);
         }
-
-        if(Variables.validBodyOverlap == true)
+        if(Variables.NPCAddonImages.Count != 0)
         {
-            Control.matOverlap.SetTexture("_Body",Variables.bodyOverlapImages[Variables.indexOverlap]);
-            Control.matContrast.SetTexture("_BodyOverlap",Variables.bodyOverlapImages[Variables.indexOverlap]);
+            Control.mat.SetTexture("_NPCAddon",Variables.NPCAddonImages[Variables.indexNPC]);
+            Control.matContrast.SetTexture("_NPCAddon",Variables.NPCAddonImages[Variables.indexNPC]);
         }
         else
         {
-            Control.matOverlap.SetTexture("_Body",Variables.blackTex);
-            Control.matContrast.SetTexture("_BodyOverlap",Variables.blackTex);
+            Control.mat.SetTexture("_NPCAddon",Variables.blackTex);
+            Control.matContrast.SetTexture("_NPCAddon",Variables.blackTex);
         }
-
-        if(Variables.validHeadOverlap == true)
+        if(Variables.NPC00Images.Count != 0)
         {
-            Control.matOverlap.SetTexture("_Head",Variables.headOverlapImages[Variables.indexOverlap]);
-            Control.matContrast.SetTexture("_HeadOverlap",Variables.headOverlapImages[Variables.indexOverlap]);
-        }
-        else
-        {
-            Control.matOverlap.SetTexture("_Head",Variables.blackTex);
-            Control.matContrast.SetTexture("_HeadOverlap",Variables.blackTex);
-        }
-        
-        if(Variables.validWeaponOverlap == true)
-        {
-            Control.matOverlap.SetTexture("_Weapon",Variables.weaponOverlapImages[Variables.indexOverlap]);
-            Control.matContrast.SetTexture("_WeaponOverlap",Variables.weaponOverlapImages[Variables.indexOverlap]);
+            Control.mat.SetTexture("_NPC00",Variables.NPC00Images[Variables.indexNPC]);
+            Control.matContrast.SetTexture("_NPC00",Variables.NPC00Images[Variables.indexNPC]);
         }
         else
         {
-            Control.matOverlap.SetTexture("_Weapon",Variables.blackTex);
-            Control.matContrast.SetTexture("_WeaponOverlap",Variables.blackTex);
-        }
-        
-        if(Variables.validWeaponEffectOverlap == true)
-        {
-            Control.matOverlap.SetTexture("_WeaponEffect",Variables.weaponEffectOverlapImages[Variables.indexOverlap]);
-            Control.matContrast.SetTexture("_WeaponEffectOverlap",Variables.weaponEffectOverlapImages[Variables.indexOverlap]);
-        }
-        else
-        {
-            Control.matOverlap.SetTexture("_WeaponEffect",Variables.blackTex);
-            Control.matContrast.SetTexture("_WeaponEffectOverlap",Variables.blackTex);
-        }
-        
-        if(Variables.validGemOverlap == true)
-        {
-            Control.matOverlap.SetTexture("_WeaponGem",Variables.gemOverlapImages[Variables.indexOverlap]);
-            Control.matContrast.SetTexture("_WeaponGemOverlap",Variables.gemOverlapImages[Variables.indexOverlap]);
-        }
-        else
-        {
-            Control.matOverlap.SetTexture("_WeaponGem",Variables.blackTex);
-            Control.matContrast.SetTexture("_WeaponGemOverlap",Variables.blackTex);
-        }
-
-        if(Variables.validBodyDepthOverlap == true)
-        {
-            Control.matOverlap.SetTexture("_BodyDepth",Variables.bodyDepthOverlapImages[Variables.indexOverlap]);
-            Control.matContrast.SetTexture("_BodyDepthOverlap",Variables.bodyDepthOverlapImages[Variables.indexOverlap]);
-        }
-        else
-        {
-            Control.matOverlap.SetTexture("_BodyDepth",Variables.blackTex);
-            Control.matContrast.SetTexture("_BodyDepthOverlap",Variables.blackTex);
-        }
-
-        if(Variables.validHeadDepthOverlap == true)
-        {
-            Control.matOverlap.SetTexture("_HeadDepth",Variables.headDepthOverlapImages[Variables.indexOverlap]);
-            Control.matContrast.SetTexture("_HeadDepthOverlap",Variables.headDepthOverlapImages[Variables.indexOverlap]);
-        }
-        else
-        {
-            Control.matOverlap.SetTexture("_HeadDepth",Variables.blackTex);
-            Control.matContrast.SetTexture("_HeadDepthOverlap",Variables.blackTex);
-        }
-
-        if(Variables.validWeaponDepthOverlap == true)
-        {
-            Control.matOverlap.SetTexture("_WeaponDepth",Variables.weaponDepthOverlapImages[Variables.indexOverlap]);
-            Control.matContrast.SetTexture("_WeaponDepthOverlap",Variables.weaponDepthOverlapImages[Variables.indexOverlap]);
-        }
-        else
-        {
-            Control.matOverlap.SetTexture("_WeaponDepth",Variables.blackTex);
-            Control.matContrast.SetTexture("_WeaponDepthOverlap",Variables.blackTex);
+            Control.mat.SetTexture("_NPC00",Variables.blackTex);
+            Control.matContrast.SetTexture("_NPC00",Variables.blackTex);
         }
     }
 
     /**
         角色对比模式角色NPC 对比主角播放逻辑
     */
-    private static void PlayMode2NPCCharacter()
+    /*private static void PlayMode2NPCCharacter()
     {
         if(Variables.NPCImages.Count != 0)
         {
@@ -2104,7 +2035,7 @@ public class Play
     /**
         角色对比模式角色NPC 对比NPC播放逻辑
     */
-    private static void PlayMode2NPCNPC()
+    /*private static void PlayMode2NPCNPC()
     {
         if(Variables.NPCImages.Count != 0)
         {
@@ -2123,6 +2054,6 @@ public class Play
         {
             Control.matCharacter.SetTexture("_NPC",Variables.blackTex);
         }
-    }
+    }*/
 
 }

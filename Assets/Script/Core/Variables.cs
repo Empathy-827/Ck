@@ -154,6 +154,8 @@ public class Variables
     public static string NPC00OverlapPath;
     public static string NPC00CharacterPath;
 
+    public static int mat_anim_num = 7;
+
 
 
     public static string force = "00";

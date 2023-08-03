@@ -52,7 +52,7 @@ Material:
     - _KPointView: 1
     - _PicScale: 1
     m_Colors:
-    - _BackColor: {r: 0, g: 0, b: 0, a: 0}
+    - _BackColor: {r: 0.14509805, g: 0.14509805, b: 0.14509805, a: 1}
     - _CutValue: {r: 0, g: 0, b: 0, a: 0}
     - _CutValueNPC: {r: 0, g: 0, b: 0, a: 0}
     - _KPointOffset: {r: -0.5, g: -0.5, b: 0, a: 0}
