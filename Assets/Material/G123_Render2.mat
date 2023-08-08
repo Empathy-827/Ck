@@ -49,10 +49,10 @@ Material:
     - _BackPicMult: 0
     - _CutSwitch: 0
     - _KPointOffsetMult: 1
-    - _KPointView: 0
+    - _KPointView: 1
     - _PicScale: 1
     m_Colors:
-    - _BackColor: {r: 0.9411765, g: 0.9411765, b: 0.9411765, a: 1}
+    - _BackColor: {r: 0.30980393, g: 0.30980393, b: 0.30980393, a: 1}
     - _CutValue: {r: 0, g: 0, b: 0, a: 0}
     - _CutValueNPC: {r: 0, g: 0, b: 0, a: 0}
     - _KPointOffset: {r: -0.5, g: -0.5, b: 0, a: 0}

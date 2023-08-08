@@ -22,6 +22,12 @@ public class Interaction
     */
     public static void OnValueChangePlaySpeed(float value)
     {
+        //滑动滑块显示播放速度
+        Text speedComponent = GameObject.Find("播放速度").GetComponentInChildren<Text>();
+        float speednnum = (Variables.speed / 5.0f);
+        speedComponent.text = "播放速度：" + speednnum.ToString("F1");
+        //Debug.Log(speedComponent.text);
+
         Variables.speed = 5 + value * 10;
     }
 
@@ -1427,6 +1433,21 @@ public class Interaction
         RefreshData();
     }
 
+
+    
+    /**
+        导入NPC重叠对比动画资产
+    */
+    public static void ModeOverlapContrastImportNPCAnim()
+    {
+        Variables.bOverlapNPC = true;
+
+        Import.OpenOverlapFolderAnim(Control.matOverlap, Control.matContrast);
+        Variables.overlapWidth = Variables.NPCOverlapImages[0].width;
+        Variables.overlapHeight = Variables.NPCOverlapImages[0].height;
+        RefreshData();
+    }
+
     /**
         切换透明对比模式
     */
@@ -1955,7 +1976,8 @@ public class Interaction
 
         GameObject.Find("NPC选择按钮").transform.localScale = new Vector3(1,1,1);
         GameObject.Find("重叠控制器/左右对调").transform.localScale = new Vector3(1,1,1);
-        GameObject.Find("重叠控制器/导入NPC").transform.localScale = new Vector3(1,1,1);
+        GameObject.Find("重叠控制器/导入角色").transform.localScale = new Vector3(1,1,1);
+        GameObject.Find("重叠控制器/导入角色动作").transform.localScale = new Vector3(1,1,1);
         
         Variables.animName = "stand";
         GameObject.Find("动作/attack").GetComponentInChildren<Text>().text = "stand";

@@ -452,6 +452,11 @@ public class Control : MonoBehaviour
         Interaction.ModeOverlapContrastImportNPC();
     }
 
+    public void ButtonModeOverlapContrastImportNPCAnim()
+    {
+        Interaction.ModeOverlapContrastImportNPCAnim();
+    }
+
     public void ButtonChooseAlphaMode()
     {
         Interaction.ChooseAlphaMode();

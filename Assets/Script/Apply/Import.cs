@@ -16,9 +16,11 @@ public class Import
     public static void OpenNPCOverlapFolder(Material matOverlap,Material matContrast)
     {
         Variables.NPCOverlapPath = OpenFunc.Open("请选择需要重叠对比的NPC文件夹") + "/" + Variables.animName;
+
         Variables.NPCOverlapImages.Clear();
         Resources.UnloadUnusedAssets();
         GetImages.GetFilesAllImage(Variables.NPCOverlapImages , Variables.force , Variables.NPCOverlapPath);
+
         if(Variables.NPCOverlapImages.Count != 0)
         {
             Variables.cutValueNPCOverlap = new Vector4((Variables.standardPixel.x - Variables.NPCOverlapImages[0].width) / 2 / Variables.standardPixel.x , (Variables.standardPixel.y - Variables.NPCOverlapImages[0].height) /2 / Variables.standardPixel.y , 0 , 0);
@@ -29,6 +31,7 @@ public class Import
         {
             Messagebox.MessageBox(IntPtr.Zero,"该对比资产没有" + Variables.animName + "动作" , "确认" , 0);
         }
+
         GetImages.GetFilesAllImageNoForce(Variables.NPCOverlapImagesNoForce,Variables.NPCOverlapPath);
         Variables.overlapCount = Variables.NPCOverlapImagesNoForce.Count;
         Variables.overlapForceCount = Variables.NPCOverlapImages.Count;
@@ -49,6 +52,46 @@ public class Import
         if(Variables.bOverlapNPC == true)
         {
             OpenNPCOverlapFolder(matOverlap,matContrast);
+        }       
+    }
+
+
+    public static void OpenNPCOverlapFolderAnim(Material matOverlap,Material matContrast)
+    {
+        Variables.NPCOverlapPath = OpenFunc.Open("请选择需要重叠对比的NPC文件夹");
+
+        Variables.NPCOverlapImages.Clear();
+        Resources.UnloadUnusedAssets();
+        GetImages.GetFilesAllImage(Variables.NPCOverlapImages , Variables.force , Variables.NPCOverlapPath);
+
+        if(Variables.NPCOverlapImages.Count != 0)
+        {
+            Variables.cutValueNPCOverlap = new Vector4((Variables.standardPixel.x - Variables.NPCOverlapImages[0].width) / 2 / Variables.standardPixel.x , (Variables.standardPixel.y - Variables.NPCOverlapImages[0].height) /2 / Variables.standardPixel.y , 0 , 0);
+            matOverlap.SetVector("_CutValueNPC",Variables.cutValueNPCOverlap);
+            matContrast.SetVector("_CutValueOverlapNPC",Variables.cutValueNPCOverlap);
+        }
+        if(Variables.NPCOverlapImages.Count == 0)
+        {
+            Messagebox.MessageBox(IntPtr.Zero,"该对比资产没有" + Variables.animName + "动作" , "确认" , 0);
+        }
+
+        GetImages.GetFilesAllImageNoForce(Variables.NPCOverlapImagesNoForce,Variables.NPCOverlapPath);
+        Variables.overlapCount = Variables.NPCOverlapImagesNoForce.Count;
+        Variables.overlapForceCount = Variables.NPCOverlapImages.Count;
+        
+        if(Variables.NPCOverlapImages.Count == 0)
+        {
+            Messagebox.MessageBox(IntPtr.Zero,"请确认重叠对比NPC文件夹路径是否正确","确认",0);
+            OpenNPCOverlapFolder(matOverlap, matContrast);
+        }
+    }
+
+
+    public static void OpenOverlapFolderAnim(Material matOverlap, Material matContrast)
+    {
+        if(Variables.bOverlapNPC == true)
+        {
+            OpenNPCOverlapFolderAnim(matOverlap,matContrast);
         }       
     }
 
