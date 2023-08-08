@@ -116,18 +116,18 @@ Material:
     - _DiffrenceView: 1
     - _FinalLerp: 1
     - _KPointOffsetMult: 1
-    - _KPointView: 1
+    - _KPointView: 0
     - _PixelDiffLerp: 0
-    - _PixelDiffMult: 1
+    - _PixelDiffMult: 0
     - _Scale: 1
     - _ScaleNPC: 0.64
     - _ScaleOverlap: 1
     - _ScaleOverlapNPC: 0.64
-    - _SoldMult: 0
+    - _SoldMult: 1
     - _T: 0
     - _ViewKPoint: 1
     m_Colors:
-    - _BackColor: {r: 0.14509805, g: 0.14509805, b: 0.14509805, a: 1}
+    - _BackColor: {r: 0.9411765, g: 0.9411765, b: 0.9411765, a: 1}
     - _CutValue: {r: 0, g: 0, b: 0, a: 0}
     - _CutValueNPC: {r: 0, g: 0, b: 0, a: 0}
     - _CutValueOverlap: {r: 0, g: 0, b: 0, a: 0}
@@ -139,7 +139,7 @@ Material:
     - _KPointOffsetOverlap: {r: 0, g: 0, b: 0, a: 0}
     - _KPointOffsetRescale: {r: 0, g: 0, b: 0, a: 0}
     - _Scale: {r: 1, g: 1, b: 0, a: 0}
-    - _ScaleNPC: {r: 1, g: 1, b: 0, a: 0}
+    - _ScaleNPC: {r: 5, g: 5, b: 0, a: 0}
     - _ScaleNPCRescale: {r: 1, g: 1, b: 0, a: 0}
     - _ScaleOverlap: {r: 1, g: 1, b: 0, a: 0}
     - _ScaleOverlapNPC: {r: 1, g: 1, b: 0, a: 0}

@@ -26,11 +26,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Amount: -0.05
+    - _Amount: -0.000000037252903
     - _Radius0: 0
     - _Radius1: 0.5
     - _Span: 0.15
     m_Colors:
     - _ChooseColor: {r: 0, g: 0, b: 0, a: 0}
-    - _Position: {r: 0.3533794, g: 0.16690099, b: 0, a: 0}
+    - _Position: {r: 0.4457014, g: 0.4305555, b: 0, a: 0}
   m_BuildTextureStacks: []

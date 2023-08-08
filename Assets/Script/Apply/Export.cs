@@ -220,522 +220,6 @@ public class Export
         Control.matDepth.SetVector("_KPointOffsetRescale",Variables.KPointOffsetRescale);
         Control.matDepth.SetVector("_ScaleRescale",Variables.scaleRescale);
 
-        /*if(Variables.NPCMode == false)
-        {
-
-            if(Variables.validBody == true)
-            {
-                Control.matExport.SetFloat("_BodyDepthMult",1f);
-                Control.matExport.SetFloat("_WeaponDepthMult",0f);
-                Control.matExport.SetFloat("_HeadDepthMult",0f);
-                Control.matExport.SetTexture("_Head",Variables.blackTex);
-                Control.matExport.SetTexture("_Weapon",Variables.blackTex);
-                Control.matExport.SetTexture("_WeaponEffect",Variables.blackTex);
-                Control.matExport.SetTexture("_WeaponGem",Variables.blackTex);
-                for(int i = 0; i < Variables.waitRenderName.Count; i++)
-                {
-                    if(Variables.waitRenderName[i] == "attack")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetAttack);
-                    }
-                    else if(Variables.waitRenderName[i] == "stand")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetStand);
-                    }
-                    else if(Variables.waitRenderName[i] == "magic")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetMagic);
-                    }
-                    else if(Variables.waitRenderName[i] == "hit")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetHit);
-                    }
-                    else if(Variables.waitRenderName[i] == "die")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetDie);
-                    }
-                    else if(Variables.waitRenderName[i] == "walk")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetWalk);
-                    }
-
-                    GetImages.GetFilesAllImageNoForce(Variables.bodyRenderImages,Variables.bodyPath.Remove(Variables.bodyPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    DirectoryInfo bodyDir = new DirectoryInfo(Variables.bodyPath.Remove(Variables.bodyPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    FileInfo[] bodyFiles = bodyDir.GetFiles("*",SearchOption.AllDirectories);
-                    
-                    string name = Variables.bodyPath.Remove(Variables.bodyPath.LastIndexOf(@"/"));
-                    name = name.Substring(name.LastIndexOf(@"/"));
-                    string savePath = Variables.mainFolderPath + "/Export/export_Body/" + name + "/" + Variables.waitRenderName[i];
-                    Directory.CreateDirectory(savePath);
-
-                    for(int j = 0; j <= Variables.bodyRenderImages.Count-1 ; j++)
-                    {
-                        if(bodyFiles[j].Name.Substring(bodyFiles[j].Name.Length - 8,2) == "00")
-                        {
-                            Control.matExport.SetFloat("_KPointOffsetMult",1f);
-                        }
-                        if(bodyFiles[j].Name.Substring(bodyFiles[j].Name.Length - 8,2) == "20" && Variables.bVert == true)
-                        {
-                            Control.matExport.SetFloat("_KPointOffsetMult",-1f);
-                        }
-                        Control.matExport.SetTexture("_Body",Variables.bodyRenderImages[j]);
-                        FileStream file = new FileStream(savePath + "/" + bodyFiles[j].Name.Remove(bodyFiles[j].Name.LastIndexOf(@".")) + ".png" , FileMode.Create , FileAccess.Write);
-                        SaveImage(file,Control.matExport);
-                    }
-                    Variables.bodyRenderImages.Clear();
-                    Resources.UnloadUnusedAssets();
-                }
-            }
-            
-            if(Variables.validHead == true)
-            {
-                Control.matExport.SetFloat("_BodyDepthMult",0f);
-                Control.matExport.SetFloat("_WeaponDepthMult",0f);
-                Control.matExport.SetFloat("_HeadDepthMult",1f);
-                Control.matExport.SetTexture("_Weapon",Variables.blackTex);
-                Control.matExport.SetTexture("_Body",Variables.blackTex);
-                Control.matExport.SetTexture("_WeaponEffect",Variables.blackTex);
-                Control.matExport.SetTexture("_WeaponGem",Variables.blackTex);
-                for(int i = 0; i < Variables.waitRenderName.Count; i++)
-                {
-                    if(Variables.waitRenderName[i] == "attack" )
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetAttack);
-                    }
-                    else if(Variables.waitRenderName[i] == "stand")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetStand);
-                    }
-                    else if(Variables.waitRenderName[i] == "magic")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetMagic);
-                    }
-                    else if(Variables.waitRenderName[i] == "hit")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetHit);
-                    }
-                    else if(Variables.waitRenderName[i] == "die")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetDie);
-                    }
-                    else if(Variables.waitRenderName[i] == "walk")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetWalk);
-                    }
-
-                    GetImages.GetFilesAllImageNoForce(Variables.headRenderImages,Variables.headPath.Remove(Variables.headPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    DirectoryInfo headDir = new DirectoryInfo(Variables.headPath.Remove(Variables.headPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    FileInfo[] headFiles = headDir.GetFiles("*",SearchOption.AllDirectories);
-
-                    string name = Variables.headPath.Remove(Variables.headPath.LastIndexOf(@"/"));
-                    name = name.Substring(name.LastIndexOf(@"/"));
-                    string savePath = Variables.mainFolderPath + "/Export/export_Head/" + name + "/" + Variables.waitRenderName[i];
-                    Directory.CreateDirectory(savePath);
-            
-                    for(int j = 0; j <= Variables.headRenderImages.Count-1 ; j++)
-                    {
-                        if(headFiles[j].Name.Substring(headFiles[j].Name.Length - 8,2) == "00")
-                        {
-                            Control.matExport.SetFloat("_KPointOffsetMult",1f);
-                        }
-                        if(headFiles[j].Name.Substring(headFiles[j].Name.Length - 8,2) == "20" && Variables.bVert == true)
-                        {
-                            Control.matExport.SetFloat("_KPointOffsetMult",-1f);
-                        }
-                        Control.matExport.SetTexture("_Head",Variables.headRenderImages[j]);
-                        FileStream file = new FileStream(savePath + "/" + headFiles[j].Name.Remove(headFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
-                        SaveImage(file,Control.matExport);
-                    }
-                    Variables.headRenderImages.Clear();
-                    Resources.UnloadUnusedAssets();
-                }
-            }
-            
-            if(Variables.validWeapon == true)
-            {
-                Control.matExport.SetFloat("_BodyDepthMult",0f);
-                Control.matExport.SetFloat("_WeaponDepthMult",1f);
-                Control.matExport.SetFloat("_HeadDepthMult",0f);
-                Control.matExport.SetTexture("_Body",Variables.blackTex);
-                Control.matExport.SetTexture("_Head",Variables.blackTex);
-                Control.matExport.SetTexture("_WeaponEffect",Variables.blackTex);
-                Control.matExport.SetTexture("_WeaponGem",Variables.blackTex);
-                for(int i = 0; i < Variables.waitRenderName.Count ; i++)
-                {
-                    if(Variables.waitRenderName[i] == "attack" )
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetAttack);
-                    }
-                    else if(Variables.waitRenderName[i] == "stand")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetStand);
-                    }
-                    else if(Variables.waitRenderName[i] == "magic")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetMagic);
-                    }
-                    else if(Variables.waitRenderName[i] == "hit")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetHit);
-                    }
-                    else if(Variables.waitRenderName[i] == "die")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetDie);
-                    }
-                    else if(Variables.waitRenderName[i] == "walk")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetWalk);
-                    }
-
-                    GetImages.GetFilesAllImageNoForce(Variables.weaponRenderImages,Variables.weaponPath.Remove(Variables.weaponPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    DirectoryInfo weaponDir = new DirectoryInfo(Variables.weaponPath.Remove(Variables.weaponPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    FileInfo[] weaponFiles = weaponDir.GetFiles("*",SearchOption.AllDirectories);
-
-                    string name = Variables.weaponPath.Remove(Variables.weaponPath.LastIndexOf(@"/"));
-                    name = name.Substring(name.LastIndexOf(@"/"));
-                    string savePath = Variables.mainFolderPath + "/Export/export_Weapon/" + name + "/" + Variables.waitRenderName[i];
-                    Directory.CreateDirectory(savePath);
-
-                    for(int j = 0; j <= Variables.weaponRenderImages.Count-1 ; j++)
-                    {
-                        if(weaponFiles[j].Name.Substring(weaponFiles[j].Name.Length - 8,2) == "00")
-                        {
-                            Control.matExport.SetFloat("_KPointOffsetMult",1f);
-                        }
-                        if(weaponFiles[j].Name.Substring(weaponFiles[j].Name.Length - 8,2) == "20" && Variables.bVert == true)
-                        {
-                            Control.matExport.SetFloat("_KPointOffsetMult",-1f);
-                        }
-                        Control.matExport.SetTexture("_Weapon",Variables.weaponRenderImages[j]);
-                        FileStream file = new FileStream(savePath + "/" + weaponFiles[j].Name.Remove(weaponFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
-                        SaveImage(file,Control.matExport);
-                    }
-                    Variables.weaponRenderImages.Clear();
-                    Resources.UnloadUnusedAssets();
-                }
-            }
-
-            if(Variables.validWeaponEffect == true)
-            {
-                Control.matExport.SetFloat("_BodyDepthMult",0f);
-                Control.matExport.SetFloat("_WeaponDepthMult",1f);
-                Control.matExport.SetFloat("_HeadDepthMult",0f);
-                Control.matExport.SetTexture("_Body",Variables.blackTex);
-                Control.matExport.SetTexture("_Head",Variables.blackTex);
-                Control.matExport.SetTexture("_Weapon",Variables.blackTex);
-                Control.matExport.SetTexture("_WeaponGem",Variables.blackTex);
-                for(int i = 0; i < Variables.waitRenderName.Count ; i++)
-                {
-                    if(Variables.waitRenderName[i] == "attack" )
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetAttack);
-                    }
-                    else if(Variables.waitRenderName[i] == "stand")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetStand);
-                    }
-                    else if(Variables.waitRenderName[i] == "magic")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetMagic);
-                    }
-                    else if(Variables.waitRenderName[i] == "hit")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetHit);
-                    }
-                    else if(Variables.waitRenderName[i] == "die")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetDie);
-                    }
-                    else if(Variables.waitRenderName[i] == "walk")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetWalk);
-                    }
-
-                    GetImages.GetFilesAllImageNoForce(Variables.weaponEffectRenderImages,Variables.weaponEffectPath.Remove(Variables.weaponEffectPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    DirectoryInfo weaponEffectDir = new DirectoryInfo(Variables.weaponEffectPath.Remove(Variables.weaponEffectPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    FileInfo[] weaponEffectFiles = weaponEffectDir.GetFiles("*",SearchOption.AllDirectories);
-
-                    string name = Variables.weaponEffectPath.Remove(Variables.weaponEffectPath.LastIndexOf(@"/"));
-                    name = name.Substring(name.LastIndexOf(@"/"));
-                    string savePath = Variables.mainFolderPath + "/Export/export_weapon30Effect/" + name + "/" + Variables.waitRenderName[i];
-                    Directory.CreateDirectory(savePath);
-
-                    for(int j = 0; j <= Variables.weaponEffectRenderImages.Count-1 ; j++)
-                    {
-                        if(weaponEffectFiles[j].Name.Substring(weaponEffectFiles[j].Name.Length - 8,2) == "00")
-                        {
-                            Control.matExport.SetFloat("_KPointOffsetMult",1f);
-                        }
-                        if(weaponEffectFiles[j].Name.Substring(weaponEffectFiles[j].Name.Length - 8,2) == "20" && Variables.bVert == true)
-                        {
-                            Control.matExport.SetFloat("_KPointOffsetMult",-1f);
-                        }
-                        Control.matExport.SetTexture("_Weapon",Variables.weaponEffectRenderImages[j]);
-                        FileStream file = new FileStream(savePath + "/" + weaponEffectFiles[j].Name.Remove(weaponEffectFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
-                        SaveImage(file,Control.matExport);
-                    }
-                    Variables.weaponEffectRenderImages.Clear();
-                    Resources.UnloadUnusedAssets();
-                }
-            }
-
-            if(Variables.validGem == true)
-            {
-                Control.matExport.SetFloat("_BodyDepthMult",0f);
-                Control.matExport.SetFloat("_WeaponDepthMult",1f);
-                Control.matExport.SetFloat("_HeadDepthMult",0f);
-                Control.matExport.SetTexture("_Body",Variables.blackTex);
-                Control.matExport.SetTexture("_Head",Variables.blackTex);
-                Control.matExport.SetTexture("_Weapon",Variables.blackTex);
-                Control.matExport.SetTexture("_WeaponEffect",Variables.blackTex);
-                for(int i = 0; i < Variables.waitRenderName.Count ; i++)
-                {
-                    if(Variables.waitRenderName[i] == "attack" )
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetAttack);
-                    }
-                    else if(Variables.waitRenderName[i] == "stand")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetStand);
-                    }
-                    else if(Variables.waitRenderName[i] == "magic")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetMagic);
-                    }
-                    else if(Variables.waitRenderName[i] == "hit")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetHit);
-                    }
-                    else if(Variables.waitRenderName[i] == "die")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetDie);
-                    }
-                    else if(Variables.waitRenderName[i] == "walk")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetWalk);
-                    }
-
-                    GetImages.GetFilesAllImageNoForce(Variables.weaponGemRenderImages,Variables.gemPath.Remove(Variables.gemPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    DirectoryInfo weaponGemDir = new DirectoryInfo(Variables.gemPath.Remove(Variables.gemPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    FileInfo[] weaponGemFiles = weaponGemDir.GetFiles("*",SearchOption.AllDirectories);
-
-                    string name = Variables.gemPath.Remove(Variables.gemPath.LastIndexOf(@"/"));
-                    name = name.Substring(name.LastIndexOf(@"/"));
-                    string savePath = Variables.mainFolderPath + "/Export/export_gemEffect/" + name + "/" + Variables.waitRenderName[i];
-                    Directory.CreateDirectory(savePath);
-
-                    for(int j = 0; j <= Variables.weaponGemRenderImages.Count-1 ; j++)
-                    {
-                        if(weaponGemFiles[j].Name.Substring(weaponGemFiles[j].Name.Length - 8,2) == "00")
-                        {
-                            Control.matExport.SetFloat("_KPointOffsetMult",1f);
-                        }
-                        if(weaponGemFiles[j].Name.Substring(weaponGemFiles[j].Name.Length - 8,2) == "20" && Variables.bVert == true)
-                        {
-                            Control.matExport.SetFloat("_KPointOffsetMult",-1f);
-                        }
-                        Control.matExport.SetTexture("_Weapon",Variables.weaponGemRenderImages[j]);
-                        FileStream file = new FileStream(savePath + "/" + weaponGemFiles[j].Name.Remove(weaponGemFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
-                        SaveImage(file,Control.matExport);
-                    }
-                    Variables.weaponGemRenderImages.Clear();
-                    Resources.UnloadUnusedAssets();
-                }
-            }
-
-            if(Variables.validBodyDepth == true)
-            {
-                Control.matDepth.SetTexture("_HeadDepth",Variables.blackTex);
-                Control.matDepth.SetTexture("_WeaponDepth",Variables.blackTex);
-                for(int i = 0; i < Variables.waitRenderName.Count; i++)
-                {
-                    if(Variables.waitRenderName[i] == "attack" )
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetAttack);
-                    }
-                    else if(Variables.waitRenderName[i] == "stand")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetStand);
-                    }
-                    else if(Variables.waitRenderName[i] == "magic")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetMagic);
-                    }
-                    else if(Variables.waitRenderName[i] == "hit")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetHit);
-                    }
-                    else if(Variables.waitRenderName[i] == "die")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetDie);
-                    }
-                    else if(Variables.waitRenderName[i] == "walk")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetWalk);
-                    }
-
-                    GetImages.GetFilesAllImageNoForce(Variables.bodyDepthRenderImages,Variables.bodyDepthPath.Remove(Variables.bodyDepthPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    DirectoryInfo bodyDepthDir = new DirectoryInfo(Variables.bodyDepthPath.Remove(Variables.bodyDepthPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    FileInfo[] bodyDepthFiles = bodyDepthDir.GetFiles("*",SearchOption.AllDirectories);
-
-                    string name = Variables.bodyDepthPath.Remove(Variables.bodyDepthPath.LastIndexOf(@"/"));
-                    name = name.Substring(name.LastIndexOf(@"/"));
-                    string savePath = Variables.mainFolderPath + "/Export/export_BodyDepth/" + name + "/" + Variables.waitRenderName[i];
-                    Directory.CreateDirectory(savePath);
-
-                    for(int j = 0; j <= Variables.bodyDepthRenderImages.Count-1 ; j++)
-                    {
-                        if(bodyDepthFiles[j].Name.Substring(bodyDepthFiles[j].Name.Length - 8,2) == "00")
-                        {
-                            Control.matDepth.SetFloat("_KPointOffsetMult",1f);
-                        }
-                        if(bodyDepthFiles[j].Name.Substring(bodyDepthFiles[j].Name.Length - 8,2) == "20" && Variables.bVert == true)
-                        {
-                            Control.matDepth.SetFloat("_KPointOffsetMult",-1f);
-                        }
-                        Control.matDepth.SetTexture("_BodyDepth",Variables.bodyDepthRenderImages[j]);  
-                        FileStream file = new FileStream(savePath + "/" + bodyDepthFiles[j].Name.Remove(bodyDepthFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
-                        SaveImage(file,Control.matDepth);
-                    }
-                    Variables.bodyDepthRenderImages.Clear();
-                    Resources.UnloadUnusedAssets();
-                }
-            }
-            
-            if(Variables.validHeadDepth == true)
-            {
-                Control.matDepth.SetTexture("_BodyDepth",Variables.blackTex);
-                Control.matDepth.SetTexture("_WeaponDepth",Variables.blackTex);
-                for(int i = 0; i < Variables.waitRenderName.Count; i++)
-                {
-                    if(Variables.waitRenderName[i] == "attack" )
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetAttack);
-                    }
-                    else if(Variables.waitRenderName[i] == "stand")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetStand);
-                    }
-                    else if(Variables.waitRenderName[i] == "magic")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetMagic);
-                    }
-                    else if(Variables.waitRenderName[i] == "hit")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetHit);
-                    }
-                    else if(Variables.waitRenderName[i] == "die")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetDie);
-                    }
-                    else if(Variables.waitRenderName[i] == "walk")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetWalk);
-                    }
-
-                    GetImages.GetFilesAllImageNoForce(Variables.headDepthRenderImages,Variables.headDepthPath.Remove(Variables.headDepthPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    DirectoryInfo headDepthDir = new DirectoryInfo(Variables.headDepthPath.Remove(Variables.headDepthPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    FileInfo[] headDepthFiles = headDepthDir.GetFiles("*",SearchOption.AllDirectories);
-
-                    string name = Variables.headDepthPath.Remove(Variables.headDepthPath.LastIndexOf(@"/"));
-                    name = name.Substring(name.LastIndexOf(@"/"));
-                    string savePath = Variables.mainFolderPath + "/Export/export_HeadDepth/" + name + "/" + Variables.waitRenderName[i];
-                    Directory.CreateDirectory(savePath);
-
-                    for(int j = 0; j <= Variables.headDepthRenderImages.Count-1 ; j++)
-                    {
-                        if(headDepthFiles[j].Name.Substring(headDepthFiles[j].Name.Length - 8,2) == "00")
-                        {
-                            Control.matDepth.SetFloat("_KPointOffsetMult",1f);
-                        }
-                        if(headDepthFiles[j].Name.Substring(headDepthFiles[j].Name.Length - 8,2) == "20" && Variables.bVert == true)
-                        {
-                            Control.matDepth.SetFloat("_KPointOffsetMult",-1f);
-                        }
-                        Control.matDepth.SetTexture("_HeadDepth",Variables.headDepthRenderImages[j]);  
-                        FileStream file = new FileStream(savePath + "/" + headDepthFiles[j].Name.Remove(headDepthFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
-                        SaveImage(file,Control.matDepth);
-    
-                    }
-                    Variables.headDepthRenderImages.Clear();
-                    Resources.UnloadUnusedAssets();
-                }
-            }
-            
-            if(Variables.validWeaponDepth == true)
-            {
-                Control.matDepth.SetTexture("_BodyDepth",Variables.blackTex);
-                Control.matDepth.SetTexture("_HeadDepth",Variables.blackTex);
-                for(int i = 0; i < Variables.waitRenderName.Count; i++)
-                {
-                    if(Variables.waitRenderName[i] == "attack" )
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetAttack);
-                    }
-                    else if(Variables.waitRenderName[i] == "stand")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetStand);
-                    }
-                    else if(Variables.waitRenderName[i] == "magic")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetMagic);
-                    }
-                    else if(Variables.waitRenderName[i] == "hit")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetHit);
-                    }
-                    else if(Variables.waitRenderName[i] == "die")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetDie);
-                    }
-                    else if(Variables.waitRenderName[i] == "walk")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetWalk);
-                    }
-
-                    GetImages.GetFilesAllImageNoForce(Variables.weaponDepthRenderImages,Variables.weaponDepthPath.Remove(Variables.weaponDepthPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    DirectoryInfo weaponDepthDir = new DirectoryInfo(Variables.weaponDepthPath.Remove(Variables.weaponDepthPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    FileInfo[] weaponDepthFiles = weaponDepthDir.GetFiles("*",SearchOption.AllDirectories);
-
-                    string name = Variables.weaponDepthPath.Remove(Variables.weaponDepthPath.LastIndexOf(@"/"));
-                    name = name.Substring(name.LastIndexOf(@"/"));
-                    string savePath = Variables.mainFolderPath + "/Export/export_WeaponDepth/" + name + "/" + Variables.waitRenderName[i];
-                    Directory.CreateDirectory(savePath);
-
-                    for(int j = 0; j <= Variables.weaponDepthRenderImages.Count-1 ; j++)
-                    {
-                        if(weaponDepthFiles[j].Name.Substring(weaponDepthFiles[j].Name.Length - 8,2) == "00")
-                        {
-                            Control.matDepth.SetFloat("_KPointOffsetMult",1f);
-                        }
-                        if(weaponDepthFiles[j].Name.Substring(weaponDepthFiles[j].Name.Length - 8,2) == "20" && Variables.bVert == true)
-                        {
-                            Control.matDepth.SetFloat("_KPointOffsetMult",-1f);
-                        }
-                        Control.matDepth.SetTexture("_WeaponDepth",Variables.weaponDepthRenderImages[j]); 
-                        FileStream file = new FileStream(savePath + "/" + weaponDepthFiles[j].Name.Remove(weaponDepthFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
-                        SaveImage(file,Control.matDepth);
-                    }
-                    Variables.weaponDepthRenderImages.Clear();
-                    Resources.UnloadUnusedAssets();
-                }
-            }
-            
-            Variables.waitRenderName.Clear();
-            Resources.UnloadUnusedAssets();
-            Control.matExport.SetFloat("_BodyDepthMult",0f);
-            Control.matExport.SetFloat("_WeaponDepthMult",0f);
-            Control.matExport.SetFloat("_HeadDepthMult",0f);
-            
-            Control.matExport.SetVector("_BackColor",Variables.pixelColor);
-            Control.matExport.SetFloat("_KPointOffsetMult",1f);
-            Control.matDepth.SetFloat("_KPointOffsetMult",1f);
-
-            Messagebox.MessageBox(IntPtr.Zero, "输出完毕", "确认", 0);
-            Variables.bPlay = true; 
-            Variables.bChoose = true;
-        }
-        else*/
         if(Variables.NPCMode == true)
         {
             
@@ -797,7 +281,7 @@ public class Export
                             Control.matExportNPC.SetFloat("_KPointOffsetMult",-1f);
                         }
                         Control.matExportNPC.SetTexture("_NPC",Variables.NPCRenderImages[j]);
-                        FileStream file = new FileStream(savePath + "/" + NPCFiles[j].Name.Remove(NPCFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
+                        FileStream file = new FileStream(savePath + "/" + NPCFiles[j].Name.Remove(NPCFiles[j].Name.LastIndexOf(@".")) + ".tga",FileMode.Create,FileAccess.Write);
                         SaveImage(file,Control.matExportNPC);
                     }
                     Variables.NPCRenderImages.Clear();
@@ -854,7 +338,7 @@ public class Export
                             Control.matExportNPC.SetFloat("_KPointOffsetMult",-1f);
                         }
                         Control.matExportNPC.SetTexture("_NPC",Variables.NPCRenderImages[j]);
-                        FileStream file = new FileStream(savePath + "/" + NPCFiles[j].Name.Remove(NPCFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
+                        FileStream file = new FileStream(savePath + "/" + NPCFiles[j].Name.Remove(NPCFiles[j].Name.LastIndexOf(@".")) + ".tga",FileMode.Create,FileAccess.Write);
                         SaveImage(file,Control.matExportNPC);
                     }
                     Variables.NPCRenderImages.Clear();
@@ -914,531 +398,6 @@ public class Export
         Control.matDepth.SetVector("_KPointOffsetRescale",Variables.KPointOffsetRescale);
         Control.matDepth.SetVector("_ScaleRescale",Variables.scaleRescale);
 
-        /*if(Variables.NPCMode == false)
-        {
-            List<String> renderPath = GetFiles.GetAllFiles(Variables.bodyPath.Remove(Variables.bodyPath.LastIndexOf(@"/")));
-            for(int k = 0; k < renderPath.Count; k++)
-            {
-                Variables.waitRenderName.Add(renderPath[k]);
-            }
-
-            if(Variables.validBody == true)
-            {
-                Control.matExport.SetFloat("_BodyDepthMult",1f);
-                Control.matExport.SetFloat("_WeaponDepthMult",0f);
-                Control.matExport.SetFloat("_HeadDepthMult",0f);
-                Control.matExport.SetTexture("_Head",Variables.blackTex);
-                Control.matExport.SetTexture("_Weapon",Variables.blackTex);
-                Control.matExport.SetTexture("_WeaponEffect",Variables.blackTex);
-                Control.matExport.SetTexture("_WeaponGem",Variables.blackTex);
-                for(int i = 0; i < Variables.waitRenderName.Count; i++)
-                {
-                    if(Variables.waitRenderName[i] == "attack" )
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetAttack);
-                    }
-                    else if(Variables.waitRenderName[i] == "stand")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetStand);
-                    }
-                    else if(Variables.waitRenderName[i] == "magic")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetMagic);
-                    }
-                    else if(Variables.waitRenderName[i] == "hit")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetHit);
-                    }
-                    else if(Variables.waitRenderName[i] == "die")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetDie);
-                    }
-                    else if(Variables.waitRenderName[i] == "walk")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetWalk);
-                    }
-                    
-                    GetImages.GetFilesAllImageNoForce(Variables.bodyRenderImages,Variables.bodyPath.Remove(Variables.bodyPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    DirectoryInfo bodyDir = new DirectoryInfo(Variables.bodyPath.Remove(Variables.bodyPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    FileInfo[] bodyFiles = bodyDir.GetFiles("*",SearchOption.AllDirectories);
-                    
-                    string name = Variables.bodyPath.Remove(Variables.bodyPath.LastIndexOf(@"/"));
-                    name = name.Substring(name.LastIndexOf(@"/"));
-                    string savePath = Variables.mainFolderPath + "/Export/export_Body/" + name + "/" + Variables.waitRenderName[i];
-                    Directory.CreateDirectory(savePath);
-
-                    for(int j = 0; j <= Variables.bodyRenderImages.Count-1 ; j++)
-                    {
-                        if(bodyFiles[j].Name.Substring(bodyFiles[j].Name.Length - 8,2) == "00")
-                        {
-                            Control.matExport.SetFloat("_KPointOffsetMult",1f);
-                        }
-                        if(bodyFiles[j].Name.Substring(bodyFiles[j].Name.Length - 8,2) == "20" && Variables.bVert == true)
-                        {
-                            Control.matExport.SetFloat("_KPointOffsetMult",-1f);
-                        }
-                        Control.matExport.SetTexture("_Body",Variables.bodyRenderImages[j]);
-                        FileStream file = new FileStream(savePath + "/" + bodyFiles[j].Name.Remove(bodyFiles[j].Name.LastIndexOf(@".")) + ".png" , FileMode.Create , FileAccess.Write);
-                        SaveImage(file,Control.matExport);
-                    }
-                    Variables.bodyRenderImages.Clear();
-                    Resources.UnloadUnusedAssets();
-                }
-            }
-            
-            if(Variables.validHead == true)
-            {
-                Control.matExport.SetFloat("_BodyDepthMult",0f);
-                Control.matExport.SetFloat("_WeaponDepthMult",0f);
-                Control.matExport.SetFloat("_HeadDepthMult",1f);
-                Control.matExport.SetTexture("_Weapon",Variables.blackTex);
-                Control.matExport.SetTexture("_Body",Variables.blackTex);
-                Control.matExport.SetTexture("_WeaponEffect",Variables.blackTex);
-                Control.matExport.SetTexture("_WeaponGem",Variables.blackTex);
-                for(int i = 0; i < Variables.waitRenderName.Count; i++)
-                {
-                    if(Variables.waitRenderName[i] == "attack" )
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetAttack);
-                    }
-                    else if(Variables.waitRenderName[i] == "stand")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetStand);
-                    }
-                    else if(Variables.waitRenderName[i] == "magic")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetMagic);
-                    }
-                    else if(Variables.waitRenderName[i] == "hit")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetHit);
-                    }
-                    else if(Variables.waitRenderName[i] == "die")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetDie);
-                    }
-                    else if(Variables.waitRenderName[i] == "walk")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetWalk);
-                    }
-
-                    GetImages.GetFilesAllImageNoForce(Variables.headRenderImages,Variables.headPath.Remove(Variables.headPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    DirectoryInfo headDir = new DirectoryInfo(Variables.headPath.Remove(Variables.headPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    FileInfo[] headFiles = headDir.GetFiles("*",SearchOption.AllDirectories);
-
-                    string name = Variables.headPath.Remove(Variables.headPath.LastIndexOf(@"/"));
-                    name = name.Substring(name.LastIndexOf(@"/"));
-                    string savePath = Variables.mainFolderPath + "/Export/export_Head/" + name + "/" + Variables.waitRenderName[i];
-                    Directory.CreateDirectory(savePath);
-            
-                    for(int j = 0; j <= Variables.headRenderImages.Count-1 ; j++)
-                    {
-                        if(headFiles[j].Name.Substring(headFiles[j].Name.Length - 8,2) == "00")
-                        {
-                            Control.matExport.SetFloat("_KPointOffsetMult",1f);
-                        }
-                        if(headFiles[j].Name.Substring(headFiles[j].Name.Length - 8,2) == "20" && Variables.bVert == true)
-                        {
-                            Control.matExport.SetFloat("_KPointOffsetMult",-1f);
-                        }
-                        Control.matExport.SetTexture("_Head",Variables.headRenderImages[j]);
-                        FileStream file = new FileStream(savePath + "/" + headFiles[j].Name.Remove(headFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
-                        SaveImage(file,Control.matExport);
-
-                    }
-                    Variables.headRenderImages.Clear();
-                    Resources.UnloadUnusedAssets();
-                }
-            }
-            
-            if(Variables.bSwitch == true)
-            {
-                Control.matExport.SetFloat("_BodyDepthMult",0f);
-                Control.matExport.SetFloat("_WeaponDepthMult",1f);
-                Control.matExport.SetFloat("_HeadDepthMult",0f);
-                Control.matExport.SetTexture("_Body",Variables.blackTex);
-                Control.matExport.SetTexture("_Head",Variables.blackTex);
-                Control.matExport.SetTexture("_Weapon",Variables.blackTex);
-                Control.matExport.SetTexture("_WeaponGem",Variables.blackTex);
-                for(int i = 0; i < Variables.waitRenderName.Count ; i++)
-                {
-                    if(Variables.waitRenderName[i] == "attack" )
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetAttack);
-                    }
-                    else if(Variables.waitRenderName[i] == "stand")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetStand);
-                    }
-                    else if(Variables.waitRenderName[i] == "magic")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetMagic);
-                    }
-                    else if(Variables.waitRenderName[i] == "hit")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetHit);
-                    }
-                    else if(Variables.waitRenderName[i] == "die")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetDie);
-                    }
-                    else if(Variables.waitRenderName[i] == "walk")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetWalk);
-                    }
-
-                    GetImages.GetFilesAllImageNoForce(Variables.weaponRenderImages,Variables.weaponPath.Remove(Variables.weaponPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    DirectoryInfo weaponDir = new DirectoryInfo(Variables.weaponPath.Remove(Variables.weaponPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    FileInfo[] weaponFiles = weaponDir.GetFiles("*",SearchOption.AllDirectories);
-
-                    string name = Variables.weaponPath.Remove(Variables.weaponPath.LastIndexOf(@"/"));
-                    name = name.Substring(name.LastIndexOf(@"/"));
-                    string savePath = Variables.mainFolderPath + "/Export/export_Weapon/" + name + "/" + Variables.waitRenderName[i];
-                    Directory.CreateDirectory(savePath);
-
-                    for(int j = 0; j <= Variables.weaponRenderImages.Count-1 ; j++)
-                    {
-                        if(weaponFiles[j].Name.Substring(weaponFiles[j].Name.Length - 8,2) == "00")
-                        {
-                            Control.matExport.SetFloat("_KPointOffsetMult",1f);
-                        }
-                        if(weaponFiles[j].Name.Substring(weaponFiles[j].Name.Length - 8,2) == "20" && Variables.bVert == true)
-                        {
-                            Control.matExport.SetFloat("_KPointOffsetMult",-1f);
-                        }
-                        Control.matExport.SetTexture("_Weapon",Variables.weaponRenderImages[j]);
-                        FileStream file = new FileStream(savePath + "/" + weaponFiles[j].Name.Remove(weaponFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
-                        SaveImage(file,Control.matExport);
-                    }
-                    Variables.weaponRenderImages.Clear();
-                    Resources.UnloadUnusedAssets();
-                }
-            }
-            
-            if(Variables.validWeaponEffect == true)
-            {
-                Control.matExport.SetFloat("_BodyDepthMult",0f);
-                Control.matExport.SetFloat("_WeaponDepthMult",1f);
-                Control.matExport.SetFloat("_HeadDepthMult",0f);
-                Control.matExport.SetTexture("_Body",Variables.blackTex);
-                Control.matExport.SetTexture("_Head",Variables.blackTex);
-                Control.matExport.SetTexture("_Weapon",Variables.blackTex);
-                Control.matExport.SetTexture("_WeaponGem",Variables.blackTex);
-                for(int i = 0; i< Variables.waitRenderName.Count ; i++)
-                {
-                    if(Variables.waitRenderName[i] == "attack" )
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetAttack);
-                    }
-                    else if(Variables.waitRenderName[i] == "stand")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetStand);
-                    }
-                    else if(Variables.waitRenderName[i] == "magic")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetMagic);
-                    }
-                    else if(Variables.waitRenderName[i] == "hit")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetHit);
-                    }
-                    else if(Variables.waitRenderName[i] == "die")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetDie);
-                    }
-                    else if(Variables.waitRenderName[i] == "walk")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetWalk);
-                    }
-
-                    GetImages.GetFilesAllImageNoForce(Variables.weaponEffectRenderImages,Variables.weaponEffectPath.Remove(Variables.weaponEffectPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    DirectoryInfo weaponEffectDir = new DirectoryInfo(Variables.weaponEffectPath.Remove(Variables.weaponEffectPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    FileInfo[] weaponEffectFiles = weaponEffectDir.GetFiles("*",SearchOption.AllDirectories);
-
-                    string name = Variables.weaponEffectPath.Remove(Variables.weaponEffectPath.LastIndexOf(@"/"));
-                    name = name.Substring(name.LastIndexOf(@"/"));
-                    string savePath = Variables.mainFolderPath + "/Export/export_weapon30Effect/" + name + "/" + Variables.waitRenderName[i];
-                    Directory.CreateDirectory(savePath);
-
-                    for(int j = 0; j <= Variables.weaponEffectRenderImages.Count - 1; j++)
-                    {
-                        if(weaponEffectFiles[j].Name.Substring(weaponEffectFiles[j].Name.Length - 8,2) == "00")
-                        {
-                            Control.matExport.SetFloat("_KPointOffsetMult",1f);
-                        }
-                        if(weaponEffectFiles[j].Name.Substring(weaponEffectFiles[j].Name.Length - 8,2) == "20" && Variables.bVert == true)
-                        {
-                            Control.matExport.SetFloat("_KPointOffsetMult",-1f);
-                        }
-                        Control.matExport.SetTexture("_WeaponEffect",Variables.weaponEffectRenderImages[j]);
-                        FileStream file = new FileStream(savePath + "/" + weaponEffectFiles[j].Name.Remove(weaponEffectFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
-                        SaveImage(file,Control.matExport);
-                    }
-                    Variables.weaponEffectRenderImages.Clear();
-                    Resources.UnloadUnusedAssets();
-                }
-            }
-
-            if(Variables.validGem == true)
-            {
-                Control.matExport.SetFloat("_BodyDepthMult",0f);
-                Control.matExport.SetFloat("_WeaponDepthMult",1f);
-                Control.matExport.SetFloat("_HeadDepthMult",0f);
-                Control.matExport.SetTexture("_Body",Variables.blackTex);
-                Control.matExport.SetTexture("_Head",Variables.blackTex);
-                Control.matExport.SetTexture("_Weapon",Variables.blackTex);
-                Control.matExport.SetTexture("_WeaponEffect",Variables.blackTex);
-                for(int i = 0; i< Variables.waitRenderName.Count ; i++)
-                {
-                    if(Variables.waitRenderName[i] == "attack" )
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetAttack);
-                    }
-                    else if(Variables.waitRenderName[i] == "stand")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetStand);
-                    }
-                    else if(Variables.waitRenderName[i] == "magic")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetMagic);
-                    }
-                    else if(Variables.waitRenderName[i] == "hit")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetHit);
-                    }
-                    else if(Variables.waitRenderName[i] == "die")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetDie);
-                    }
-                    else if(Variables.waitRenderName[i] == "walk")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetWalk);
-                    }
-
-                    GetImages.GetFilesAllImageNoForce(Variables.weaponGemRenderImages,Variables.gemPath.Remove(Variables.gemPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    DirectoryInfo weaponGemDir = new DirectoryInfo(Variables.gemPath.Remove(Variables.gemPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    FileInfo[] weaponGemFiles = weaponGemDir.GetFiles("*",SearchOption.AllDirectories);
-
-                    string name = Variables.gemPath.Remove(Variables.gemPath.LastIndexOf(@"/"));
-                    name = name.Substring(name.LastIndexOf(@"/"));
-                    string savePath = Variables.mainFolderPath + "/Export/export_gemEffect/" + name + "/" + Variables.waitRenderName[i];
-                    Directory.CreateDirectory(savePath);
-
-                    for(int j = 0; j <= Variables.weaponGemRenderImages.Count - 1; j++)
-                    {
-                        if(weaponGemFiles[j].Name.Substring(weaponGemFiles[j].Name.Length - 8,2) == "00")
-                        {
-                            Control.matExport.SetFloat("_KPointOffsetMult",1f);
-                        }
-                        if(weaponGemFiles[j].Name.Substring(weaponGemFiles[j].Name.Length - 8,2) == "20" && Variables.bVert == true)
-                        {
-                            Control.matExport.SetFloat("_KPointOffsetMult",-1f);
-                        }
-                        Control.matExport.SetTexture("_WeaponGem",Variables.weaponGemRenderImages[j]);
-                        FileStream file = new FileStream(savePath + "/" + weaponGemFiles[j].Name.Remove(weaponGemFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
-                        SaveImage(file,Control.matExport);
-                    }
-                    Variables.weaponGemRenderImages.Clear();
-                    Resources.UnloadUnusedAssets();
-                }
-            }
-            
-            if(Variables.validBodyDepth == true)
-            {
-                Control.matDepth.SetTexture("_HeadDepth",Variables.blackTex);
-                Control.matDepth.SetTexture("_WeaponDepth",Variables.blackTex);
-                for(int i = 0; i < Variables.waitRenderName.Count; i++)
-                {
-                    if(Variables.waitRenderName[i] == "attack" )
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetAttack);
-                    }
-                    else if(Variables.waitRenderName[i] == "stand")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetStand);
-                    }
-                    else if(Variables.waitRenderName[i] == "magic")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetMagic);
-                    }
-                    else if(Variables.waitRenderName[i] == "hit")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetHit);
-                    }
-                    else if(Variables.waitRenderName[i] == "die")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetDie);
-                    }
-                    else if(Variables.waitRenderName[i] == "walk")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetWalk);
-                    }
-
-                    GetImages.GetFilesAllImageNoForce(Variables.bodyDepthRenderImages,Variables.bodyDepthPath.Remove(Variables.bodyDepthPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    DirectoryInfo bodyDepthDir = new DirectoryInfo(Variables.bodyDepthPath.Remove(Variables.bodyDepthPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    FileInfo[] bodyDepthFiles = bodyDepthDir.GetFiles("*",SearchOption.AllDirectories);
-
-                    string name = Variables.bodyDepthPath.Remove(Variables.bodyDepthPath.LastIndexOf(@"/"));
-                    name = name.Substring(name.LastIndexOf(@"/"));
-                    string savePath = Variables.mainFolderPath + "/Export/export_BodyDepth/" + name + "/" + Variables.waitRenderName[i];
-                    Directory.CreateDirectory(savePath);
-
-                    for(int j = 0; j <= Variables.bodyDepthRenderImages.Count-1 ; j++)
-                    {
-                        if(bodyDepthFiles[j].Name.Substring(bodyDepthFiles[j].Name.Length - 8,2) == "00")
-                        {
-                            Control.matDepth.SetFloat("_KPointOffsetMult",1f);
-                        }
-                        if(bodyDepthFiles[j].Name.Substring(bodyDepthFiles[j].Name.Length - 8,2) == "20" && Variables.bVert == true)
-                        {
-                            Control.matDepth.SetFloat("_KPointOffsetMult",-1f);
-                        }
-                        Control.matDepth.SetTexture("_BodyDepth",Variables.bodyDepthRenderImages[j]);  
-                        FileStream file = new FileStream(savePath + "/" + bodyDepthFiles[j].Name.Remove(bodyDepthFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
-                        SaveImage(file,Control.matDepth);
-                    
-                    }
-                    Variables.bodyDepthRenderImages.Clear();
-                    Resources.UnloadUnusedAssets();
-                }
-            }
-            
-            if(Variables.validHeadDepth == true)
-            {
-                Control.matDepth.SetTexture("_BodyDepth",Variables.blackTex);
-                Control.matDepth.SetTexture("_WeaponDepth",Variables.blackTex);
-                for(int i = 0; i < Variables.waitRenderName.Count; i++)
-                {
-                    if(Variables.waitRenderName[i] == "attack" )
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetAttack);
-                    }
-                    else if(Variables.waitRenderName[i] == "stand")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetStand);
-                    }
-                    else if(Variables.waitRenderName[i] == "magic")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetMagic);
-                    }
-                    else if(Variables.waitRenderName[i] == "hit")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetHit);
-                    }
-                    else if(Variables.waitRenderName[i] == "die")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetDie);
-                    }
-                    else if(Variables.waitRenderName[i] == "walk")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetWalk);
-                    }
-
-                    GetImages.GetFilesAllImageNoForce(Variables.headDepthRenderImages,Variables.headDepthPath.Remove(Variables.headDepthPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    DirectoryInfo headDepthDir = new DirectoryInfo(Variables.headDepthPath.Remove(Variables.headDepthPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    FileInfo[] headDepthFiles = headDepthDir.GetFiles("*",SearchOption.AllDirectories);
-
-                    string name = Variables.headDepthPath.Remove(Variables.headDepthPath.LastIndexOf(@"/"));
-                    name = name.Substring(name.LastIndexOf(@"/"));
-                    string savePath = Variables.mainFolderPath + "/Export/export_HeadDepth/" + name + "/" + Variables.waitRenderName[i];
-                    Directory.CreateDirectory(savePath);
-
-                    for(int j = 0; j <= Variables.headDepthRenderImages.Count-1 ; j++)
-                    {
-                        if(headDepthFiles[j].Name.Substring(headDepthFiles[j].Name.Length - 8,2) == "00")
-                        {
-                            Control.matDepth.SetFloat("_KPointOffsetMult",1f);
-                        }
-                        if(headDepthFiles[j].Name.Substring(headDepthFiles[j].Name.Length - 8,2) == "20" && Variables.bVert == true)
-                        {
-                            Control.matDepth.SetFloat("_KPointOffsetMult",-1f);
-                        }
-                        Control.matDepth.SetTexture("_HeadDepth",Variables.headDepthRenderImages[j]);  
-                        FileStream file = new FileStream(savePath + "/" + headDepthFiles[j].Name.Remove(headDepthFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
-                        SaveImage(file,Control.matDepth);
-                    }
-                    Variables.headDepthRenderImages.Clear();
-                    Resources.UnloadUnusedAssets();
-                }
-            }
-            
-            if(Variables.validWeaponDepth == true)
-            {
-                Control.matDepth.SetTexture("_BodyDepth",Variables.blackTex);
-                Control.matDepth.SetTexture("_HeadDepth",Variables.blackTex);
-                for(int i = 0; i < Variables.waitRenderName.Count; i++)
-                {
-                    if(Variables.waitRenderName[i] == "attack" )
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetAttack);
-                    }
-                    else if(Variables.waitRenderName[i] == "stand")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetStand);
-                    }
-                    else if(Variables.waitRenderName[i] == "magic")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetMagic);
-                    }
-                    else if(Variables.waitRenderName[i] == "hit")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetHit);
-                    }
-                    else if(Variables.waitRenderName[i] == "die")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetDie);
-                    }
-                    else if(Variables.waitRenderName[i] == "walk")
-                    {
-                        Control.matDepth.SetVector("_KPointOffset",Variables.KPointOffsetWalk);
-                    }
-
-                    GetImages.GetFilesAllImageNoForce(Variables.weaponDepthRenderImages,Variables.weaponDepthPath.Remove(Variables.weaponDepthPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-
-                    
-                    DirectoryInfo weaponDepthDir = new DirectoryInfo(Variables.weaponDepthPath.Remove(Variables.weaponDepthPath.LastIndexOf(@"/")) + "/" + Variables.waitRenderName[i]);
-                    FileInfo[] weaponDepthFiles = weaponDepthDir.GetFiles("*",SearchOption.AllDirectories);
-
-                    string name = Variables.weaponDepthPath.Remove(Variables.weaponDepthPath.LastIndexOf(@"/"));
-                    name = name.Substring(name.LastIndexOf(@"/"));
-                    string savePath = Variables.mainFolderPath + "/Export/export_WeaponDepth/" + name + "/" + Variables.waitRenderName[i];
-                    Directory.CreateDirectory(savePath);
-
-                    for(int j = 0; j <= Variables.weaponDepthRenderImages.Count-1 ; j++)
-                    {
-                        if(weaponDepthFiles[j].Name.Substring(weaponDepthFiles[j].Name.Length - 8,2) == "00")
-                        {
-                            Control.matDepth.SetFloat("_KPointOffsetMult",1f);
-                        }
-                        if(weaponDepthFiles[j].Name.Substring(weaponDepthFiles[j].Name.Length - 8,2) == "20" && Variables.bVert == true)
-                        {
-                            Control.matDepth.SetFloat("_KPointOffsetMult",-1f);
-                        }
-                        Control.matDepth.SetTexture("_WeaponDepth",Variables.weaponDepthRenderImages[j]); 
-                        FileStream file = new FileStream(savePath + "/" + weaponDepthFiles[j].Name.Remove(weaponDepthFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
-                        SaveImage(file,Control.matDepth);
-                    
-                    }
-                    Variables.weaponDepthRenderImages.Clear();
-                    Resources.UnloadUnusedAssets();
-                }
-            }
-            
-            Variables.waitRenderName.Clear();
-            Resources.UnloadUnusedAssets();
-            Control.matExport.SetFloat("_BodyDepthMult",0f);
-            Control.matExport.SetFloat("_WeaponDepthMult",0f);
-            Control.matExport.SetFloat("_HeadDepthMult",0f);
-            
-            Control.matExport.SetVector("_BackColor",Variables.pixelColor);
-            Control.matExport.SetFloat("_KPointOffsetMult",1f);
-            Control.matDepth.SetFloat("_KPointOffsetMult",1f);
-
-            Messagebox.MessageBox(IntPtr.Zero, "输出完毕", "确认", 0);
-            Variables.bPlay = true; 
-            Variables.bChoose = true;
-        }
-         else*/
         if(Variables.NPCMode == true)
         {
             List<String> renderPath = GetFiles.GetAllFiles(Variables.NPCPath.Remove(Variables.NPCPath.LastIndexOf(@"/")));
@@ -1490,7 +449,7 @@ public class Export
 
                     string name = Variables.NPCPath.Remove(Variables.NPCPath.LastIndexOf(@"/"));
                     name = name.Substring(name.LastIndexOf(@"\",name.LastIndexOf(@"\") - 1));
-                    string savePath = Variables.mainFolderPath + "/Export/export_NPC/" + name + "/" + Variables.waitRenderName[i];
+                    string savePath = Variables.mainFolderPath + "/Export/export/" + name + "/" + Variables.waitRenderName[i];
                     Directory.CreateDirectory(savePath);
                     
                     for(int j = 0; j <= Variables.NPCRenderImages.Count-1 ; j++)
@@ -1504,7 +463,7 @@ public class Export
                             Control.matExportNPC.SetFloat("_KPointOffsetMult",-1f);
                         }
                         Control.matExportNPC.SetTexture("_NPC",Variables.NPCRenderImages[j]);
-                        FileStream file = new FileStream(savePath + "/" + NPCFiles[j].Name.Remove(NPCFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
+                        FileStream file = new FileStream(savePath + "/" + NPCFiles[j].Name.Remove(NPCFiles[j].Name.LastIndexOf(@".")) + ".tga",FileMode.Create,FileAccess.Write);
                         SaveImage(file,Control.matExportNPC);
                     }
                     Variables.NPCRenderImages.Clear();
@@ -1546,7 +505,7 @@ public class Export
 
                     string name = Variables.NPCOverlapPath.Remove(Variables.NPCOverlapPath.LastIndexOf(@"/"));
                     name = name.Substring(name.LastIndexOf(@"\",name.LastIndexOf(@"\") - 1));
-                    string savePath = Variables.mainFolderPath + "/Export/export_NPC/" + name + "/" + Variables.waitRenderName[i];
+                    string savePath = Variables.mainFolderPath + "/Export/export/" + name + "/" + Variables.waitRenderName[i];
                     Directory.CreateDirectory(savePath);
                     
                     for(int j = 0; j <= Variables.NPCRenderImages.Count-1 ; j++)
@@ -1560,7 +519,7 @@ public class Export
                             Control.matExportNPC.SetFloat("_KPointOffsetMult",-1f);
                         }
                         Control.matExportNPC.SetTexture("_NPC",Variables.NPCRenderImages[j]);
-                        FileStream file = new FileStream(savePath + "/" + NPCFiles[j].Name.Remove(NPCFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
+                        FileStream file = new FileStream(savePath + "/" + NPCFiles[j].Name.Remove(NPCFiles[j].Name.LastIndexOf(@".")) + ".tga",FileMode.Create,FileAccess.Write);
                         SaveImage(file,Control.matExportNPC);
                     }
                     Variables.NPCRenderImages.Clear();
@@ -1580,109 +539,6 @@ public class Export
 
         
     }
-
-    /**
-        输出所有动作的宝石资产
-    */
-    /*public static void ExportAllGem()
-    {
-        if(Variables.bChoose == false)
-        {
-            return;
-        }
-
-        Variables.bPlay = false;
-
-        if(Variables.validGem == true)
-        {
-            List<String> allPath = GetFiles.GetAllFiles(Variables.gemPath.Remove(Variables.gemPath.LastIndexOf('/', Variables.gemPath.LastIndexOf('/') - 1)));
-            for(int t = 0; t < allPath.Count; t++)
-            {
-                List<String> renderPath = GetFiles.GetAllFiles(Variables.gemPath.Remove(Variables.gemPath.LastIndexOf(@"/")));
-                Variables.gemPath = Variables.mainFolderPath + "/输出资产png/gemEffect/" + allPath[t] + "/" + Variables.animName;
-
-                Control.matExport.SetFloat("_BodyDepthMult",0f);
-                Control.matExport.SetFloat("_WeaponDepthMult",1f);
-                Control.matExport.SetFloat("_HeadDepthMult",0f);
-                Control.matExport.SetTexture("_Body",Variables.blackTex);
-                Control.matExport.SetTexture("_Head",Variables.blackTex);
-                Control.matExport.SetTexture("_Weapon",Variables.blackTex);
-                Control.matExport.SetTexture("_WeaponEffect",Variables.blackTex);
-                Control.matExport.SetVector("_Scale",Variables.scale);
-                Control.matExport.SetVector("_CutValue",Variables.cutValue);
-                Control.matExport.SetVector("_ScaleRescale",Variables.scaleRescale);
-                Control.matExport.SetVector("_KPointOffsetRescale",Variables.KPointOffsetRescale);
-                for(int i = 0; i< renderPath.Count ; i++)
-                {
-                    if(Variables.waitRenderName[i] == "attack")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetAttack);
-                    }
-                    else if(Variables.waitRenderName[i] == "stand")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetStand);
-                    }
-                    else if(Variables.waitRenderName[i] == "magic")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetMagic);
-                    }
-                    else if(Variables.waitRenderName[i] == "hit")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetHit);
-                    }
-                    else if(Variables.waitRenderName[i] == "die")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetDie);
-                    }
-                    else if(Variables.waitRenderName[i] == "walk")
-                    {
-                        Control.matExport.SetVector("_KPointOffset",Variables.KPointOffsetWalk);
-                    }
-
-                    GetImages.GetFilesAllImageNoForce(Variables.weaponGemRenderImages,Variables.gemPath.Remove(Variables.gemPath.LastIndexOf(@"/")) + "/" + renderPath[i]);
-                    DirectoryInfo weaponGemDir = new DirectoryInfo(Variables.gemPath.Remove(Variables.gemPath.LastIndexOf(@"/")) + "/" + renderPath[i]);
-                    FileInfo[] weaponGemFiles = weaponGemDir.GetFiles("*",SearchOption.AllDirectories);
-
-                    string name = Variables.gemPath.Remove(Variables.gemPath.LastIndexOf(@"/"));
-                    name = name.Substring(name.LastIndexOf(@"/"));
-                    string savePath = Variables.mainFolderPath + "/Export/export_gemEffect/" + name + "/" + renderPath[i];
-                    Directory.CreateDirectory(savePath);
-
-                    for(int j = 0; j <= Variables.weaponGemRenderImages.Count - 1; j++)
-                    {
-                        if(weaponGemFiles[j].Name.Substring(weaponGemFiles[j].Name.Length - 8,2) == "00")
-                        {
-                            Control.matExportNPC.SetFloat("_KPointOffsetMult",1f);
-                        }
-                        if(weaponGemFiles[j].Name.Substring(weaponGemFiles[j].Name.Length - 8,2) == "20" && Variables.bVert == true)
-                        {
-                            Control.matExport.SetFloat("_KPointOffsetMult",-1f);
-                        }
-                        Control.matExport.SetTexture("_WeaponGem",Variables.weaponGemRenderImages[j]);
-                        FileStream file = new FileStream(savePath + "/" + weaponGemFiles[j].Name.Remove(weaponGemFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
-                        SaveImage(file,Control.matExport);
-                    }
-                    Variables.weaponGemRenderImages.Clear();
-                    Resources.UnloadUnusedAssets();
-                }
-                renderPath.Clear();
-                Resources.UnloadUnusedAssets();
-            }
-            allPath.Clear();
-            Resources.UnloadUnusedAssets();
-            Control.matExport.SetFloat("_BodyDepthMult",0f);
-            Control.matExport.SetFloat("_WeaponDepthMult",0f);
-            Control.matExport.SetFloat("_HeadDepthMult",0f);
-            
-            Control.matExport.SetVector("_BackColor",Variables.pixelColor);
-            Control.matExport.SetFloat("_KPointOffsetMult",1f);
-
-            Messagebox.MessageBox(IntPtr.Zero, "输出完毕", "确认", 0);
-            Variables.bPlay = true; 
-            Variables.bChoose = true;
-        }
-    }*/
-
     /**
         选择要输出的GIF资产
     */
@@ -1929,7 +785,7 @@ public class Export
                             Control.matExportGIF.SetTexture("_WeaponEffect",Variables.weaponEffectRenderGIFImages[j]);
                             Control.matExportGIF.SetTexture("_WeaponGem",Variables.gemRenderGIFImages[j]);
                             
-                            FileStream file = new FileStream(savePath + "/" + bodyFiles[j].Name.Remove(bodyFiles[j].Name.LastIndexOf(@".")) + ".png" , FileMode.Create , FileAccess.Write);
+                            FileStream file = new FileStream(savePath + "/" + bodyFiles[j].Name.Remove(bodyFiles[j].Name.LastIndexOf(@".")) + ".tga" , FileMode.Create , FileAccess.Write);
                             SaveImage(file,Control.matExportGIF);
                         }
                         Variables.bodyRenderGIFImages.Clear();
@@ -2011,7 +867,7 @@ public class Export
                             for(int j = 0; j <= Variables.NPCRenderGIFImages.Count-1 ; j++)
                             {
                                 Control.matExportGIFNPC.SetTexture("_NPC",Variables.NPCRenderGIFImages[j]);
-                                FileStream file = new FileStream(savePath + "/" + NPCFiles[j].Name.Remove(NPCFiles[j].Name.LastIndexOf(".")) + ".png",FileMode.Create,FileAccess.Write);
+                                FileStream file = new FileStream(savePath + "/" + NPCFiles[j].Name.Remove(NPCFiles[j].Name.LastIndexOf(".")) + ".tga",FileMode.Create,FileAccess.Write);
                                 SaveImage(file,Control.matExportGIFNPC);
                             }
                             Variables.NPCRenderGIFImages.Clear();
@@ -2048,7 +904,7 @@ public class Export
                             for(int j = 0; j <= Variables.NPCRenderGIFImages.Count-1 ; j++)
                             {
                                 Control.matExportGIFNPC.SetTexture("_NPC",Variables.NPCRenderGIFImages[j]);
-                                FileStream file = new FileStream(savePath + "/" + NPCFiles[j].Name.Remove(NPCFiles[j].Name.LastIndexOf(".")) + ".png",FileMode.Create,FileAccess.Write);
+                                FileStream file = new FileStream(savePath + "/" + NPCFiles[j].Name.Remove(NPCFiles[j].Name.LastIndexOf(".")) + ".tga",FileMode.Create,FileAccess.Write);
                                 SaveImage(file,Control.matExportGIFNPC);
                             }
                             Variables.NPCRenderGIFImages.Clear();
@@ -2194,7 +1050,7 @@ public class Export
                                 Control.matExportGIF.SetTexture("_WeaponGem",Variables.gemRenderGIFImages[j]);
                             }
                             
-                            FileStream file = new FileStream(savePath + "/" + bodyFiles[j].Name.Remove(bodyFiles[j].Name.LastIndexOf(@".")) + ".png" , FileMode.Create , FileAccess.Write);
+                            FileStream file = new FileStream(savePath + "/" + bodyFiles[j].Name.Remove(bodyFiles[j].Name.LastIndexOf(@".")) + ".tga" , FileMode.Create , FileAccess.Write);
                             SaveImage(file,Control.matExportGIF);
                         }
                         Variables.bodyRenderGIFImages.Clear();
@@ -2282,7 +1138,7 @@ public class Export
                             for(int j = 0; j <= Variables.NPCRenderGIFImages.Count-1 ; j++)
                             {
                                 Control.matExportGIFNPC.SetTexture("_NPC",Variables.NPCRenderGIFImages[j]);
-                                FileStream file = new FileStream(savePath + "/" + NPCFiles[j].Name.Remove(NPCFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
+                                FileStream file = new FileStream(savePath + "/" + NPCFiles[j].Name.Remove(NPCFiles[j].Name.LastIndexOf(@".")) + ".tga",FileMode.Create,FileAccess.Write);
                                 SaveImage(file,Control.matExportGIFNPC);
                             }
                             Variables.NPCRenderGIFImages.Clear();
@@ -2318,7 +1174,7 @@ public class Export
                             for(int j = 0; j <= Variables.NPCRenderGIFImages.Count-1 ; j++)
                             {
                                 Control.matExportGIFNPC.SetTexture("_NPC",Variables.NPCRenderGIFImages[j]);
-                                FileStream file = new FileStream(savePath + "/" + NPCFiles[j].Name.Remove(NPCFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
+                                FileStream file = new FileStream(savePath + "/" + NPCFiles[j].Name.Remove(NPCFiles[j].Name.LastIndexOf(@".")) + ".tga",FileMode.Create,FileAccess.Write);
                                 SaveImage(file,Control.matExportGIFNPC);
                             }
                             Variables.NPCRenderGIFImages.Clear();
@@ -2355,7 +1211,7 @@ public class Export
     private static void SaveGIF(List<Texture2D> tex2DList , string GIFSavePath)
     {
         ProGifTexturesToGIF tex2Gif = ProGifTexturesToGIF.Create("GifConverter");
-        tex2Gif.SetFileExtension(new List<string>{".jpg", ".png"});
+        tex2Gif.SetFileExtension(new List<string>{".jpg", ".tga"});
 
         tex2Gif.SetTransparent(true);
         tex2Gif.Save(tex2DList, Variables.GIFWidth , Variables.GIFHeight , Variables.GIFSpeed , Variables.GIFLoopCount , Variables.GIFQuality , GIFSavePath , OnFileSaved , OnFileSaveProgress , ProGifTexturesToGIF.ResolutionHandle.ResizeKeepRatio, autoClear:true);
@@ -2434,7 +1290,7 @@ public class Export
             for(int j = 0; j <= reSamplingImages.Count-1 ; j++)
             {
                 Control.matReSampling.SetTexture("_Tex",reSamplingImages[j]);
-                FileStream file = new FileStream(savePath + "/" + reSamplingFiles[j].Name.Remove(reSamplingFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
+                FileStream file = new FileStream(savePath + "/" + reSamplingFiles[j].Name.Remove(reSamplingFiles[j].Name.LastIndexOf(@".")) + ".tga",FileMode.Create,FileAccess.Write);
                 SaveResamplingImage(file);
             }
             reSamplingImages.Clear();
@@ -2507,7 +1363,7 @@ public class Export
             {
                 Control.matMerge.SetTexture("_Tex",mergeRGBImages[j]);
                 Control.matMerge.SetTexture("_Tex2",mergeAImages[j]);
-                FileStream file = new FileStream(savePath + "/" + RGBFiles[j].Name.Remove(RGBFiles[j].Name.LastIndexOf(@".")) + ".png",FileMode.Create,FileAccess.Write);
+                FileStream file = new FileStream(savePath + "/" + RGBFiles[j].Name.Remove(RGBFiles[j].Name.LastIndexOf(@".")) + ".tga",FileMode.Create,FileAccess.Write);
                 SaveMergeImageValue(file,(int)imageWidth,(int)imageHeight);
             }
             mergeRGBImages.Clear();

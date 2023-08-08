@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using System.Runtime.InteropServices;
 
 [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-
+//[StructLayout(LayoutKind.Sequential)]
 public class OpenFunc
 {
     public static string Open(string diaTitle)

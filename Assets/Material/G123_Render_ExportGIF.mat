@@ -70,7 +70,7 @@ Material:
     - _PicScale: 1
     - _WeaponDepthMult: 0
     m_Colors:
-    - _BackColor: {r: 0.14509805, g: 0.14509805, b: 0.14509805, a: 1}
+    - _BackColor: {r: 0.9411765, g: 0.9411765, b: 0.9411765, a: 1}
     - _CutValue: {r: 0, g: 0, b: 0, a: 0}
     - _KPointOffset: {r: 0, g: 0, b: 0, a: 0}
     - _Scale: {r: 1, g: 1, b: 0, a: 0}

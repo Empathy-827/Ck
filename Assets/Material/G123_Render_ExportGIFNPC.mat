@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BackPic:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: ced783485226c5d43badb7027c76f03e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _KPointTex:
@@ -39,8 +39,8 @@ Material:
     - _KPointView: 1
     - _PicScale: 1
     m_Colors:
-    - _BackColor: {r: 0.14509805, g: 0.14509805, b: 0.14509805, a: 1}
+    - _BackColor: {r: 0.9411765, g: 0.9411765, b: 0.9411765, a: 1}
     - _CutValueNPC: {r: 0, g: 0, b: 0, a: 0}
-    - _KPointOffsetNPC: {r: -0.0042829895, g: 0.068200015, b: 0, a: 0}
+    - _KPointOffsetNPC: {r: 0, g: 0, b: 0, a: 0}
     - _ScaleNPC: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

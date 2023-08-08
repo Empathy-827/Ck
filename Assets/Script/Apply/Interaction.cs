@@ -379,10 +379,10 @@ public class Interaction
     */
     public static void RefreshData()
     {
-        //Variables.NPCImagesNoForce.Clear();
-        Variables.bodyImagesNoForce.Clear();
+        Variables.NPCImagesNoForce.Clear();
+        //Variables.bodyImagesNoForce.Clear();
         Variables.NPCOverlapImagesNoForce.Clear();
-        Variables.bodyOverlapImagesNoForce.Clear();
+        //Variables.bodyOverlapImagesNoForce.Clear();
         Resources.UnloadUnusedAssets();
         if(Variables.playMode == 1)
         {
@@ -656,7 +656,6 @@ public class Interaction
             Variables.bVert = true;
         }
     }
-
 
     /**
         选择、取消部位资产
@@ -1628,6 +1627,16 @@ public class Interaction
             Control.matOverlap.SetFloat("_KPointView",0f);
             Control.matContrast.SetFloat("_KPointView",0f);
             Control.matCharacter.SetFloat("_KPointView",0f);
+
+            Control.mat1.SetFloat("_KPointView",0f);
+            Control.mat2.SetFloat("_KPointView",0f);
+            Control.mat3.SetFloat("_KPointView",0f);
+
+            Variables.mat_anim_num = Control.mat_anim.Length;
+            for (int i = 0; i < Variables.mat_anim_num; i++)
+            {
+                Control.mat_anim[i].SetFloat("_KPointView", 0f);
+            }
         }
         else if(Variables.KPointView == 0)
         {
@@ -1636,6 +1645,16 @@ public class Interaction
             Control.matOverlap.SetFloat("_KPointView",1f);
             Control.matContrast.SetFloat("_KPointView",1f);
             Control.matCharacter.SetFloat("_KPointView",1f);
+
+            Control.mat1.SetFloat("_KPointView",1f);
+            Control.mat2.SetFloat("_KPointView",1f);
+            Control.mat3.SetFloat("_KPointView",1f);
+
+            Variables.mat_anim_num = Control.mat_anim.Length;
+            for (int i = 0; i < Variables.mat_anim_num; i++)
+            {
+                Control.mat_anim[i].SetFloat("_KPointView", 1f);
+            }
         }
     }
 
@@ -1931,7 +1950,7 @@ public class Interaction
             return;
         }
         GameObject.Find("NPC").transform.SetSiblingIndex(3);
-        GameObject.Find("NPC").transform.localScale = new Vector3(1.1f,1.1f,1.1f);
+        GameObject.Find("NPC").transform.localScale = new Vector3(1.2f,1.2f,1.2f);
         GameObject.Find("NPC").GetComponent<Image>().color = new Vector4(1,1,1,1);
 
         GameObject.Find("NPC选择按钮").transform.localScale = new Vector3(1,1,1);
@@ -1940,16 +1959,6 @@ public class Interaction
         
         Variables.animName = "stand";
         GameObject.Find("动作/attack").GetComponentInChildren<Text>().text = "stand";
-        
-        //选中后就已经添加了Stand
-        /*if(Variables.NPCImages.Count != 0)
-        {   
-            Variables.NPCPath = Variables.NPCPath.Remove(Variables.NPCPath.LastIndexOf(@"/") + 1) + Variables.animName;
-
-            Import.AddNPC(Variables.NPCPath);
-            Import.AddNPCAddon(Variables.NPCPath);
-            Import.AddNPC00(Variables.NPCPath);
-        }*/
 
         ResetOffset();
 

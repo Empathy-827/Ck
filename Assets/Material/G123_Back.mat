@@ -20,13 +20,59 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Body:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BodyDepth:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Head:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HeadDepth:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _KPointTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 88b23d10339d55d4bafa9f22682a9bd5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NPC:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Test:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Weapon:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WeaponDepth:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _BodyDepthMult: 0
+    - _HeadDepthMult: 0
+    - _KPointView: 1
     - _Sharpen: 1
     - _SharpenAmount: 5
-    m_Colors: []
+    - _WeaponDepthMult: 0
+    m_Colors:
+    - _BackColor: {r: 0, g: 0, b: 0, a: 0}
+    - _CutValueNPC: {r: 0, g: 0, b: 0, a: 0}
+    - _KPointOffset: {r: -0.5, g: -0.5, b: 0, a: 0}
+    - _KPointOffsetNPC: {r: -0.5, g: -0.5, b: 0, a: 0}
+    - _Scale: {r: 1, g: 1, b: 0, a: 0}
+    - _ScaleNPC: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

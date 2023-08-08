@@ -1620,6 +1620,8 @@ public class Play
                 
                     if(Variables.aForceAll)
                     {
+                        //Debug.Log("aForceAll:  " + Variables.aForceAll);   
+                        //Debug.Log("NPCImagesForce2:  " + Variables.NPCImagesForce2.Count); 
                         //Variables.aAnimAll = false;
 
                         if(Variables.NPCImagesForce1.Count != 0 && Variables.validNPC == true)
@@ -1634,6 +1636,7 @@ public class Play
                         if(Variables.NPCImagesForce2.Count != 0 && Variables.validNPC == true)
                         {
                             Control.mat2.SetTexture("_NPC" , Variables.NPCImagesForce2[Variables.indexNPC]);
+                            Debug.Log(Variables.NPCImagesForce2[Variables.indexNPC]);    
                         } 
                         else
                         {

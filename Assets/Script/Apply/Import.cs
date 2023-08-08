@@ -592,7 +592,7 @@ public class Import
         Variables.exportCount = NPCImagesNoForce.Count;
 
         Debug.Log(NPCPath);
-        //Debug.Log(NPCImagesNoForce.Count);
+        Debug.Log(NPCImagesNoForce.Count);
 
         //7.25
         Variables.NPCImagesForce1.Clear();
@@ -616,6 +616,8 @@ public class Import
                     Variables.NPCImagesForce3.Add(image);
                 }                
             }
+
+        Debug.Log("NPCImagesForce2:  " + Variables.NPCImagesForce2.Count); 
 
         if(NPCImages.Count != 0)
         {
